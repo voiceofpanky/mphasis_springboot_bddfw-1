@@ -1,6 +1,7 @@
 app:
   name: MyApp
   description: ${app.name} serves a key role in the overall IT landscape
+
 url:
   base: http://www.google.
   api: https://reqres.in/api/users/
