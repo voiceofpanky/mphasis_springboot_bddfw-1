@@ -1,5 +1,6 @@
 package com.mphasis.qe.utils;
 
+import com.mphasis.qe.PropertySourceResolver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.Before;
@@ -17,6 +18,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 import java.net.URL;
@@ -28,14 +30,17 @@ import java.util.concurrent.TimeUnit;
  */
 public class Setup {
     private static final Logger LOGGER = LogManager.getLogger(Setup.class.getSimpleName());
-    private static final String APPIUM_WEB_DRIVER_SERVER_URL = "http://localhost:4723/wd/hub";
+    private static String APPIUM_WEB_DRIVER_SERVER_URL = null;
 
     AndroidDriver androidDriver;
     IOSDriver iosDriver;
 
+    @Autowired
+    private PropertySourceResolver propertySourceResolver;
+
     private Configurations configs = new Configurations();
     public Configuration config;
-    private static String operatingsystem;
+    private static String platformName;
     private static String browserName;
     public static WebDriver webdriver;
 
@@ -43,49 +48,48 @@ public class Setup {
 
     @Before("@web")
     public void setUp() throws Exception {
-        operatingsystem = config.getString("platform.name");
-        browserName = config.getString("browser.name");
-        LOGGER.info("Setting up WebDriver.");
+        platformName = propertySourceResolver.getPlatformName();
+        browserName = propertySourceResolver.getBrowserName();
+        LOGGER.info("Setting up WebDriver " + browserName);
+
         File classpathRoot = new File(System.getProperty("user.dir"));
         File appDir = new File(classpathRoot, "apps/test.apk");
+
         if(browserName.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", config.getString("chrome.driver"));
+            System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
         }
         else if(browserName.equalsIgnoreCase("firefox")){
-            System.setProperty("webdriver.gecko.driver", config.getString("gecko.driver"));
+            System.setProperty("webdriver.gecko.driver", propertySourceResolver.getGeckoDriverPath());
         }
         else if(browserName.equalsIgnoreCase("ie")){
-            System.setProperty("webdriver.ie.driver", config.getString("ie.driver"));
+            System.setProperty("webdriver.ie.driver", propertySourceResolver.getIeDriverPath());
         }
-//        this.APPIUM_WEB_DRIVER_SERVER_URL = config.getString("perfecto_url");
 
-        if (operatingsystem.equalsIgnoreCase("android")){
-            File app = new File(appDir, config.getString("android.apk.file"));
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
-            capabilities.setCapability("deviceName",config.getString("device.name"));
-            capabilities.setCapability("platformVersion", config.getString("platform.version"));
-            capabilities.setCapability("platformName",config.getString("platform.name"));
-            capabilities.setCapability("browserName", config.getString("browser.name"));
-//            capabilities.setCapability("user", config.getString("perfecto_username"));
-//            capabilities.setCapability("password", config.getString("perfecto_password"));
+        DesiredCapabilities capabilities;
+        this.APPIUM_WEB_DRIVER_SERVER_URL = config.getString("perfecto_url");
+
+        if (platformName.equalsIgnoreCase("android")){
+            File app = new File(appDir, propertySourceResolver.getAndroidApkFile());
+            capabilities = new DesiredCapabilities();
+
+            capabilities.setCapability("deviceName",propertySourceResolver.getAndroidDeviceName());
+            capabilities.setCapability("platformVersion", propertySourceResolver.getAndroidPlatformVersion());
+            capabilities.setCapability("platformName",platformName);
+            capabilities.setCapability("browserName", browserName);
 //            capabilities.setCapability("app", app.getAbsolutePath());
-//            capabilities.setCapability("autoLaunch", false);
+
             androidDriver = new AndroidDriver(new URL(APPIUM_WEB_DRIVER_SERVER_URL), capabilities);
             androidDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
             webdriver = androidDriver;
-        } else if (operatingsystem.equalsIgnoreCase("ios")){
-            File app = new File(appDir, "test.app");
+        } else if (platformName.equalsIgnoreCase("ios")){
+            File app = new File(appDir, propertySourceResolver.getIosAppFile());
             // Configure the desired capabilities
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("deviceName", "iPhone 6");
-            capabilities.setCapability("platformName", "iOS");
-//            capabilities.setCapability("user", config.getString("perfecto_username"));
-//            capabilities.setCapability("password", config.getString("perfecto_password"));
-//   		  capabilities.setCapability("platformVersion", "7.1");
+            capabilities = new DesiredCapabilities();
+            capabilities.setCapability("deviceName",propertySourceResolver.getIosDeviceName());
+            capabilities.setCapability("platformVersion", propertySourceResolver.getIosPlatformVersion());
+            capabilities.setCapability("platformName",platformName);
+            capabilities.setCapability("browserName", browserName);
 //            capabilities.setCapability("app", app.getAbsolutePath());
-            capabilities.setCapability("browserName", config.getString("browser.name"));
-//            capabilities.setCapability("autoLaunch", false);
             capabilities.setCapability("launchTimeout", 9000000);
 
             iosDriver = new IOSDriver(new URL(APPIUM_WEB_DRIVER_SERVER_URL), capabilities);

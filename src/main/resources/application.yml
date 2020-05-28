@@ -6,8 +6,8 @@ url:
   base:
   api:
 
-environment:
-  platform.name: web
+platform:
+  name: web
 
 browser:
   name: chrome
