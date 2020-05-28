@@ -42,6 +42,7 @@ public class Setup {
     private static String platformName;
     private static String browserName;
     public static WebDriver webdriver;
+    public static String baseUrl;
 
     public Setup(){}
 
@@ -66,6 +67,7 @@ public class Setup {
 
         DesiredCapabilities capabilities = new DesiredCapabilities("","", Platform.ANY);
         this.APPIUM_WEB_DRIVER_SERVER_URL = propertySourceResolver.getPerfectoUrl();
+        this.baseUrl = propertySourceResolver.getBaseUrl();
 
         if (platformName.equalsIgnoreCase("android")){
             File app = new File(appDir, propertySourceResolver.getAndroidApkFile());

@@ -1,5 +1,6 @@
 package com.mphasis.qe.pageobjects;
 
+import com.mphasis.qe.PropertySourceResolver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -7,6 +8,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /****************************************************************************************
@@ -15,7 +17,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class HomePage extends BasePage{
 
-    private static final String HOME_PAGE_URL = "https://www.google.";
+//    private final String HOME_PAGE_URL = "https://www.google.";
+    private final String HOME_PAGE_URL = this.baseUrl;
 
     @FindBy(css = "#hplogo")
     private WebElement logo;
