@@ -8,12 +8,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class PropertySourceResolver {
 
-    @Value("${url.base}")
-    private String baseUrl;
+    @Value("${app.url.base}")
+    private String appBaseUrl;
 
-    @Value("${url.api}")
-    private String apiUrl;
-
+    @Value("${app.url.api}")
+    private String appApiUrl;
 
     @Value("${platform.name}")
     private String platformName;
@@ -57,12 +56,12 @@ public class PropertySourceResolver {
     @Value("${perfecto.url}")
     private String perfectoUrl;
 
-    public String getBaseUrl() {
-        return baseUrl;
+    public String getAppBaseUrl() {
+        return appBaseUrl;
     }
-
-    public String getApiUrl() {
-        return apiUrl;
+  
+    public String getAppApiUrl() {
+        return appApiUrl;
     }
 
     public String getPlatformName() {

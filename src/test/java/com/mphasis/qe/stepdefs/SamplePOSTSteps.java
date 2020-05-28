@@ -1,5 +1,6 @@
 package com.mphasis.qe.stepdefs;
 
+import com.mphasis.qe.PropertySourceResolver;
 import com.mphasis.qe.pojo.User;
 import com.mphasis.qe.utils.ApiUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -9,6 +10,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.junit.Assert;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +18,10 @@ import java.util.Map;
 public class SamplePOSTSteps extends ApiUtil {
     private Response response;
     private String jsonBody;
+
+    @Autowired
+    PropertySourceResolver propertySourceResolver;
+
     @Given("I have a payload with a user details")
     public void generate_simple_payload(){
         Map<String, String> postPayload = new HashMap<String, String>();
@@ -31,15 +37,14 @@ public class SamplePOSTSteps extends ApiUtil {
         }
     }
 
-    @When("I send a POST request to {string}")
-    public void send_postRequest(String url)
-    {
-        response = postReq(url, jsonBody);
+    @When("I send a request to add the user to the list")
+    public void iSendARequestToAddTheUserToTheList() {
+        response = postReq(propertySourceResolver.getAppApiUrl(), jsonBody);
     }
 
-    @Then("I should get the post status code as {string}")
-    public void verify_StatusCode(String statusCode){
-        Assert.assertEquals(response.getStatusCode(), Integer.parseInt(statusCode));
+    @Then("I should get a confirmation of the addition")
+    public void iShouldGetAConfirmationOfTheAddition() {
+        Assert.assertEquals(response.getStatusCode(), 201);
     }
 
     @Given("I have a complex payload with a user details")
@@ -54,5 +59,10 @@ public class SamplePOSTSteps extends ApiUtil {
             e.printStackTrace();
         }
 
+    }
+
+    @Then("I should get a confirmation of the addition - force fail")
+    public void iShouldGetAConfirmationOfTheAdditionForceFail() {
+        Assert.assertEquals(response.getStatusCode(), 200);
     }
 }
