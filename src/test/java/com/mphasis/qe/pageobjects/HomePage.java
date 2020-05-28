@@ -17,7 +17,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class HomePage extends BasePage{
 
-//    private final String HOME_PAGE_URL = "https://www.google.";
     private final String HOME_PAGE_URL = this.baseUrl;
 
     @FindBy(css = "#hplogo")
