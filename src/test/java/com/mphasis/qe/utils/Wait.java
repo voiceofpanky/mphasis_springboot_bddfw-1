@@ -1,5 +1,6 @@
 package com.mphasis.qe.utils;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,6 +13,7 @@ import java.util.logging.Logger;
 /****************************************************************************************
  * @author manoj chavan
  ****************************************************************************************/
+@Slf4j
 public class Wait {
 
     private WebDriver driver;
@@ -19,7 +21,6 @@ public class Wait {
     public Wait(WebDriver driver) {
         this.driver = driver;
     }
-    private static final Logger LOGGER = Logger.getLogger(Wait.class.getSimpleName());
 
     private void waitUntilCondition(ExpectedCondition condition, String timeoutMessage, int timeout) {
         WebDriverWait wait = new WebDriverWait(driver, timeout);

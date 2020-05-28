@@ -2,9 +2,12 @@ package com.mphasis.qe.stepdefs;
 
 import com.mphasis.qe.pageobjects.SearchResultPage;
 import io.cucumber.java.en.Then;
+import lombok.extern.slf4j.Slf4j;
+
 /****************************************************************************************
  * @author manoj chavan
  ****************************************************************************************/
+@Slf4j
 public class SearchResultPageSteps {
 
     private SearchResultPage searchResultPage;

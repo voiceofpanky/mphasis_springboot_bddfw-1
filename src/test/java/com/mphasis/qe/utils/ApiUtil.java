@@ -11,9 +11,11 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import lombok.extern.slf4j.Slf4j;
 
 import static org.awaitility.Awaitility.*;
 
+@Slf4j
 public class ApiUtil{
 
     public RequestSpecification request;
