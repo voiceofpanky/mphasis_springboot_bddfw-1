@@ -1,4 +1,5 @@
 package com.mphasis.qe.pageobjects;
+import com.mphasis.qe.PropertySourceResolver;
 import com.mphasis.qe.utils.Setup;
 import com.mphasis.qe.utils.Wait;
 import org.apache.logging.log4j.LogManager;
@@ -15,9 +16,11 @@ public class BasePage{
     private static final Logger LOGGER = LogManager.getLogger(BasePage.class.getSimpleName());
     public WebDriver driver;
     public Wait wait;
+    public String baseUrl;
 
     public BasePage()  {
         this.driver = new Setup().webdriver;
+        this.baseUrl = new Setup().baseUrl;
         this.wait = new Wait(this.driver);
     }
 }

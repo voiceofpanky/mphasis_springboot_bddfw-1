@@ -59,7 +59,7 @@ public class PropertySourceResolver {
     public String getAppBaseUrl() {
         return appBaseUrl;
     }
-
+  
     public String getAppApiUrl() {
         return appApiUrl;
     }
