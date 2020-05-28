@@ -1,19 +1,18 @@
 app:
   name: MyApp
   description: ${app.name} serves a key role in the overall IT landscape
-
-url:
-  base: http://www.google.
-  api: https://reqres.in/api/users/
+  url:
+    base: http://www.google.
+    api: https://reqres.in/api/users/
 
 platform:
-  name: iOS
+  name: web
 
 browser:
-  name: safari
+  name: chrome
 
 selenium:
-  chrome.driver: library/chrome/74/chromedriver.exe
+  chrome.driver: library/chrome/83/chromedriver.exe
   gecko.driver: library/geckodriver.exe
   ie.driver: library/IEDriverServer.exe
 
