@@ -1,10 +1,9 @@
 app:
   name: MyApp
   description: ${app.name} serves a key role in the overall IT landscape
-
-url:
-  base:
-  api:
+  url:
+    base:
+    api: https://reqres.in/api/users/
 
 platform:
   name: web
