@@ -13,7 +13,7 @@ browser:
   name: chrome
 
 selenium:
-  chrome.driver: library/chromedriver.exe
+  chrome.driver: library/chrome/83/chromedriver.exe
   gecko.driver: library/geckodriver.exe
   ie.driver: library/IEDriverServer.exe
 
@@ -36,6 +36,7 @@ perfecto:
 
 data:
   source:
+  url.to.test: http://www.google.com/
 
 db:
   connection:

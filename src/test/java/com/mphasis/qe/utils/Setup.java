@@ -9,6 +9,7 @@ import org.apache.commons.configuration2.builder.fluent.Configurations;
 import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -38,13 +39,11 @@ public class Setup {
     @Autowired
     private PropertySourceResolver propertySourceResolver;
 
-    private Configurations configs = new Configurations();
-    public Configuration config;
     private static String platformName;
     private static String browserName;
     public static WebDriver webdriver;
 
-    public Setup(){loadProperties();}
+    public Setup(){}
 
     @Before("@web")
     public void setUp() throws Exception {
@@ -65,30 +64,28 @@ public class Setup {
             System.setProperty("webdriver.ie.driver", propertySourceResolver.getIeDriverPath());
         }
 
-        DesiredCapabilities capabilities;
-        this.APPIUM_WEB_DRIVER_SERVER_URL = config.getString("perfecto_url");
+        DesiredCapabilities capabilities = new DesiredCapabilities("","", Platform.ANY);
+        this.APPIUM_WEB_DRIVER_SERVER_URL = propertySourceResolver.getPerfectoUrl();
 
         if (platformName.equalsIgnoreCase("android")){
             File app = new File(appDir, propertySourceResolver.getAndroidApkFile());
-            capabilities = new DesiredCapabilities();
-
+            capabilities.setCapability("platformName",platformName);
             capabilities.setCapability("deviceName",propertySourceResolver.getAndroidDeviceName());
             capabilities.setCapability("platformVersion", propertySourceResolver.getAndroidPlatformVersion());
-            capabilities.setCapability("platformName",platformName);
             capabilities.setCapability("browserName", browserName);
+            capabilities.setCapability("securityToken", propertySourceResolver.getPerfectoToken());
 //            capabilities.setCapability("app", app.getAbsolutePath());
-
             androidDriver = new AndroidDriver(new URL(APPIUM_WEB_DRIVER_SERVER_URL), capabilities);
             androidDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
             webdriver = androidDriver;
         } else if (platformName.equalsIgnoreCase("ios")){
-            File app = new File(appDir, propertySourceResolver.getIosAppFile());
+            File app = new File(appDir, "test.app");
             // Configure the desired capabilities
-            capabilities = new DesiredCapabilities();
             capabilities.setCapability("deviceName",propertySourceResolver.getIosDeviceName());
             capabilities.setCapability("platformVersion", propertySourceResolver.getIosPlatformVersion());
             capabilities.setCapability("platformName",platformName);
             capabilities.setCapability("browserName", browserName);
+            capabilities.setCapability("securityToken", propertySourceResolver.getPerfectoToken());
 //            capabilities.setCapability("app", app.getAbsolutePath());
             capabilities.setCapability("launchTimeout", 9000000);
 
@@ -117,7 +114,6 @@ public class Setup {
 
                 webdriver = new FirefoxDriver(options);
             }
-
             else if(browserName.equalsIgnoreCase("ie")) {
                 InternetExplorerOptions options = new InternetExplorerOptions();
                 //options.destructivelyEnsureCleanSession();
@@ -129,15 +125,6 @@ public class Setup {
             webdriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
             webdriver.manage().deleteAllCookies();
             webdriver.manage().window().maximize();
-
-        }
-    }
-
-    private void loadProperties() {
-        try {
-            config = configs.properties(new File("environment.properties"));
-        } catch (ConfigurationException cfx){
-            LOGGER.info(cfx.getMessage());
         }
     }
 }

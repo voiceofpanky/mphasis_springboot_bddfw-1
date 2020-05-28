@@ -53,5 +53,4 @@ public class HomePageSteps {
         this.homePage.searchFor(searchValue);
     }
 
-
 }
