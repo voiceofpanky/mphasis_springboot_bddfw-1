@@ -1,6 +1,7 @@
 package com.mphasis.qe.pageobjects;
 
 import com.mphasis.qe.PropertySourceResolver;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
 /****************************************************************************************
  * @author manoj chavan
  ****************************************************************************************/
+@Slf4j
 @Component
 public class HomePage extends BasePage{
 
@@ -25,13 +27,11 @@ public class HomePage extends BasePage{
     @FindBy(css = "input[name=q]")
     private WebElement searchInput;
 
-
     public HomePage() {
         PageFactory.initElements(driver, this);
     }
-    private static final Logger LOGGER = LogManager.getLogger(HomePage.class.getSimpleName());
+
     public void goToHomePage(String country){
-        LOGGER.debug(country);
         driver.get(HOME_PAGE_URL + country);
         wait.forLoading(5);
     }

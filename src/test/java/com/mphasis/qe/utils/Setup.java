@@ -4,11 +4,7 @@ import com.mphasis.qe.PropertySourceResolver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.Before;
-import org.apache.commons.configuration2.Configuration;
-import org.apache.commons.configuration2.builder.fluent.Configurations;
-import org.apache.commons.configuration2.ex.ConfigurationException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -29,8 +25,9 @@ import java.util.concurrent.TimeUnit;
  * @author : manoj chavan
  * Parent class for all test classes contains basic methods and test case configuration
  */
+@Slf4j
 public class Setup {
-    private static final Logger LOGGER = LogManager.getLogger(Setup.class.getSimpleName());
+
     private static String APPIUM_WEB_DRIVER_SERVER_URL = null;
 
     AndroidDriver androidDriver;
@@ -48,9 +45,11 @@ public class Setup {
 
     @Before("@web")
     public void setUp() throws Exception {
+
+
         platformName = propertySourceResolver.getPlatformName();
         browserName = propertySourceResolver.getBrowserName();
-        LOGGER.info("Setting up WebDriver " + browserName);
+        log.info("Setting up WebDriver " + browserName);
 
         File classpathRoot = new File(System.getProperty("user.dir"));
         File appDir = new File(classpathRoot, "apps/test.apk");

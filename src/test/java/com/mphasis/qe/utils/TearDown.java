@@ -1,10 +1,9 @@
 package com.mphasis.qe.utils;
 
 import io.cucumber.java.After;
-import io.cucumber.java.AfterStep;
 import io.cucumber.java.Scenario;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -14,8 +13,9 @@ import java.util.logging.Logger;
 /****************************************************************************************
  * @author manoj chavan
  ****************************************************************************************/
+@Slf4j
 public class TearDown {
-    private static final Logger LOGGER = Logger.getLogger(TearDown.class.getSimpleName());
+
     private WebDriver driver;
 
     public TearDown() {
@@ -28,7 +28,7 @@ public class TearDown {
         if(scenario.isFailed()){
            saveScreenshotsForScenario(scenario);
         }
-        LOGGER.info("Closing the app");
+        log.info("Closing the app");
         this.driver.manage().deleteAllCookies();
         this.driver.quit();
     }
