@@ -18,8 +18,6 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @author manoj chavan
  ****************************************************************************************/
 @Slf4j
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class HomePageSteps {
 
     private HomePage homePage;
