@@ -1,8 +1,11 @@
+server:
+  port: 8050
+
 app:
   name: MyApp
   description: ${app.name} serves a key role in the overall IT landscape
   url:
-    base:
+    base: https://mphasisin.service-now.com/
     api: https://reqres.in/api/users/
 
 platform:
