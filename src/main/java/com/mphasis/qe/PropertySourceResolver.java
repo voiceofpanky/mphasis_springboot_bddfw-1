@@ -56,6 +56,12 @@ public class PropertySourceResolver {
     @Value("${perfecto.url}")
     private String perfectoUrl;
 
+    @Value("${encrypted.username}")
+    private String userId;
+
+    @Value("${encrypted.password}")
+    private String password;
+
     public String getAppBaseUrl() {
         return appBaseUrl;
     }
@@ -118,5 +124,13 @@ public class PropertySourceResolver {
 
     public String getPerfectoUrl() {
         return perfectoUrl;
+    }
+
+    public String getUserId(){
+        return userId;
+    }
+
+    public String getPassword(){
+        return password;
     }
 }
