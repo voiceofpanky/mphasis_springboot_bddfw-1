@@ -1,6 +1,7 @@
 package com.mphasis.qe.stepdefs;
 
 import com.mphasis.qe.pageobjects.mphasis.MphasisServiceNowPage;
+import com.mphasis.qe.utils.Setup;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -31,15 +32,19 @@ public class MphasisServiceNowPageSteps {
     }
     @And("I login successfully")
     public void iLoginSuccessfully(){
-        this.serviceNowPage.setLoginText("manoj.chavan@mphasis.com");
+        this.serviceNowPage.setLoginText(Setup.username);
         this.serviceNowPage.clickNextBtn();
-        this.serviceNowPage.setPasswordInput("<SOMEPASSWORD>");
+        this.serviceNowPage.setPasswordInput(Setup.password);
         this.serviceNowPage.clickSignIn();
         this.serviceNowPage.clickYesBtn();
     }
     @Then("the page title is {string}")
     public void thePageTitleIs(String title){
         this.serviceNowPage.driver.getTitle().equalsIgnoreCase("Self Service Portal - Mphasis SP CIO");
+    }
+    @Then("a warning message is displayed on page")
+    public void aWarningMessageIsDisplaydOnPage(){
+
     }
 }
 

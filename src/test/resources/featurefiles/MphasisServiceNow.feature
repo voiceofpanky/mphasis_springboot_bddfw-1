@@ -5,3 +5,4 @@ Feature: Mphasis Service Now Page
     Given I am on the "Service Now" page
     And I login successfully
     Then the page title is "Self Service Portal - Mphasis SP CIO"
+    And a warning message is displayed on page

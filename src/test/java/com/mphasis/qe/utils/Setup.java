@@ -1,6 +1,7 @@
 package com.mphasis.qe.utils;
 
 import com.mphasis.qe.PropertySourceResolver;
+import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyResolver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.Before;
@@ -13,7 +14,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -38,6 +38,8 @@ public class Setup {
 
     private static String platformName;
     private static String browserName;
+    public static String username;
+    public static String password;
     public static WebDriver webdriver;
     public static String baseUrl;
 
@@ -45,11 +47,10 @@ public class Setup {
 
     @Before("@web")
     public void setUp() throws Exception {
-
-
         platformName = propertySourceResolver.getPlatformName();
         browserName = propertySourceResolver.getBrowserName();
-        log.info("Setting up WebDriver " + browserName);
+        username = JasyptEncryptor.decrypt(propertySourceResolver.getUserId());
+        password = JasyptEncryptor.decrypt(propertySourceResolver.getPassword());
 
         File classpathRoot = new File(System.getProperty("user.dir"));
         File appDir = new File(classpathRoot, "apps/test.apk");
