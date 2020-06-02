@@ -9,8 +9,6 @@ app:
     api: https://reqres.in/api/users/
 
 encrypted:
-  username: ED2e2xiO5RxApART9GeFCaZq4QPcc5mud9Y92SSN0Hl9uUw7GvVx3GiiPymADchXTAE0Ye1g5D4efihdrLOZoA==
-  password: Sz70A3zeKHS2mOjeucif2PAEwwT7Ni30TQOCxRyy71qHb4S2QLMgP91m61OWCtgf
 
 platform:
   name: iOS
