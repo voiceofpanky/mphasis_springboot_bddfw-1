@@ -1,14 +1,10 @@
 package com.mphasis.qe.pageobjects.mphasis;
+
 import com.mphasis.qe.pageobjects.BasePage;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.stereotype.Component;
 /****************************************************************************************
  * @author manoj chavan
@@ -18,13 +14,17 @@ import org.springframework.stereotype.Component;
 public class MphasisServiceNowPage extends BasePage {
     private final String HOME_PAGE_URL = this.baseUrl;
     private final String PAGE_TITLE = "Self Service Portal - Mphasis SP CIO";
-    private final String LOGIN_TEXT = "loginfmt";
+    private final String LOGIN_TEXT = "//input[@type='email']";
     private final String NEXT_BTN = "//input[@value = 'Next']";
     private final String USER_NAME_AREA = "userNameArea";
     private final String PASSWORD_INPUT = "passwordInput";
     private final String YES_BTN = "//input[@value = 'Yes']";
     private final String SIGNIN_BTN = "submitButton";
-    @FindBy(id = LOGIN_TEXT)
+
+    //Warning msg
+    private final String warningMsg = "If your Mphasis ID is deactivated, please reach out to your org manager to log a ticket by following navigation path for immediate resolution. NAVIGATION: IT ->  End User Services -> User Account -> Enable user account";
+
+    @FindBy(xpath = LOGIN_TEXT)
     WebElement login;
     @FindBy(id = PASSWORD_INPUT)
     WebElement password;
@@ -62,5 +62,8 @@ public class MphasisServiceNowPage extends BasePage {
     public void clickSignIn(){
         this.wait.forElementToBeDisplayed(10, singIn,"Sign In");
         singIn.click();
+    }
+    public boolean isWarningMessagePresent(){
+        return this.driver.getPageSource().contains(warningMsg);
     }
 }
