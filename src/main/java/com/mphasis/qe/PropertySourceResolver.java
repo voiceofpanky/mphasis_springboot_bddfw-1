@@ -62,6 +62,12 @@ public class PropertySourceResolver {
     @Value("${encrypted.password}")
     private String password;
 
+    @Value("${data.source}")
+    private String dataSource;
+
+    @Value(("${{data.path}"))
+    private String dataPath;
+
     public String getAppBaseUrl() {
         return appBaseUrl;
     }
@@ -132,5 +138,13 @@ public class PropertySourceResolver {
 
     public String getPassword(){
         return password;
+    }
+
+    public String getDataSource() {
+        return dataSource;
+    }
+
+    public String getDataPath() {
+        return dataPath;
     }
 }
