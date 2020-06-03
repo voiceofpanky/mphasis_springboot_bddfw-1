@@ -42,6 +42,8 @@ public class Setup {
     public static String password;
     public static WebDriver webdriver;
     public static String baseUrl;
+    public static String dataSource;
+    public static String dataPath;
 
     public Setup(){}
 
@@ -51,6 +53,8 @@ public class Setup {
         browserName = propertySourceResolver.getBrowserName();
         username = JasyptEncryptor.decrypt(propertySourceResolver.getUserId());
         password = JasyptEncryptor.decrypt(propertySourceResolver.getPassword());
+        dataSource = propertySourceResolver.getDataSource();
+        dataPath = propertySourceResolver.getDataPath();
 
         File classpathRoot = new File(System.getProperty("user.dir"));
         File appDir = new File(classpathRoot, "apps/test.apk");

@@ -8,6 +8,10 @@ app:
     base: https://mphasisin.service-now.com/
     api: https://reqres.in/api/users/
 
+encrypted:
+  username:
+  password:
+
 platform:
   name: web
 

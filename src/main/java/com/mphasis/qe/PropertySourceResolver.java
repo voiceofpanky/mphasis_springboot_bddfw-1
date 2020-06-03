@@ -65,7 +65,7 @@ public class PropertySourceResolver {
     @Value("${data.source}")
     private String dataSource;
 
-    @Value(("${{data.path}"))
+    @Value("${data.path}")
     private String dataPath;
 
     public String getAppBaseUrl() {

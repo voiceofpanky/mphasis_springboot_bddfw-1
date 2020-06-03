@@ -1,45 +1,46 @@
 package com.mphasis.qe.stepdefs;
 
 import com.mphasis.qe.PropertySourceResolver;
-import com.mphasis.qe.pageobjects.FileHandler;
+import com.mphasis.qe.pageobjects.FileHandlerPage;
 import com.mphasis.qe.utils.FileReader;
+import com.mphasis.qe.utils.Setup;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
+@Slf4j
 public class FileHandlerSteps extends FileReader {
 
-    private FileHandler fileHandler;
+    private String fileType = Setup.dataSource;
+    private String filePath = Setup.dataPath;
 
-    @Autowired
-    PropertySourceResolver propertySourceResolver;
-
+    private FileHandlerPage fileHandlerPage;
     public FileHandlerSteps() {
-        this.fileHandler = new FileHandler();
+        this.fileHandlerPage = new FileHandlerPage();
     }
-
-    private String fileType = propertySourceResolver.getDataSource();
 
     List<String> loginInfo;
 
-
     @Given("User on the webAppSecurity  login page")
     public void userOnTheWebAppSecurityLoginPage() {
-        this.fileHandler.goToWebAppSecurityPage();
-        loginInfo = readFile(fileType);
+        this.fileHandlerPage.goToWebAppSecurityPage();
+        loginInfo = readFile(fileType, filePath);
     }
 
     @When("User entered <{string}> and <{string}>")
     public void userEnteredAnd(String userName, String password) {
-        fileHandler.enterLoginCredentials(loginInfo.get(0), loginInfo.get(1));
+        fileHandlerPage.enterLoginCredentials(loginInfo.get(0), loginInfo.get(1));
     }
 
     @Then("User Navigated to account summary page")
     public void userNavigatedToAccountSummaryPage() {
-        fileHandler.submit();
+        fileHandlerPage.submit();
     }
 }

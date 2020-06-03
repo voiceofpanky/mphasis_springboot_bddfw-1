@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Component
-public class FileHandler extends BasePage {
+public class FileHandlerPage extends BasePage {
 
     private final String PAGE_URL = "http://zero.webappsecurity.com/login.html";
 
@@ -23,14 +23,13 @@ public class FileHandler extends BasePage {
     @FindBy(name = "submit")
     private WebElement submit;
 
-    public FileHandler() {
+    public FileHandlerPage() {
         PageFactory.initElements(driver, this);
     }
 
     public void goToWebAppSecurityPage() {
         driver.get(PAGE_URL);
     }
-
 
     public void enterLoginCredentials(String userName, String password) {
         this.login.sendKeys(userName);

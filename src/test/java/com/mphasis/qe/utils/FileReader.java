@@ -19,17 +19,12 @@ import java.util.List;
 
 public class FileReader {
 
-    @Autowired
-    PropertySourceResolver propertySourceResolver;
-
-    private String filePath = propertySourceResolver.getDataPath();
-
     List<String> loginInfo = new ArrayList<>();
 
     /**
      * This Method will be used read excel and json file
      */
-    public List<String> readFile(String fileType) {
+    public List<String> readFile(String fileType, String filePath) {
 
         if (fileType.equalsIgnoreCase("excel")) {
             File file = new File(filePath + "details.xlsx");
