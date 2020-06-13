@@ -13,6 +13,12 @@ public class PropertySourceResolver {
 
     @Value("${app.url.api}")
     private String appApiUrl;
+    
+    @Value("${app.url.register}")
+    private String appRegisterUrl;
+    
+    @Value("${app.url.getUser}")
+    private String getUserUrl;
 
     @Value("${platform.name}")
     private String platformName;
@@ -68,83 +74,4 @@ public class PropertySourceResolver {
     @Value("${data.path}")
     private String dataPath;
 
-    public String getAppBaseUrl() {
-        return appBaseUrl;
-    }
-  
-    public String getAppApiUrl() {
-        return appApiUrl;
-    }
-
-    public String getPlatformName() {
-        return platformName;
-    }
-
-    public String getBrowserName() {
-        return browserName;
-    }
-
-    public String getChromeDriverPath() {
-        return chromeDriverPath;
-    }
-
-    public String getGeckoDriverPath() {
-        return geckoDriverPath;
-    }
-
-    public String getIeDriverPath() {
-        return ieDriverPath;
-    }
-
-    public String getAndroidApkFile() {
-        return androidApkFile;
-    }
-
-    public String getAndroidDeviceName() {
-        return androidDeviceName;
-    }
-
-    public String getAndroidPlatformVersion() {
-        return androidPlatformVersion;
-    }
-
-    public String getIosAppFile() {
-        return iosAppFile;
-    }
-
-    public String getIosDeviceName() {
-        return iosDeviceName;
-    }
-
-    public String getIosPlatformVersion() {
-        return iosPlatformVersion;
-    }
-
-    public String getPerfectoUsername() {
-        return perfectoUsername;
-    }
-
-    public String getPerfectoToken() {
-        return perfectoToken;
-    }
-
-    public String getPerfectoUrl() {
-        return perfectoUrl;
-    }
-
-    public String getUserId(){
-        return userId;
-    }
-
-    public String getPassword(){
-        return password;
-    }
-
-    public String getDataSource() {
-        return dataSource;
-    }
-
-    public String getDataPath() {
-        return dataPath;
-    }
 }
