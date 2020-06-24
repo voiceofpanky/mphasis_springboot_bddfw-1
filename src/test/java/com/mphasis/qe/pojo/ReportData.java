@@ -4,10 +4,11 @@ import lombok.Data;
 
 @Data
 public class ReportData {
-
-	int statusCode;
-	String category;
+	
 	String scenarioName;
 	String scenarioStatus;
 	String scenarioFileLocation;
+	String category;
+	RequestResponseData data;
+	
 }

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mphasis.qe.filter.CustomReportFilter;
 import com.mphasis.qe.pojo.ReportData;
+import com.mphasis.qe.pojo.RequestResponseData;
 import com.mphasis.qe.runner.CucumberRunnerTest;
 import com.mphasis.qe.utils.Setup;
 
@@ -56,8 +57,8 @@ public class TearDown {
     @After("@api")
     public void quitAPITest(Scenario scenario){
     	CustomReportFilter filter = (CustomReportFilter) apiUtil.getReportFilter();
-    	scenario.write(filter.getRequestData() + filter.getResponseData() + "\n");
-    	populateReportData(scenario, apiUtil.getReportData());
+    	scenario.write(filter.getRequestHooksData() + filter.getResponseHooksData() + "\n");
+    	populateReportData(scenario, filter.getRequestResponseData());
     	
     }
     
@@ -65,13 +66,15 @@ public class TearDown {
     	return reportDataList;
     }
     
-    public void populateReportData(Scenario scenario, ReportData data) {
-    	data.setScenarioStatus(scenario.getStatus().toString());
-    	data.setScenarioFileLocation(scenario.getUri().toString());
-    	data.setScenarioName(scenario.getName());
-    	String category = (scenario.getStatus().toString().equals("FAILED")) ? CucumberRunnerTest.categoryMap.get(data.getStatusCode()) : null;
-    	data.setCategory(category);
-		reportDataList.add(data);
+    public void populateReportData(Scenario scenario, RequestResponseData requestResponseData) {
+    	ReportData reportdata = new ReportData();
+    	reportdata.setScenarioStatus(scenario.getStatus().toString());
+    	reportdata.setScenarioFileLocation(scenario.getUri().toString());
+    	reportdata.setScenarioName(scenario.getName());
+    	String category = (scenario.getStatus().toString().equals("FAILED")) ? CucumberRunnerTest.categoryMap.get(requestResponseData.getResponseStatusCode()) : null;
+    	reportdata.setCategory(category);
+    	reportdata.setData(requestResponseData);
+		reportDataList.add(reportdata);
     }
 
 }

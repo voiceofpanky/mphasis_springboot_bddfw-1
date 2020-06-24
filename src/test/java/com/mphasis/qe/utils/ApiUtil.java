@@ -9,7 +9,6 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
 import com.mphasis.qe.filter.CustomReportFilter;
-import com.mphasis.qe.pojo.ReportData;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -83,9 +82,11 @@ public class ApiUtil{
         return null;
     }
 
+
     public Response postReq(String url, Map<String, String> headers, String jsonBody){
-        request.headers(headers);
+         request.headers(headers);
         request.body(jsonBody);
+
         try {
             response = request.post(new URI(url));
             return  response;
@@ -154,6 +155,7 @@ public class ApiUtil{
         return null;
     }
 
+
     public Response getAsyncReq(String url, Map<String, String> headers){
         request.headers(headers);
         try {
@@ -163,22 +165,22 @@ public class ApiUtil{
                     .and().with().pollDelay(20, TimeUnit.MILLISECONDS).await("receiving response")
                     .atMost(180, TimeUnit.SECONDS)
                     .until(() -> response != null);
+
             return  response;
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
         return null;
     }
-
+    
+	public Response postReq(String appRegisterUrl, JSONObject requestBody) {
+		request.body(requestBody.toString());
+		response = request.post(appRegisterUrl);
+		return response;
+	}
+	
     public Filter getReportFilter() {
     	return reportFilter;
     }
-    
-    public ReportData getReportData() {
-        ReportData reportData = new ReportData();
-        reportData.setStatusCode(response.getStatusCode());
-    	return reportData;
-    }
 
-	
 }
