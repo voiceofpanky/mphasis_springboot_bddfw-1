@@ -196,10 +196,8 @@ public class ReportGenerator {
 	    s = s.replaceAll("\\$Total", Integer.toString(reportDataList.size()))
 	                    .replaceAll("\\$Passed", noOfSuccess)
 	                    .replaceAll("\\$Failed", noOfFailures);
-	    File newHtmlFile = new File(projectDir
-                + "/Report/Failure_category.html");
+	    File newHtmlFile = new File(projectDir + "/Report/Failure_category.html");
 	    FileWriter writer = new FileWriter(newHtmlFile);
-	    log.info(s);
 	    writer.write(s);
 	    writer.close();
 	  }
