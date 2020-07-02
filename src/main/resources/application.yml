@@ -7,6 +7,12 @@ app:
   url:
     base: https://mphasisin.service-now.com/
     api: https://reqres.in/api/users/
+    getUser: https://reqres.in/api/unknown/
+    register: https://reqres.in/api/register
+
+encrypted:
+  username:
+  password:
 
 platform:
   name: web
@@ -37,7 +43,8 @@ perfecto:
   #url: http://localhost:4723/wd/hub
 
 data:
-  source:
+  source: json
+  path: src/test/resources/inputFiles/
 
 db:
   connection:

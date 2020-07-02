@@ -9,12 +9,14 @@ app:
     api: https://reqres.in/api/users/
 
 encrypted:
+  username: 8yM6E233uqwZ6u3Av21beD38pUA7oMK98rYUyphNv01CxO3MqVZVhPRzEiT1OaZwykOWPj9zbteiybeQRubZMA==
+  password: 8MYQO0eKjiY8dC9Vc1gFzKTohnZarZrwvehzyzTGXtgbuUr1uIfs3HW1gDBIh4bu
 
 platform:
-  name: iOS
+  name: web
 
 browser:
-  name: safari
+  name: chrome
 
 selenium:
   chrome.driver: library/chrome/83/chromedriver.exe
@@ -39,13 +41,11 @@ perfecto:
   #url: http://localhost:4723/wd/hub
 
 data:
-  source:
+  source: json
+  path: src/test/resources/inputFiles/
   
 db:
   connection:
   username:
   password:
 
-#jasypt:
-#  encryptor:
-#    password: ${JASYPT_ENCRYPTOR_PASSWORD:}
