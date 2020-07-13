@@ -1,3 +1,5 @@
+package com.mphasis.qe.utils;
+
 import static io.restassured.RestAssured.given;
 
 import io.restassured.builder.RequestSpecBuilder;
@@ -121,9 +123,8 @@ public class WrapperAPI {
 			requestSpecBuilder.setBody(body);
 		}
 
-		headers = addApigeeKeyHeader(headers);
+		 headers = addApigeeKeyHeader(headers);
 		requestSpecBuilder.addHeaders(headers);
-
 		return requestSpecBuilder.build();
 	}
 
@@ -131,7 +132,7 @@ public class WrapperAPI {
 		if (headers == null) {
 			headers = new HashMap<>();
 		}
-		headers.put("apikey", getPropertiesAPI().getApigeeKey());
+		//headers.put("apikey", getPropertiesAPI().getApigeeKey());
 		if (propertiesAPI.isTrainingheader())
 			headers = addApigeeTrainingHeader(headers);
 
@@ -172,22 +173,22 @@ public class WrapperAPI {
 	public void saveRequestAndResponse(String method, RequestSpecification requestSpecification,
 			ValidatableResponse response) {
 		try {
-			if (propertiesAPI.isRequireReport()) {
-				RequestSpecificationImpl requestDetails = (RequestSpecificationImpl) requestSpecification;
 
-				int responseCode = response.extract().statusCode();
-				String reqResponse = response.extract().body().asString();
+			RequestSpecificationImpl requestDetails = (RequestSpecificationImpl) requestSpecification;
 
-				RequestData requestData = new RequestData();
+			int responseCode = response.extract().statusCode();
+			String reqResponse = response.extract().body().asString();
 
-				requestData.setRequestType(method);
-				requestData.setUrl(requestDetails.getBaseUri() + requestDetails.getBasePath());
-				requestData.setParameters(requestDetails.getQueryParams().toString());
-				requestData.setBody(requestDetails.getBody().toString());
-				requestData.setResponse(reqResponse);
-				requestData.setStatusCode(responseCode);
-				requestInfo.add(requestData);
-			}
+			RequestData requestData = new RequestData();
+
+			requestData.setRequestType(method);
+			requestData.setUrl(requestDetails.getBaseUri() + requestDetails.getBasePath());
+			requestData.setParameters(requestDetails.getQueryParams().toString());
+			requestData.setBody(requestDetails.getBody().toString());
+			requestData.setResponse(reqResponse);
+			requestData.setStatusCode(responseCode);
+			requestInfo.add(requestData);
+		
 		} catch (Exception e) {
 		}
 	}
