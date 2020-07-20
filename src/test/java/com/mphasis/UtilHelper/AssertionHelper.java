@@ -1,6 +1,5 @@
 package com.mphasis.UtilHelper;
-
-import org.testng.Assert;
+import org.junit.Assert;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,7 +23,7 @@ public class AssertionHelper {
 
 	public static void markPass(String message) {
 		log.info("making script PASS.." + message);
-		Assert.assertTrue(true, message);
+		Assert.assertTrue(message, true);
 	}
 
 	public static void markFail() {
@@ -34,7 +33,9 @@ public class AssertionHelper {
 
 	public static void markFail(String message) {
 		log.info("making script FAIL.." + message);
-		Assert.assertTrue(false, message);
+		Assert.assertTrue(message, false);
+		
+		
 	}
 
 	public static void verifyTrue(boolean status) {
