@@ -17,15 +17,18 @@ import com.mphasis.qe.utils.TearDown;
 @Slf4j
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src/test/resources/featurefiles"},
+        features = {"src/test/resources/featurefiles/SampleGETPOST.feature"},
         glue = {"com.mphasis.qe.utils",
                "com.mphasis.qe.stepdefs"},
-        tags = {"not @Ignore"},
+        tags = {"@api1"},
         strict = false,
         monochrome = true,
         dryRun = false,
         plugin = {"pretty",
                 "json:target/cucumber-reports/cucumber.json",
+        		"html:target/cucumber-reports/cucumber-html-report",
+        		"pretty", "com.epam.reportportal.cucumber.StepReporter",
+        		"pretty", "com.epam.reportportal.cucumber.ScenarioReporter",        		
         })
 public class CucumberRunnerTest{
 	

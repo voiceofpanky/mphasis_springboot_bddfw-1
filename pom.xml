@@ -18,6 +18,17 @@
 		<java.version>1.8</java.version>
 	</properties>
 	
+	<repositories>
+     <repository>
+        <snapshots>
+          <enabled>false</enabled>
+        </snapshots>
+        <id>bintray-epam-reportportal</id>
+        <name>bintray</name>
+        <url>http://dl.bintray.com/epam/reportportal</url>
+     </repository>
+</repositories>
+
 	<profiles>
     	<profile>
 	        <id>qa</id>
@@ -37,6 +48,19 @@
 	</profiles>
 
 	<dependencies>
+	
+	<dependency>
+            <groupId>com.epam.reportportal</groupId>
+            <artifactId>client-java</artifactId>
+            <version>[4.0.0,)</version>
+        </dependency>
+        <dependency>
+            <groupId>com.epam.reportportal</groupId>
+            <artifactId>commons-model</artifactId>
+            <version>[4.0.0,)</version>
+        </dependency>
+        
+        
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
