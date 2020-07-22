@@ -20,12 +20,15 @@ import com.mphasis.qe.utils.TearDown;
         features = {"src/test/resources/featurefiles"},
         glue = {"com.mphasis.qe.utils",
                "com.mphasis.qe.stepdefs"},
-        tags = {"not @Ignore"},
-        strict = false,
+        tags = {"@api1"},
+        strict = true,
         monochrome = true,
         dryRun = false,
         plugin = {"pretty",
                 "json:target/cucumber-reports/cucumber.json",
+                "html:target/cucumber-reports/cucumber-html-report",
+                
+                
         })
 public class CucumberRunnerTest{
 	

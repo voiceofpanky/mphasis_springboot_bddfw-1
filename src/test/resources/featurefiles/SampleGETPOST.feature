@@ -1,6 +1,6 @@
 Feature: Test a sample API Endpoint
 
-  @api
+  @api1
   Scenario: Check my firstname exits at the list of users
     Given I send a request to get the list of users
     When I have the list of users with me
