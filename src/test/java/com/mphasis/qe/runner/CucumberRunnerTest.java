@@ -21,11 +21,14 @@ import com.mphasis.qe.utils.TearDown;
         glue = {"com.mphasis.qe.utils",
                "com.mphasis.qe.stepdefs"},
         tags = {"@api1"},
-        strict = false,
+        strict = true,
         monochrome = true,
         dryRun = false,
         plugin = {"pretty",
                 "json:target/cucumber-reports/cucumber.json",
+                "html:target/cucumber-reports/cucumber-html-report",
+                
+                
         })
 public class CucumberRunnerTest{
 	
