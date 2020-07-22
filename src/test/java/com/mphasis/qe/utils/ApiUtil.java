@@ -8,8 +8,6 @@ import java.security.SecureRandom;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
@@ -21,13 +19,12 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.Filter;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import lombok.extern.slf4j.Slf4j;
-
 /**
- * @author: Dipanjan Chakraborty Util class to handle all API calls
- */
+*  @author: Dipanjan Chakraborty
+ *  Util c  lass to handle all API calls
+* */
 
 @Slf4j
 @Component

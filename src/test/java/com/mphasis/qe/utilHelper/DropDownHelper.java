@@ -1,4 +1,4 @@
-package com.mphasis.UtilHelper;
+package com.mphasis.qe.utilHelper;
 
 import java.util.LinkedList;
 import java.util.List;
