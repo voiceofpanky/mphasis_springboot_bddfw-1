@@ -4,17 +4,22 @@ import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.mphasis.qe.PropertySourceResolver;
 import com.mphasis.qe.filter.CustomReportFilter;
 import com.mphasis.qe.pojo.ReportData;
 import com.mphasis.qe.pojo.RequestResponseData;
+import com.mphasis.qe.pojo.WFAutomationTestData;
 import com.mphasis.qe.runner.CucumberRunnerTest;
 import com.mphasis.qe.utils.Setup;
 
@@ -26,8 +31,19 @@ public class TearDown {
 
 	private WebDriver driver;
 	
+	Logger log;
+	
 	@Autowired
 	ApiUtil apiUtil;
+	@Autowired
+	private PropertySourceResolver propertySourceResolver;
+	@Autowired
+    private ScenarioSession scenarioSession;
+	@Autowired
+    private DBOperations dbOperations;
+	@Autowired
+    private WFAutomationTestData wfAutomationTestData;
+
 	
 	private static List<ReportData> reportDataList = new ArrayList<>();
     
@@ -37,7 +53,6 @@ public class TearDown {
 
     @After("@web")
     public void quitDriver(Scenario scenario){
-
         if(scenario.isFailed()){
            saveScreenshotsForScenario(scenario);
         }
@@ -45,8 +60,7 @@ public class TearDown {
         this.driver.manage().deleteAllCookies();
         this.driver.quit();
     }
-
-   
+    
     private void saveScreenshotsForScenario(final Scenario scenario) {
 
         final byte[] screenshot = ((TakesScreenshot) driver)
@@ -77,4 +91,28 @@ public class TearDown {
 		reportDataList.add(reportdata);
     }
 
+    @After("@api")
+    public void saveDataToTestDB(Scenario scenario) throws JSONException {
+      if (!scenario.isFailed() && propertySourceResolver.getDbReport().equalsIgnoreCase("true")) {
+    	  wfAutomationTestData.setTestName("Test Scenario Name 123");
+    	  wfAutomationTestData.setTestDuration("50");
+        dbOperations.insert_into_db(wfAutomationTestData);
+      }
+    }
+
+    @After
+    public void saveToCSVReport(Scenario scenario) throws IOException {
+      if (propertySourceResolver.getCsvReport().equalsIgnoreCase("true")) {
+        String outputFilePath =
+            System.getProperty("user.dir") + "/build/test-results-files/report.csv";
+        CSVReport csvReport = new CSVReport(outputFilePath);
+        //csvReport.printReport(scenario, scenarioSession, dbOperations);
+      }
+    }
+    
+    static String getSystemProperty(String propertyName, String defaultValue) {
+        return System.getenv(propertyName) == null
+            ? System.getProperty(propertyName, defaultValue)
+            : System.getenv(propertyName);
+      }
 }

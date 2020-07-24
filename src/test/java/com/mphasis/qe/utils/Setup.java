@@ -5,6 +5,7 @@ import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyResolver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -35,6 +36,9 @@ public class Setup {
 
     @Autowired
     private PropertySourceResolver propertySourceResolver;
+    @Autowired
+    private ScenarioSession scenarioSession;
+
 
     private static String platformName;
     private static String browserName;
@@ -46,6 +50,20 @@ public class Setup {
     public static String dataPath;
 
     public Setup(){}
+    
+    //TBD - From Hooks.java - fill scenarioSession object
+    @Before
+    public void manageScenarioSessionData(Scenario scenario) {
+      log.info("**********************************************************************");
+      log.info(
+          String.format(
+              "Starting new scenario (%s) and cleaning up the scenario session.",
+              scenario.getName()));
+
+      if (!scenario.getName().equals(scenarioSession.getScenarioName())) {
+        scenarioSession.setScenarioName(scenario.getName());
+    }
+    }
 
     @Before("@web")
     public void setUp() throws Exception {
