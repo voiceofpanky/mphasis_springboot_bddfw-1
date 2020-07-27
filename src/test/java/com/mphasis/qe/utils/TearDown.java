@@ -43,7 +43,6 @@ public class TearDown {
     private DBOperations dbOperations;
 	@Autowired
     private WFAutomationTestData wfAutomationTestData;
-
 	
 	private static List<ReportData> reportDataList = new ArrayList<>();
     
@@ -85,7 +84,7 @@ public class TearDown {
     	reportdata.setScenarioStatus(scenario.getStatus().toString());
     	reportdata.setScenarioFileLocation(scenario.getUri().toString());
     	reportdata.setScenarioName(scenario.getName());
-    	String category = (scenario.getStatus().toString().equals("FAILED")) ? CucumberRunnerTest.categoryMap.get(requestResponseData.getResponseStatusCode()) : null;
+    	String category = (scenario.getStatus().toString().equals("FAILED")) ? Constants.getHttpMessage(requestResponseData.getResponseStatusCode()) : null;
     	reportdata.setCategory(category);
     	reportdata.setData(requestResponseData);
 		reportDataList.add(reportdata);
