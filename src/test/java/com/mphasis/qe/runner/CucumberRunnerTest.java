@@ -20,15 +20,19 @@ import com.mphasis.qe.utils.TearDown;
         features = {"src/test/resources/featurefiles"},
         glue = {"com.mphasis.qe.utils",
                "com.mphasis.qe.stepdefs"},
-        tags = {"@api"},
-        strict = true,
+
+        tags = {"not @Ignore"},
+        //tags = {"@api"},
+        strict = false,
+
         monochrome = true,
         dryRun = false,
         plugin = {"pretty",
                 "json:target/cucumber-reports/cucumber.json",
                 "html:target/cucumber-reports/cucumber-html-report",
-                
-                
+        })
+public class CucumberRunnerTest{
+
         })
 public class CucumberRunnerTest{
 	
@@ -44,11 +48,6 @@ public class CucumberRunnerTest{
 		categoryMap.put(500, "Server Issue");
 		categoryMap.put(503, "Server Issue");
 		categoryMap.put(504, "Server Issue");		
-		
-		
-		
-		
-		
 		
 	}
 	

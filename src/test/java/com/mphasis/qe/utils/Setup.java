@@ -5,6 +5,7 @@ import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyResolver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Platform;
@@ -29,61 +30,77 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class Setup {
 
-	private static String APPIUM_WEB_DRIVER_SERVER_URL = null;
 
-	AndroidDriver androidDriver;
-	IOSDriver iosDriver;
+  
+    private static String APPIUM_WEB_DRIVER_SERVER_URL = null;
 
-	@Autowired
-	private PropertySourceResolver propertySourceResolver;
+    AndroidDriver androidDriver;
+    IOSDriver iosDriver;
 
-	private static String platformName;
-	private static String browserName;
-	public static String username;
-	public static String password;
-	public static WebDriver webdriver;
-	public static String baseUrl;
-	public static String dataSource;
-	public static String dataPath;
+    @Autowired
+    private PropertySourceResolver propertySourceResolver;
+    @Autowired
+    private ScenarioSession scenarioSession;
 
-	// webdriverManagerFlag
-	public boolean webdriverManagerFlag = false;;
 
-	@Before("@web")
-	public void setUp() throws Exception {
-		platformName = propertySourceResolver.getPlatformName();
-		browserName = propertySourceResolver.getBrowserName();
-		username = JasyptEncryptor.decrypt(propertySourceResolver.getUserId());
-		password = JasyptEncryptor.decrypt(propertySourceResolver.getPassword());
-		dataSource = propertySourceResolver.getDataSource();
-		dataPath = propertySourceResolver.getDataPath();
+    private static String platformName;
+    private static String browserName;
+    public static String username;
+    public static String password;
+    public static WebDriver webdriver;
+    public static String baseUrl;
+    public static String dataSource;
+    public static String dataPath;
 
-		File classpathRoot = new File(System.getProperty("user.dir"));
-		File appDir = new File(classpathRoot, "apps/test.apk");
+    public Setup(){}
+    
+    //TBD - From Hooks.java - fill scenarioSession object
+    @Before
+    public void manageScenarioSessionData(Scenario scenario) {
+      log.info("**********************************************************************");
+      log.info(
+          String.format(
+              "Starting new scenario (%s) and cleaning up the scenario session.",
+              scenario.getName()));
 
-		if (browserName.equalsIgnoreCase("chrome")) {
+      if (!scenario.getName().equals(scenarioSession.getScenarioName())) {
+        scenarioSession.setScenarioName(scenario.getName());
+      }
+    }
 
-			if (webdriverManagerFlag = false) {
-				System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
-			}
+    @Before("@web")
+    public void setUp() throws Exception {
+        platformName = propertySourceResolver.getPlatformName();
+        browserName = propertySourceResolver.getBrowserName();
+        username = JasyptEncryptor.decrypt(propertySourceResolver.getUserId());
+        password = JasyptEncryptor.decrypt(propertySourceResolver.getPassword());
+        dataSource = propertySourceResolver.getDataSource();
+        dataPath = propertySourceResolver.getDataPath();
 
-		} else if (browserName.equalsIgnoreCase("firefox")) {
-			System.setProperty("webdriver.gecko.driver", propertySourceResolver.getGeckoDriverPath());
-		} else if (browserName.equalsIgnoreCase("ie")) {
-			System.setProperty("webdriver.ie.driver", propertySourceResolver.getIeDriverPath());
-		}
+        File classpathRoot = new File(System.getProperty("user.dir"));
+        File appDir = new File(classpathRoot, "apps/test.apk");
 
-		DesiredCapabilities capabilities = new DesiredCapabilities("", "", Platform.ANY);
-		this.APPIUM_WEB_DRIVER_SERVER_URL = propertySourceResolver.getPerfectoUrl();
-		this.baseUrl = propertySourceResolver.getAppBaseUrl();
+        if(browserName.equalsIgnoreCase("chrome")) {
+            System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
+        }
+        else if(browserName.equalsIgnoreCase("firefox")){
+            System.setProperty("webdriver.gecko.driver", propertySourceResolver.getGeckoDriverPath());
+        }
+        else if(browserName.equalsIgnoreCase("ie")){
+            System.setProperty("webdriver.ie.driver", propertySourceResolver.getIeDriverPath());
+        }
 
-		if (platformName.equalsIgnoreCase("android")) {
-			File app = new File(appDir, propertySourceResolver.getAndroidApkFile());
-			capabilities.setCapability("platformName", platformName);
-			capabilities.setCapability("deviceName", propertySourceResolver.getAndroidDeviceName());
-			capabilities.setCapability("platformVersion", propertySourceResolver.getAndroidPlatformVersion());
-			capabilities.setCapability("browserName", browserName);
-			capabilities.setCapability("securityToken", propertySourceResolver.getPerfectoToken());
+        DesiredCapabilities capabilities = new DesiredCapabilities("","", Platform.ANY);
+        this.APPIUM_WEB_DRIVER_SERVER_URL = propertySourceResolver.getPerfectoUrl();
+        this.baseUrl = propertySourceResolver.getAppBaseUrl();
+
+        if (platformName.equalsIgnoreCase("android")){
+            File app = new File(appDir, propertySourceResolver.getAndroidApkFile());
+            capabilities.setCapability("platformName",platformName);
+            capabilities.setCapability("deviceName",propertySourceResolver.getAndroidDeviceName());
+            capabilities.setCapability("platformVersion", propertySourceResolver.getAndroidPlatformVersion());
+            capabilities.setCapability("browserName", browserName);
+            capabilities.setCapability("securityToken", propertySourceResolver.getPerfectoToken());
 //            capabilities.setCapability("app", app.getAbsolutePath());
 			androidDriver = new AndroidDriver(new URL(APPIUM_WEB_DRIVER_SERVER_URL), capabilities);
 			androidDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);

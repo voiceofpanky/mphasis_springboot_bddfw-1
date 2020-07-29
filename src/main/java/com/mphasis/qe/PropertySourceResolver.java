@@ -73,5 +73,13 @@ public class PropertySourceResolver {
 
     @Value("${data.path}")
     private String dataPath;
-
+    
+    @Value("${reportType.csv}")
+    private String csvReport;
+    
+    @Value("${reportType.db}")
+    private String dbReport;
+    
+    @Value("${reportType.html}")
+    private String htmlReport;
 }
