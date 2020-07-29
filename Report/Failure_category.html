@@ -112,8 +112,8 @@ body, html {
     <div class="card-header"> 
      <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist"> 
       <li class="nav-item bg-info active" data-toggle="tooltip" title="Click to view the Summary"> <a aria-controls="pills-summary" aria-selected="true" class="nav-link text-white" data-toggle="pill" href="#pills-summary" id="pills-summary-tab" role="tab">Summary</a> </li> 
-      <li class="nav-item bg-success" data-toggle="tooltip" title="Click to view the Requests"> <a aria-controls="pills-requests" aria-selected="false" class="nav-link text-white" data-toggle="pill" href="#pills-requests" id="pills-requests-tab" role="tab">Total Requests <span class="badge badge-light">0</span></a> </li> 
-      <li class="nav-item bg-danger" data-toggle="tooltip" title="Click to view the Failed Tests"> <a aria-controls="pills-failed" aria-selected="false" class="nav-link text-white" data-toggle="pill" href="#pills-failed" id="pills-failed-tab" role="tab">Failed Tests <span class="badge badge-light">0</span></a> </li> 
+      <li class="nav-item bg-success" data-toggle="tooltip" title="Click to view the Requests"> <a aria-controls="pills-requests" aria-selected="false" class="nav-link text-white" data-toggle="pill" href="#pills-requests" id="pills-requests-tab" role="tab">Total Requests <span class="badge badge-light">5</span></a> </li> 
+      <li class="nav-item bg-danger" data-toggle="tooltip" title="Click to view the Failed Tests"> <a aria-controls="pills-failed" aria-selected="false" class="nav-link text-white" data-toggle="pill" href="#pills-failed" id="pills-failed-tab" role="tab">Failed Tests <span class="badge badge-light">2</span></a> </li> 
      </ul> 
      <div class="tab-content" id="pills-tabContent"> 
       <div aria-labelledby="pills-summary-tab" class="tab-pane fade show active" id="pills-summary" role="tabcard"> 
@@ -128,7 +128,7 @@ body, html {
               <i class="fa fa-list fa-4x"></i> 
              </div> 
              <h6 class="text-uppercase">Total Scenarios</h6> 
-             <h1 class="display-1" id="TotalSceanrios">0</h1> 
+             <h1 class="display-1" id="TotalSceanrios">5</h1> 
             </div> 
            </div> 
           </div> 
@@ -139,7 +139,7 @@ body, html {
               <i class="fa fa-list fa-4x"></i> 
              </div> 
              <h6 class="text-uppercase">Total Passed</h6> 
-             <h1 class="display-1" id="TotalPassed">0</h1> 
+             <h1 class="display-1" id="TotalPassed">3</h1> 
             </div> 
            </div> 
           </div> 
@@ -150,7 +150,7 @@ body, html {
               <i class="fa fa-plus-circle fa-5x"></i> 
              </div> 
              <h6 class="text-uppercase">Total Failed</h6> 
-             <h1 class="display-1" id="TotalFailed">0</h1> 
+             <h1 class="display-1" id="TotalFailed">2</h1> 
             </div> 
            </div> 
           </div> 
@@ -163,9 +163,736 @@ body, html {
       </div> 
       <div name="RequestsTab" aria-labelledby="pills-requests-tab" class="tab-pane fade" id="pills-requests" role="tabcard"> 
        <button class="btn btn-outline-success btn-sm" id="topOfScreen" onclick="topFunction()">Go To Top </button> 
+       <div class="alert alert-dark text-uppercase iteration-0 bg-success "> 
+        <a data-toggle="collapse" href="#" data-target="#folder-collapse-a1" aria-expanded="false" aria-controls="collapse" id="folder-a1" class="collapsed text-white z-block"> Validate the response schema matches for list of users <i class="float-lg-right fa fa-chevron-down"></i> </a> 
+       </div> 
+       <div id="folder-collapse-a1" class="collapse" aria-labelledby="folder-a1"> 
+        <div id="folder-1" class="card-deck iteration-0"> 
+         <div class="row iteration-0"> 
+          <div class="col-sm-12 mb-3 iteration-0"> 
+           <div class="card iteration-0"> 
+            <div class="card-header  bg-info iteration-0"> 
+             <a data-toggle="collapse" href="#" data-target="#collapse-1" aria-expanded="false" aria-controls="collapse" id="requests-1" class="collapsed text-white z-block"> REQUEST NO 1( https://reqres.in/api/users/ ) <i class="float-lg-right fa fa-chevron-down"></i> </a> 
+            </div> 
+            <div id="collapse-1" class="collapse" aria-labelledby="requests-1"> 
+             <div class="card-body"> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request Method:</strong> 
+                   <span class="badge-outline-success badge badge-success"> GET</span>
+                   <br /> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request URL:</strong> 
+                   <a href="https://reqres.in/api/users/" target="_blank">https://reqres.in/api/users/</a>
+                   <br /> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request Parameters:</strong> 
+                   <div></div>
+                   <br /> 
+                  </div> 
+                 </div> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Response Code:</strong> 
+                   <span class="float-right badge-outline badge badge-success"> 200</span>
+                   <br /> 
+                   <hr /> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Request Info</h5> 
+                   <div class="dyn-height"> 
+                    <pre><code id="RequestBody"></code></pre> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Response Info</h5> 
+                   <div class="dyn-height"> 
+                    <pre>
+                                                    <code id="copyText-28264c78-6f75-4b52-8b8a-be5cde9c1eff" class="prettyPrint">
+                                                        {
+    &quot;page&quot;: 1,
+    &quot;per_page&quot;: 6,
+    &quot;total&quot;: 12,
+    &quot;total_pages&quot;: 2,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;email&quot;: &quot;george.bluth@reqres.in&quot;,
+            &quot;first_name&quot;: &quot;George&quot;,
+            &quot;last_name&quot;: &quot;Bluth&quot;,
+            &quot;avatar&quot;: &quot;https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;email&quot;: &quot;janet.weaver@reqres.in&quot;,
+            &quot;first_name&quot;: &quot;Janet&quot;,
+            &quot;last_name&quot;: &quot;Weaver&quot;,
+            &quot;avatar&quot;: &quot;https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;email&quot;: &quot;emma.wong@reqres.in&quot;,
+            &quot;first_name&quot;: &quot;Emma&quot;,
+            &quot;last_name&quot;: &quot;Wong&quot;,
+            &quot;avatar&quot;: &quot;https://s3.amazonaws.com/uifaces/faces/twitter/olegpogodaev/128.jpg&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;email&quot;: &quot;eve.holt@reqres.in&quot;,
+            &quot;first_name&quot;: &quot;Eve&quot;,
+            &quot;last_name&quot;: &quot;Holt&quot;,
+            &quot;avatar&quot;: &quot;https://s3.amazonaws.com/uifaces/faces/twitter/marcoramires/128.jpg&quot;
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;email&quot;: &quot;charles.morris@reqres.in&quot;,
+            &quot;first_name&quot;: &quot;Charles&quot;,
+            &quot;last_name&quot;: &quot;Morris&quot;,
+            &quot;avatar&quot;: &quot;https://s3.amazonaws.com/uifaces/faces/twitter/stephenmoon/128.jpg&quot;
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;email&quot;: &quot;tracey.ramos@reqres.in&quot;,
+            &quot;first_name&quot;: &quot;Tracey&quot;,
+            &quot;last_name&quot;: &quot;Ramos&quot;,
+            &quot;avatar&quot;: &quot;https://s3.amazonaws.com/uifaces/faces/twitter/bigmancho/128.jpg&quot;
+        }
+    ],
+    &quot;ad&quot;: {
+        &quot;company&quot;: &quot;StatusCode Weekly&quot;,
+        &quot;url&quot;: &quot;http://statuscode.org/&quot;,
+        &quot;text&quot;: &quot;A weekly newsletter focusing on software development, infrastructure, the server, performance, and the stack end of things.&quot;
+    }
+}
+                                                        </code></pre> 
+                   </div> 
+                   <div class="card-footer"> 
+                    <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-28264c78-6f75-4b52-8b8a-be5cde9c1eff">Copy to Clipboard</button> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div>
+       <div class="alert alert-dark text-uppercase iteration-0 bg-success "> 
+        <a data-toggle="collapse" href="#" data-target="#folder-collapse-a2" aria-expanded="false" aria-controls="collapse" id="folder-a2" class="collapsed text-white z-block"> Add a user to the list of users <i class="float-lg-right fa fa-chevron-down"></i> </a> 
+       </div> 
+       <div id="folder-collapse-a2" class="collapse" aria-labelledby="folder-a2"> 
+        <div id="folder-1" class="card-deck iteration-0"> 
+         <div class="row iteration-0"> 
+          <div class="col-sm-12 mb-3 iteration-0"> 
+           <div class="card iteration-0"> 
+            <div class="card-header  bg-info iteration-0"> 
+             <a data-toggle="collapse" href="#" data-target="#collapse-1" aria-expanded="false" aria-controls="collapse" id="requests-1" class="collapsed text-white z-block"> REQUEST NO 1( https://reqres.in/api/users/ ) <i class="float-lg-right fa fa-chevron-down"></i> </a> 
+            </div> 
+            <div id="collapse-1" class="collapse" aria-labelledby="requests-1"> 
+             <div class="card-body"> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request Method:</strong> 
+                   <span class="badge-outline-success badge badge-success"> POST</span>
+                   <br /> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request URL:</strong> 
+                   <a href="https://reqres.in/api/users/" target="_blank">https://reqres.in/api/users/</a>
+                   <br /> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request Parameters:</strong> 
+                   <div></div>
+                   <br /> 
+                  </div> 
+                 </div> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Response Code:</strong> 
+                   <span class="float-right badge-outline badge badge-success"> 201</span>
+                   <br /> 
+                   <hr /> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Request Info</h5> 
+                   <div class="dyn-height"> 
+                    <pre><code id="RequestBody">{
+  &quot;name&quot; : &quot;Eric&quot;,
+  &quot;job&quot; : &quot;Auto Lead&quot;
+}</code></pre> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Response Info</h5> 
+                   <div class="dyn-height"> 
+                    <pre>
+                                                    <code id="copyText-28264c78-6f75-4b52-8b8a-be5cde9c1eff" class="prettyPrint">
+                                                        {
+    &quot;name&quot;: &quot;Eric&quot;,
+    &quot;job&quot;: &quot;Auto Lead&quot;,
+    &quot;id&quot;: &quot;60&quot;,
+    &quot;createdAt&quot;: &quot;2020-07-23T18:27:25.660Z&quot;
+}
+                                                        </code></pre> 
+                   </div> 
+                   <div class="card-footer"> 
+                    <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-28264c78-6f75-4b52-8b8a-be5cde9c1eff">Copy to Clipboard</button> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div>
+       <div class="alert alert-dark text-uppercase iteration-0 bg-success "> 
+        <a data-toggle="collapse" href="#" data-target="#folder-collapse-a3" aria-expanded="false" aria-controls="collapse" id="folder-a3" class="collapsed text-white z-block"> Add another user to the list of users <i class="float-lg-right fa fa-chevron-down"></i> </a> 
+       </div> 
+       <div id="folder-collapse-a3" class="collapse" aria-labelledby="folder-a3"> 
+        <div id="folder-1" class="card-deck iteration-0"> 
+         <div class="row iteration-0"> 
+          <div class="col-sm-12 mb-3 iteration-0"> 
+           <div class="card iteration-0"> 
+            <div class="card-header  bg-info iteration-0"> 
+             <a data-toggle="collapse" href="#" data-target="#collapse-1" aria-expanded="false" aria-controls="collapse" id="requests-1" class="collapsed text-white z-block"> REQUEST NO 1( https://reqres.in/api/users/ ) <i class="float-lg-right fa fa-chevron-down"></i> </a> 
+            </div> 
+            <div id="collapse-1" class="collapse" aria-labelledby="requests-1"> 
+             <div class="card-body"> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request Method:</strong> 
+                   <span class="badge-outline-success badge badge-success"> POST</span>
+                   <br /> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request URL:</strong> 
+                   <a href="https://reqres.in/api/users/" target="_blank">https://reqres.in/api/users/</a>
+                   <br /> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request Parameters:</strong> 
+                   <div></div>
+                   <br /> 
+                  </div> 
+                 </div> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Response Code:</strong> 
+                   <span class="float-right badge-outline badge badge-success"> 201</span>
+                   <br /> 
+                   <hr /> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Request Info</h5> 
+                   <div class="dyn-height"> 
+                    <pre><code id="RequestBody">{
+  &quot;userName&quot; : &quot;Magicman&quot;,
+  &quot;userJob&quot; : &quot;Magician&quot;
+}</code></pre> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Response Info</h5> 
+                   <div class="dyn-height"> 
+                    <pre>
+                                                    <code id="copyText-28264c78-6f75-4b52-8b8a-be5cde9c1eff" class="prettyPrint">
+                                                        {
+    &quot;userName&quot;: &quot;Magicman&quot;,
+    &quot;userJob&quot;: &quot;Magician&quot;,
+    &quot;id&quot;: &quot;655&quot;,
+    &quot;createdAt&quot;: &quot;2020-07-23T18:27:26.149Z&quot;
+}
+                                                        </code></pre> 
+                   </div> 
+                   <div class="card-footer"> 
+                    <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-28264c78-6f75-4b52-8b8a-be5cde9c1eff">Copy to Clipboard</button> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div>
+       <div class="alert alert-dark text-uppercase iteration-0 bg-danger "> 
+        <a data-toggle="collapse" href="#" data-target="#folder-collapse-a4" aria-expanded="false" aria-controls="collapse" id="folder-a4" class="collapsed text-white z-block"> Confirm user with id=23 does not exist <i class="float-lg-right fa fa-chevron-down"></i> </a> 
+       </div> 
+       <div id="folder-collapse-a4" class="collapse" aria-labelledby="folder-a4"> 
+        <div id="folder-1" class="card-deck iteration-0"> 
+         <div class="row iteration-0"> 
+          <div class="col-sm-12 mb-3 iteration-0"> 
+           <div class="card iteration-0"> 
+            <div class="card-header  bg-info iteration-0"> 
+             <a data-toggle="collapse" href="#" data-target="#collapse-1" aria-expanded="false" aria-controls="collapse" id="requests-1" class="collapsed text-white z-block"> REQUEST NO 1( https://reqres.in/api/unknown/?id=23 ) <i class="float-lg-right fa fa-chevron-down"></i> </a> 
+            </div> 
+            <div id="collapse-1" class="collapse" aria-labelledby="requests-1"> 
+             <div class="card-body"> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request Method:</strong> 
+                   <span class="badge-outline-success badge badge-success"> GET</span>
+                   <br /> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request URL:</strong> 
+                   <a href="https://reqres.in/api/unknown/?id=23" target="_blank">https://reqres.in/api/unknown/?id=23</a>
+                   <br /> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request Parameters:</strong> 
+                   <div></div>
+                   <br /> 
+                  </div> 
+                 </div> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Response Code:</strong> 
+                   <span class="float-right badge-outline badge badge-success"> 404</span>
+                   <br /> 
+                   <hr /> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Request Info</h5> 
+                   <div class="dyn-height"> 
+                    <pre><code id="RequestBody">{
+  &quot;userName&quot; : &quot;Magicman&quot;,
+  &quot;userJob&quot; : &quot;Magician&quot;
+}</code></pre> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Response Info</h5> 
+                   <div class="dyn-height"> 
+                    <pre>
+                                                    <code id="copyText-28264c78-6f75-4b52-8b8a-be5cde9c1eff" class="prettyPrint">
+                                                        {
+    
+}
+                                                        </code></pre> 
+                   </div> 
+                   <div class="card-footer"> 
+                    <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-28264c78-6f75-4b52-8b8a-be5cde9c1eff">Copy to Clipboard</button> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div>
+       <div class="alert alert-dark text-uppercase iteration-0 bg-danger "> 
+        <a data-toggle="collapse" href="#" data-target="#folder-collapse-a5" aria-expanded="false" aria-controls="collapse" id="folder-a5" class="collapsed text-white z-block"> Register user with email id &quot;sampleemail@gmail.com&quot; <i class="float-lg-right fa fa-chevron-down"></i> </a> 
+       </div> 
+       <div id="folder-collapse-a5" class="collapse" aria-labelledby="folder-a5"> 
+        <div id="folder-1" class="card-deck iteration-0"> 
+         <div class="row iteration-0"> 
+          <div class="col-sm-12 mb-3 iteration-0"> 
+           <div class="card iteration-0"> 
+            <div class="card-header  bg-info iteration-0"> 
+             <a data-toggle="collapse" href="#" data-target="#collapse-1" aria-expanded="false" aria-controls="collapse" id="requests-1" class="collapsed text-white z-block"> REQUEST NO 1( https://reqres.in/api/register?id=23 ) <i class="float-lg-right fa fa-chevron-down"></i> </a> 
+            </div> 
+            <div id="collapse-1" class="collapse" aria-labelledby="requests-1"> 
+             <div class="card-body"> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request Method:</strong> 
+                   <span class="badge-outline-success badge badge-success"> POST</span>
+                   <br /> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request URL:</strong> 
+                   <a href="https://reqres.in/api/register?id=23" target="_blank">https://reqres.in/api/register?id=23</a>
+                   <br /> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request Parameters:</strong> 
+                   <div></div>
+                   <br /> 
+                  </div> 
+                 </div> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Response Code:</strong> 
+                   <span class="float-right badge-outline badge badge-success"> 400</span>
+                   <br /> 
+                   <hr /> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Request Info</h5> 
+                   <div class="dyn-height"> 
+                    <pre><code id="RequestBody">{&quot;email&quot;:&quot;sampleemail@gmail.com&quot;}</code></pre> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Response Info</h5> 
+                   <div class="dyn-height"> 
+                    <pre>
+                                                    <code id="copyText-28264c78-6f75-4b52-8b8a-be5cde9c1eff" class="prettyPrint">
+                                                        {
+    &quot;error&quot;: &quot;Missing password&quot;
+}
+                                                        </code></pre> 
+                   </div> 
+                   <div class="card-footer"> 
+                    <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-28264c78-6f75-4b52-8b8a-be5cde9c1eff">Copy to Clipboard</button> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div>
       </div> 
       <div name="CategoryTab" aria-labelledby="pills-failed-tab" class="tab-pane fade" id="pills-failed" role="tabcard"> 
        <button class="btn btn-outline-success btn-sm" id="topOfScreen" onclick="topFunction()">Go To Top </button> 
+       <br />
+       <table bgcolor="#8393BB" style="border:5px double black;">
+        <tbody>
+         <tr>
+          <td style="border:5px double black;"><b>Failure Category </b></td>
+          <td style="border:5px double black;"><b>Count </b></td>
+         </tr>
+         <tr>
+          <td style="border:5px double black;">Data Issue</td>
+          <td style="border:5px double black;">2</td>
+         </tr>
+        </tbody>
+       </table>
+       <br />
+       <br />
+       <table bgcolor="#8393BB" style="\&quot;border:5px" double="" black;\"="">
+        <tbody>
+         <tr>
+          <td style="border:5px double black;"><b>Scenario Name</b></td>
+          <td style="border:5px double black;"><b>Failure Category</b></td>
+         </tr>
+         <tr>
+          <td style="border:5px double black;">Confirm user with id=23 does not exist</td>
+          <td style="border:5px double black;">Data Issue</td>
+         </tr>
+         <tr>
+          <td style="border:5px double black;">Register user with email id &quot;sampleemail@gmail.com&quot;</td>
+          <td style="border:5px double black;">Data Issue</td>
+         </tr>
+        </tbody>
+       </table>
+       <br />
+       <br />
+       <br />
+       <div class="alert alert-dark text-uppercase iteration-0 bg-danger "> 
+        <a data-toggle="collapse" href="#" data-target="#folder-collapse-a4" aria-expanded="false" aria-controls="collapse" id="folder-a4" class="collapsed text-white z-block"> Confirm user with id=23 does not exist <i class="float-lg-right fa fa-chevron-down"></i> </a> 
+       </div> 
+       <div id="folder-collapse-a4" class="collapse" aria-labelledby="folder-a4"> 
+        <div id="folder-1" class="card-deck iteration-0"> 
+         <div class="row iteration-0"> 
+          <div class="col-sm-12 mb-3 iteration-0"> 
+           <div class="card iteration-0"> 
+            <div class="card-header  bg-info iteration-0"> 
+             <a data-toggle="collapse" href="#" data-target="#collapse-1" aria-expanded="false" aria-controls="collapse" id="requests-1" class="collapsed text-white z-block"> REQUEST NO 1( https://reqres.in/api/unknown/?id=23 ) <i class="float-lg-right fa fa-chevron-down"></i> </a> 
+            </div> 
+            <div id="collapse-1" class="collapse" aria-labelledby="requests-1"> 
+             <div class="card-body"> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request Method:</strong> 
+                   <span class="badge-outline-success badge badge-success"> GET</span>
+                   <br /> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request URL:</strong> 
+                   <a href="https://reqres.in/api/unknown/?id=23" target="_blank">https://reqres.in/api/unknown/?id=23</a>
+                   <br /> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request Parameters:</strong> 
+                   <div></div>
+                   <br /> 
+                  </div> 
+                 </div> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Response Code:</strong> 
+                   <span class="float-right badge-outline badge badge-success"> 404</span>
+                   <br /> 
+                   <hr /> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Request Info</h5> 
+                   <div class="dyn-height"> 
+                    <pre><code id="RequestBody">{
+  &quot;userName&quot; : &quot;Magicman&quot;,
+  &quot;userJob&quot; : &quot;Magician&quot;
+}</code></pre> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Response Info</h5> 
+                   <div class="dyn-height"> 
+                    <pre>
+                                                    <code id="copyText-28264c78-6f75-4b52-8b8a-be5cde9c1eff" class="prettyPrint">
+                                                        {
+    
+}
+                                                        </code></pre> 
+                   </div> 
+                   <div class="card-footer"> 
+                    <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-28264c78-6f75-4b52-8b8a-be5cde9c1eff">Copy to Clipboard</button> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div>
+       <div class="alert alert-dark text-uppercase iteration-0 bg-danger "> 
+        <a data-toggle="collapse" href="#" data-target="#folder-collapse-a5" aria-expanded="false" aria-controls="collapse" id="folder-a5" class="collapsed text-white z-block"> Register user with email id &quot;sampleemail@gmail.com&quot; <i class="float-lg-right fa fa-chevron-down"></i> </a> 
+       </div> 
+       <div id="folder-collapse-a5" class="collapse" aria-labelledby="folder-a5"> 
+        <div id="folder-1" class="card-deck iteration-0"> 
+         <div class="row iteration-0"> 
+          <div class="col-sm-12 mb-3 iteration-0"> 
+           <div class="card iteration-0"> 
+            <div class="card-header  bg-info iteration-0"> 
+             <a data-toggle="collapse" href="#" data-target="#collapse-1" aria-expanded="false" aria-controls="collapse" id="requests-1" class="collapsed text-white z-block"> REQUEST NO 1( https://reqres.in/api/register?id=23 ) <i class="float-lg-right fa fa-chevron-down"></i> </a> 
+            </div> 
+            <div id="collapse-1" class="collapse" aria-labelledby="requests-1"> 
+             <div class="card-body"> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Request Information</h5> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request Method:</strong> 
+                   <span class="badge-outline-success badge badge-success"> POST</span>
+                   <br /> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request URL:</strong> 
+                   <a href="https://reqres.in/api/register?id=23" target="_blank">https://reqres.in/api/register?id=23</a>
+                   <br /> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Request Parameters:</strong> 
+                   <div></div>
+                   <br /> 
+                  </div> 
+                 </div> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Response Information</h5> 
+                   <span><i class="fas fa-info-circle"></i></span>
+                   <strong> Response Code:</strong> 
+                   <span class="float-right badge-outline badge badge-success"> 400</span>
+                   <br /> 
+                   <hr /> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Request Info</h5> 
+                   <div class="dyn-height"> 
+                    <pre><code id="RequestBody">{&quot;email&quot;:&quot;sampleemail@gmail.com&quot;}</code></pre> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+              <div class="row"> 
+               <div class="col-sm-12 mb-3"> 
+                <div class="card-deck"> 
+                 <div class="card border-info" style="width: 50rem;"> 
+                  <div class="card-body"> 
+                   <h5 class="card-title text-uppercase text-white text-center bg-info">Response Info</h5> 
+                   <div class="dyn-height"> 
+                    <pre>
+                                                    <code id="copyText-28264c78-6f75-4b52-8b8a-be5cde9c1eff" class="prettyPrint">
+                                                        {
+    &quot;error&quot;: &quot;Missing password&quot;
+}
+                                                        </code></pre> 
+                   </div> 
+                   <div class="card-footer"> 
+                    <button class="btn btn-outline-secondary btn-sm copyButton" type="button" data-clipboard-action="copy" data-clipboard-target="#copyText-28264c78-6f75-4b52-8b8a-be5cde9c1eff">Copy to Clipboard</button> 
+                   </div> 
+                  </div> 
+                 </div> 
+                </div> 
+               </div> 
+              </div> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div>
       </div> 
      </div> 
     </div>   

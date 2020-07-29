@@ -20,7 +20,7 @@ import com.mphasis.qe.utils.TearDown;
         features = {"src/test/resources/featurefiles"},
         glue = {"com.mphasis.qe.utils",
                "com.mphasis.qe.stepdefs"},
-        tags = {"@api1"},
+        tags = {"@api"},
         strict = true,
         monochrome = true,
         dryRun = false,
@@ -37,13 +37,19 @@ public class CucumberRunnerTest{
 	@BeforeClass
 	public static void populateCategoryTypes(){
 		categoryMap.put(401, "Access Issue");
-		categoryMap.put(403, "Access Issue");
+		categoryMap.put(403, "Bad Request");
 		categoryMap.put(400, "Data Issue");
 		categoryMap.put(404, "Data Issue");
 		categoryMap.put(415, "Data Issue");
 		categoryMap.put(500, "Server Issue");
 		categoryMap.put(503, "Server Issue");
 		categoryMap.put(504, "Server Issue");		
+		
+		
+		
+		
+		
+		
 	}
 	
 	 @AfterClass
