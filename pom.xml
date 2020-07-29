@@ -143,6 +143,7 @@
 		    <artifactId>jsoup</artifactId>
 		    <version>1.7.2</version>
 		</dependency>  
+
 		<dependency>
     		<groupId>org.apache.commons</groupId>
     		<artifactId>commons-csv</artifactId>
@@ -152,7 +153,14 @@
     	<groupId>org.springframework.boot</groupId>
      	<artifactId>spring-boot-starter-data-mongodb</artifactId>
   	</dependency>
-    </dependencies>
+
+		
+		<dependency>
+    <groupId>io.github.bonigarcia</groupId>
+    <artifactId>webdrivermanager</artifactId>
+    <version>3.0.0</version>
+</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
