@@ -33,17 +33,19 @@ public class TearDown {
 
 	@Autowired
 	private PropertySourceResolver propertySourceResolver;
+
 	@Autowired
 	private TestCaseListener testCaseListener;
-	 
-	
+
 	private static List<ReportData> reportDataList = new ArrayList<>();
 	String category = null;
+	String scenarioStatus = null;
+	ReportData reportdata;
 
 	public TearDown() {
-		
+
 		this.driver = Setup.webdriver;
-		System.out.println(driver);
+
 	}
 
 	@After("@api")
@@ -67,29 +69,42 @@ public class TearDown {
 	}
 
 	@After("@web")
-	public void quitDriver(Scenario scenario) {		
-		System.out.println("----------TearDown enter-------------");
-		String exceptionMessage= null;
+
+	public void quitDriver(Scenario scenario) {
 		if (driver != null && scenario.isFailed()) {
+
+			scenarioStatus = scenario.getStatus().toString();
+			populateReportDataWeb(scenario);
 			saveScreenshotsForScenario(scenario);
 		}
-		testCaseListener.setScenario(scenario);
 		log.info("Closing the app");
-		this.driver.manage().deleteAllCookies();
-		this.driver.quit();	
-		System.out.println("----------TearDown exit-------------");
 	}
- 
-	
 
-	public void populateReportDataWeb(Scenario scenario, String exceptionClass) {
-		ReportData reportdata = new ReportData();
+	public void populateReportDataWeb(Scenario scenario) {
+		reportdata = new ReportData();
 		reportdata.setScenarioStatus(scenario.getStatus().toString());
 		reportdata.setScenarioFileLocation(scenario.getUri().toString());
-		reportdata.setScenarioName(scenario.getName());   
-		category = Constants.getUIErrorMessage(exceptionClass);
+		reportdata.setScenarioName(scenario.getName());
+
+	}
+
+	public void populateReportWeb(String exceptionClass) {
+		System.out.println("  Exception class:   " + exceptionClass);
+		System.out.println("  scenarioStatus   " + scenarioStatus);
+
+		if (scenarioStatus.equalsIgnoreCase("FAILED")) {
+			category = Constants.getUIErrorMessage(Constants.getUIErrorMessage(exceptionClass));
+		}
+
 		reportdata.setCategory(category);
 		reportDataList.add(reportdata);
+	}
+
+	public void  quitDriver()
+	
+	{
+		
+		driver.quit();
 	}
 
 	public List<ReportData> getReportDataList() {

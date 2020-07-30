@@ -1,5 +1,4 @@
 package com.mphasis.qe.utils;
- 
 
 import org.springframework.stereotype.Component;
 
@@ -12,18 +11,14 @@ import io.cucumber.plugin.event.TestCase;
 import io.cucumber.plugin.event.TestCaseFinished;
 import io.cucumber.plugin.event.TestCaseStarted;
 
- 
 @Component
 public class TestCaseListener implements EventListener {
 
-	Scenario  scenario;
 	 
-	static String exceptionClass = null;
-	TearDown  tear = new TearDown();
-	
-	public void setScenario(Scenario  scenario) {
-		this.scenario = scenario;
-	}
+	TearDown tear = new TearDown();
+
+	 
+
 	@Override
 	public void setEventPublisher(final EventPublisher publisher) {
 		publisher.registerHandlerFor(TestCaseStarted.class, this::onTestCaseStarted);
@@ -42,31 +37,14 @@ public class TestCaseListener implements EventListener {
 		Result result = event.getResult();
 		if (result.getStatus() == Status.FAILED) {
 			final Throwable error = result.getError();
-			
-			System.out.println("---------- TestCaseListener class onTestCaseFinished start-----------");
-
 			String exceptionMessage = error.getClass().getName();
+			tear.populateReportWeb(exceptionMessage);
 
-			System.out.println("error class: " + error.getClass().getName());
-
-			System.out.println("---------- TestCaseListener class end-----------");
-
-			exceptionClass = exceptionMessage;
-			System.out.println("EXP>>> " + exceptionClass);
-
-			System.out.println("---------- TestCaseListener class onTestCaseFinished end-----------");
-		
-			tear.populateReportDataWeb(scenario, exceptionClass);
-			
-			
 		}
+		 
+		tear.quitDriver();
 
 	}
 
-	public static String getExceptionMessage() {
-
-		return exceptionClass;
-
-	}
-
+	 
 }
