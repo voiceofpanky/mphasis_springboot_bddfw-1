@@ -1,15 +1,17 @@
 package com.mphasis.qe.stepdefs;
 
-import com.mphasis.qe.pageobjects.mphasis.MphasisServiceNowPage;
-import com.mphasis.qe.utils.Setup;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.mphasis.qe.pageobjects.mphasis.MphasisServiceNowPage;
+import com.mphasis.qe.utils.Setup;
+
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import lombok.extern.slf4j.Slf4j;
+import  io.cucumber.spring.CucumberContextConfiguration;
 /****************************************************************************************
  * @author manoj chavan
  ****************************************************************************************/

@@ -24,7 +24,7 @@ Feature: Test a sample API Endpoint
     When I send a request to add the user to the list
     Then I should get a confirmation of the addition
     
-  @api1
+  @api
   Scenario: Confirm user with id=23 does not exist
     Given I have a userid "23"
     When I send a request to fetch user details

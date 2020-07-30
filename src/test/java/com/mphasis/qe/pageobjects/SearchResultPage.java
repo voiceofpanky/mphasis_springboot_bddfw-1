@@ -1,6 +1,8 @@
 package com.mphasis.qe.pageobjects;
 
-import lombok.extern.slf4j.Slf4j;
+import java.util.List;
+import java.util.stream.IntStream;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -10,8 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.stream.IntStream;
+import lombok.extern.slf4j.Slf4j;
 /****************************************************************************************
  * @author manoj chavan
  ****************************************************************************************/

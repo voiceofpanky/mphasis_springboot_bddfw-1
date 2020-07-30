@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.3.0.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mphasis.qe</groupId>
 	<artifactId>bdd-framework</artifactId>
@@ -16,24 +16,26 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<cucumber.version>5.7.0</cucumber.version>
+
 	</properties>
-	
+
 	<profiles>
-    	<profile>
-	        <id>qa</id>
-	        <activation>
-	            <activeByDefault>true</activeByDefault>
-	        </activation>
-	        <properties>
-	            <spring.profiles.active>qa</spring.profiles.active>
-	        </properties>
-	    </profile>
-	    <profile>
-	        <id>staging</id>
-	        <properties>
-	            <spring.profiles.active>staging</spring.profiles.active>
-	        </properties>
-	    </profile>
+		<profile>
+			<id>qa</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<spring.profiles.active>qa</spring.profiles.active>
+			</properties>
+		</profile>
+		<profile>
+			<id>staging</id>
+			<properties>
+				<spring.profiles.active>staging</spring.profiles.active>
+			</properties>
+		</profile>
 	</profiles>
 
 	<dependencies>
@@ -47,205 +49,223 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-        </dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.14.0</version>
+		</dependency>
 
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>5.6.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit</artifactId>
-            <version>5.6.0</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-spring</artifactId>
-            <version>5.6.0</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>json-schema-validator</artifactId>
-            <version>4.2.0</version><!--$NO-MVN-MAN-VER$-->
-        </dependency>
-
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>4.2.0</version><!--$NO-MVN-MAN-VER$-->
-        </dependency>
-
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>json-path</artifactId>
-            <version>4.2.0</version><!--$NO-MVN-MAN-VER$-->
-        </dependency>
-
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>xml-path</artifactId>
-            <version>4.2.0</version><!--$NO-MVN-MAN-VER$-->
-        </dependency>
-        
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.awaitility</groupId>
-            <artifactId>awaitility</artifactId>
-            <version>4.0.3</version><!--$NO-MVN-MAN-VER$-->
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.appium</groupId>
-            <artifactId>java-client</artifactId>
-            <version>7.3.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-configuration2</artifactId>
-            <version>2.7</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.ulisesbocchio</groupId>
-            <artifactId>jasypt-spring-boot-starter</artifactId>
-            <version>3.0.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>4.1.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.googlecode.json-simple</groupId>
-            <artifactId>json-simple</artifactId>
-            <version>1.1.1</version>
-            <scope>test</scope>
-        </dependency>
-        
-        <dependency>
-		    <groupId>org.jsoup</groupId>
-		    <artifactId>jsoup</artifactId>
-		    <version>1.7.2</version>
-		</dependency>  
-		
 		<dependency>
-    <groupId>io.github.bonigarcia</groupId>
-    <artifactId>webdrivermanager</artifactId>
-    <version>3.0.0</version>
-</dependency>
-		
-		
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>${cucumber.version}</version>
+		</dependency>
 
-    </dependencies>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>${cucumber.version}</version>
+			<scope>test</scope>
+		</dependency>
 
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-spring</artifactId>
+			<version>${cucumber.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-testng</artifactId>
+			<version>${cucumber.version}</version>
+			<scope>test</scope>
+		</dependency>
+ 
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>json-schema-validator</artifactId>
+			<version>4.2.0</version><!--$NO-MVN-MAN-VER$ -->
+		</dependency>
+
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>4.2.0</version><!--$NO-MVN-MAN-VER$ -->
+		</dependency>
+
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>json-path</artifactId>
+			<version>4.2.0</version><!--$NO-MVN-MAN-VER$ -->
+		</dependency>
+
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>xml-path</artifactId>
+			<version>4.2.0</version><!--$NO-MVN-MAN-VER$ -->
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.awaitility</groupId>
+			<artifactId>awaitility</artifactId>
+			<version>4.0.3</version><!--$NO-MVN-MAN-VER$ -->
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.appium</groupId>
+			<artifactId>java-client</artifactId>
+			<version>7.3.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-configuration2</artifactId>
+			<version>2.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.ulisesbocchio</groupId>
+			<artifactId>jasypt-spring-boot-starter</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.7.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>tech.grasshopper</groupId>
+			<artifactId>extentreports-cucumber5-adapter</artifactId>
+			<version>1.4.0</version>
+			<scope>test</scope>
+		</dependency>
+
+
+ 
+
+	</dependencies>
 	<build>
 		<plugins>
+
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <testFailureIgnore>true</testFailureIgnore>
-                    <includes>
-                        <include>**/*Test*.java</include>
-                    </includes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>net.masterthought</groupId>
-                <artifactId>maven-cucumber-reporting</artifactId>
-                <version>5.0.0</version>
-                <executions>
-                    <execution>
-                        <id>execution</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <projectName>MyProjectName</projectName>  <!-- Replace with project name -->
-                            <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
-                            <inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>
-                            <buildNumber>1</buildNumber>
-                            <jsonFiles>
-                                <jsonFile>**/*.json</jsonFile>
-                            </jsonFiles>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <!--<plugin>
-                <groupId>com.assertthat.plugins</groupId>
-                <artifactId>assertthat-bdd-maven-plugin</artifactId>
-                <version>1.4</version>
-                <configuration>
-                    <projectId>
-                        10000
-                    </projectId>
-                    &lt;!&ndash;Optional can be supplied as environment variable ASSERTTHAT_ACCESS_KEY &ndash;&gt;
-                    <accessKey>
-                        76e1ed393c26c674ca9996a579e105f5788ae0383c0876dfbf49ecdd49b10abc
-                    </accessKey>
-                    &lt;!&ndash;Optional can be supplied as environment variable ASSERTTHAT_SECRET_KEY &ndash;&gt;
-                    <secretKey>
-                        970543c6ea91ad42ef23f4f9fde49bd126325e47f5837f39b2aee0ed2abc2354
-                    </secretKey>
-                    &lt;!&ndash; Used for jira server integration only. If using cloud remove this option&ndash;&gt;
-                    &lt;!&ndash; <jiraServerUrl>https://dipanjanc.atlassian.net</jiraServerUrl> &ndash;&gt;
-                </configuration>
-                <executions>
-                    <execution>
-                        <configuration>
-                            &lt;!&ndash;Optional - default ./features&ndash;&gt;
-                            <outputFolder>src/test/resources/featurefiles</outputFolder>
-                            &lt;!&ndash;Optional - all features downloaded by default - should be a valid JQL&ndash;&gt;
-                            &lt;!&ndash; <jql>project = XX AND key in ('XXX-1')</jql> &ndash;&gt;
-                            &lt;!&ndash;Optional - default automated (can be one of: manual/automated/both)&ndash;&gt;
-                            <mode>automated</mode>
-                        </configuration>
-                        <id>features</id>
-                        <goals>
-                            <goal>features</goal>
-                        </goals>
-                        <phase>test-compile</phase>
-                    </execution>
-                    <execution>
-                        <id>report</id>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                        <phase>prepare-package</phase>
-                        <configuration>
-                            &lt;!&ndash;Optional - default ./report&ndash;&gt;
-                            <jsonReportFolder>target/cucumber-reports/</jsonReportFolder>
-                            &lt;!&ndash;Optional - default - **/*.json &ndash;&gt;
-                            <jsonReportIncludePattern>**/cucumber.json</jsonReportIncludePattern>
-                            &lt;!&ndash;Optional - default cucumber (can be one of: cucumber/karate)&ndash;&gt;
-                            <type>cucumber</type>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>-->
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M3</version>
+				<configuration>
+					<includes>
+						<include>**/*Test*.java</include>
+					</includes>
+					
+					
+					
+					
+					
+				</configuration>
+				<dependencies>
+
+
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit47</artifactId>
+						<version>3.0.0-M3</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+
+
+			<plugin>
+				<groupId>net.masterthought</groupId>
+				<artifactId>maven-cucumber-reporting</artifactId>
+				<version>5.0.0</version>
+				<executions>
+					<execution>
+						<id>execution</id>
+						<phase>package</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<projectName>MyProjectName</projectName>  <!-- Replace with project name -->
+							<outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
+							<inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>
+							<buildNumber>1</buildNumber>
+							<jsonFiles>
+								<jsonFile>**/*.json</jsonFile>
+							</jsonFiles>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!--<plugin> <groupId>com.assertthat.plugins</groupId> <artifactId>assertthat-bdd-maven-plugin</artifactId> 
+				<version>1.4</version> <configuration> <projectId> 10000 </projectId> &lt;!&ndash;Optional 
+				can be supplied as environment variable ASSERTTHAT_ACCESS_KEY &ndash;&gt; 
+				<accessKey> 76e1ed393c26c674ca9996a579e105f5788ae0383c0876dfbf49ecdd49b10abc 
+				</accessKey> &lt;!&ndash;Optional can be supplied as environment variable 
+				ASSERTTHAT_SECRET_KEY &ndash;&gt; <secretKey> 970543c6ea91ad42ef23f4f9fde49bd126325e47f5837f39b2aee0ed2abc2354 
+				</secretKey> &lt;!&ndash; Used for jira server integration only. If using 
+				cloud remove this option&ndash;&gt; &lt;!&ndash; <jiraServerUrl>https://dipanjanc.atlassian.net</jiraServerUrl> 
+				&ndash;&gt; </configuration> <executions> <execution> <configuration> &lt;!&ndash;Optional 
+				- default ./features&ndash;&gt; <outputFolder>src/test/resources/featurefiles</outputFolder> 
+				&lt;!&ndash;Optional - all features downloaded by default - should be a valid 
+				JQL&ndash;&gt; &lt;!&ndash; <jql>project = XX AND key in ('XXX-1')</jql> 
+				&ndash;&gt; &lt;!&ndash;Optional - default automated (can be one of: manual/automated/both)&ndash;&gt; 
+				<mode>automated</mode> </configuration> <id>features</id> <goals> <goal>features</goal> 
+				</goals> <phase>test-compile</phase> </execution> <execution> <id>report</id> 
+				<goals> <goal>report</goal> </goals> <phase>prepare-package</phase> <configuration> 
+				&lt;!&ndash;Optional - default ./report&ndash;&gt; <jsonReportFolder>target/cucumber-reports/</jsonReportFolder> 
+				&lt;!&ndash;Optional - default - **/*.json &ndash;&gt; <jsonReportIncludePattern>**/cucumber.json</jsonReportIncludePattern> 
+				&lt;!&ndash;Optional - default cucumber (can be one of: cucumber/karate)&ndash;&gt; 
+				<type>cucumber</type> </configuration> </execution> </executions> </plugin> -->
 		</plugins>
 	</build>
 

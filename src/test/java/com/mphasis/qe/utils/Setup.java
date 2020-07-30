@@ -1,12 +1,9 @@
 package com.mphasis.qe.utils;
 
-import com.mphasis.qe.PropertySourceResolver;
-import com.ulisesbocchio.jasyptspringboot.EncryptablePropertyResolver;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.ios.IOSDriver;
-import io.cucumber.java.Before;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import lombok.extern.slf4j.Slf4j;
+import java.io.File;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,10 +14,14 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.testng.annotations.BeforeSuite;
 
-import java.io.File;
-import java.net.URL;
-import java.util.concurrent.TimeUnit;
+import com.mphasis.qe.PropertySourceResolver;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
+import io.cucumber.java.Before;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author : manoj chavan Parent class for all test classes contains basic
@@ -47,10 +48,19 @@ public class Setup {
 	public static String dataPath;
 
 	// webdriverManagerFlag
-	public boolean webdriverManagerFlag = false;;
+	public boolean webdriverManagerFlag = true;;
 
+	
+ 
+	
+	
+	 
+	
+	
 	@Before("@web")
 	public void setUp() throws Exception {
+		
+		
 		platformName = propertySourceResolver.getPlatformName();
 		browserName = propertySourceResolver.getBrowserName();
 		username = JasyptEncryptor.decrypt(propertySourceResolver.getUserId());
@@ -63,7 +73,7 @@ public class Setup {
 
 		if (browserName.equalsIgnoreCase("chrome")) {
 
-			if (webdriverManagerFlag = false) {
+			if (webdriverManagerFlag == false) {
 				System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
 			}
 
@@ -105,7 +115,7 @@ public class Setup {
 		} else {
 			if (browserName.equalsIgnoreCase("chrome")) {
 
-				if (webdriverManagerFlag = false) {
+				if (webdriverManagerFlag == false) {
 					ChromeOptions options = new ChromeOptions();
 					options.addArguments("start-maximized"); // open Browser in maximized mode
 					options.addArguments("disable-infobars"); // disabling infobars

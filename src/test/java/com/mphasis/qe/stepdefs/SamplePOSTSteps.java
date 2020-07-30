@@ -1,24 +1,24 @@
 package com.mphasis.qe.stepdefs;
 
-import com.mphasis.qe.PropertySourceResolver;
-import com.mphasis.qe.pojo.User;
-import com.mphasis.qe.utils.ApiUtil;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import io.restassured.response.Response;
-import lombok.extern.slf4j.Slf4j;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mphasis.qe.PropertySourceResolver;
+import com.mphasis.qe.pojo.User;
+import com.mphasis.qe.utils.ApiUtil;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.restassured.response.Response;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class SamplePOSTSteps{

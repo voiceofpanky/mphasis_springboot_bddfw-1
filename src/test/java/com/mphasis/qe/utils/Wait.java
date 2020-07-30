@@ -1,6 +1,7 @@
 package com.mphasis.qe.utils;
 
-import lombok.extern.slf4j.Slf4j;
+import java.util.List;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -10,8 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
-import java.util.logging.Logger;
+import lombok.extern.slf4j.Slf4j;
 /****************************************************************************************
  * @author manoj chavan
  ****************************************************************************************/

@@ -1,13 +1,11 @@
 package com.mphasis.qe.pageobjects;
-import com.mphasis.qe.PropertySourceResolver;
+import org.openqa.selenium.WebDriver;
+import org.springframework.stereotype.Component;
+
 import com.mphasis.qe.utils.Setup;
 import com.mphasis.qe.utils.Wait;
+
 import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.WebDriver;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /****************************************************************************************
  * @author manoj chavan

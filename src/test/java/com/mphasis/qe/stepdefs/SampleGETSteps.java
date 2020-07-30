@@ -1,21 +1,23 @@
 package com.mphasis.qe.stepdefs;
 
-import com.mphasis.qe.PropertySourceResolver;
-import com.mphasis.qe.utils.ApiUtil;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import io.restassured.response.Response;
-import lombok.extern.slf4j.Slf4j;
-import org.junit.Assert;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.junit.Assert;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.mphasis.qe.PropertySourceResolver;
+import com.mphasis.qe.utils.ApiUtil;
+
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.restassured.response.Response;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class SampleGETSteps{

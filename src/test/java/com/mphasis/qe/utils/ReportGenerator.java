@@ -2,16 +2,19 @@ package com.mphasis.qe.utils;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
+import java.text.SimpleDateFormat;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+
 import com.mphasis.qe.pojo.ReportData;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -193,13 +196,17 @@ public class ReportGenerator {
 	    String noOfFailures = String.valueOf(reportDataList.stream().filter(p -> p.getScenarioStatus().equals("FAILED")).count());		   
 	    String noOfSuccess = String.valueOf(reportDataList.stream().filter(p -> p.getScenarioStatus().equals("PASSED")).count());
 	    String s = doc.html();
-	    s = s.replaceAll("\\$Total", Integer.toString(reportDataList.size()))
-	                    .replaceAll("\\$Passed", noOfSuccess)
-	                    .replaceAll("\\$Failed", noOfFailures);
-	    File newHtmlFile = new File(projectDir + "/Report/Failure_category.html");
-	    FileWriter writer = new FileWriter(newHtmlFile);
-	    writer.write(s);
-	    writer.close();
+	    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMddyyyy_HHmmss");
+		Date date = new Date();
+
+		String generatedReportDate = simpleDateFormat.format(date);
+		
+		s = s.replaceAll("\\$Total", Integer.toString(reportDataList.size())).replaceAll("\\$Passed", noOfSuccess)
+				.replaceAll("\\$Failed", noOfFailures);
+		File newHtmlFile = new File(projectDir + "/Report/Failure_category_" + generatedReportDate + ".html");
+		FileWriter writer = new FileWriter(newHtmlFile);
+		writer.write(s);
+		writer.close();
 	  }
 
 	  private String CreateBody(String s) {

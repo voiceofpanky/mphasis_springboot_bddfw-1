@@ -13,7 +13,7 @@ encrypted:
   password: 8MYQO0eKjiY8dC9Vc1gFzKTohnZarZrwvehzyzTGXtgbuUr1uIfs3HW1gDBIh4bu
 
 platform:
-  name: web
+  name: api
 
 browser:
   name: chrome

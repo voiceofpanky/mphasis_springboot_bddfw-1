@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <title>Summary Report</title> 
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" /> 
+  <link href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" rel="stylesheet prefetch" /> 
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github-gist.min.css" rel="stylesheet" /> 
+  <link href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css" rel="stylesheet" /> 
+  <style>
+body {
+  padding-top:30px;
+}
+
+body, html {
+  height:100%;
+}
+
+.badge-outline-success {
+    color: #27ae60;
+    border: 1px solid #27ae60;
+    background-color: transparent;
+}
+
+.badge-outline {
+    color: #040411;
+    border: 1px solid #040411;
+    background-color: transparent;
+}
+
+.card {
+    overflow:hidden;
+}
+
+.card-body .rotate {
+    z-index: 8;
+    float: right;
+    height: 100%;
+}
+
+.card-body .rotate i {
+    color: rgba(20, 20, 20, 0.15);
+    position: absolute;
+    left: 0;
+    left: auto;
+    right: -10px;
+    bottom: 0;
+    display: block;
+    -webkit-transform: rotate(-44deg);
+    -moz-transform: rotate(-44deg);
+    -o-transform: rotate(-44deg);
+    -ms-transform: rotate(-44deg);
+    transform: rotate(-44deg);
+}
+.dyn-height {
+    max-height:350px;
+    overflow-y:auto;
+}
+
+.nav-pills .nav-link.active {
+    background-color: transparent!important;
+}
+
+#topOfScreen {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  outline: none;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#topOfScreen:hover {
+  background-color: #28a745;
+}
+
+.custom-tab {
+    padding: 10px 15px;
+    margin-right: 3px;
+    border: solid 1px #fff;
+    border-bottom: none;
+    cursor:pointer;
+}
+.custom-tab .active {
+    border-bottom:solid 1px #032a33;
+}
+
+#execution-data {
+    padding: 10px;
+    border: solid 1px #fff;
+    border-top: none;
+}
+
+.card-header .fa {
+  transition: .3s transform ease-in-out;
+}
+.card-header .collapsed .fa {
+  transform: rotate(90deg);
+}
+
+
+
+    </style> 
+ </head> 
+ <body> 
+  <div class="container"> 
+   <div class="card"> 
+    <div class="card-header"> 
+     <ul class="nav nav-pills mb-3 nav-justified" id="pills-tab" role="tablist"> 
+      <li class="nav-item bg-info active" data-toggle="tooltip" title="Click to view the Summary"> <a aria-controls="pills-summary" aria-selected="true" class="nav-link text-white" data-toggle="pill" href="#pills-summary" id="pills-summary-tab" role="tab">Summary</a> </li> 
+      <li class="nav-item bg-success" data-toggle="tooltip" title="Click to view the Requests"> <a aria-controls="pills-requests" aria-selected="false" class="nav-link text-white" data-toggle="pill" href="#pills-requests" id="pills-requests-tab" role="tab">Total Requests <span class="badge badge-light">1</span></a> </li> 
+      <li class="nav-item bg-danger" data-toggle="tooltip" title="Click to view the Failed Tests"> <a aria-controls="pills-failed" aria-selected="false" class="nav-link text-white" data-toggle="pill" href="#pills-failed" id="pills-failed-tab" role="tab">Failed Tests <span class="badge badge-light">0</span></a> </li> 
+     </ul> 
+     <div class="tab-content" id="pills-tabContent"> 
+      <div aria-labelledby="pills-summary-tab" class="tab-pane fade show active" id="pills-summary" role="tabcard"> 
+       <div class="row"> 
+        <div class="col-md-9 col-lg-12 main"> 
+         <h3 class="display-3 text-center">Contract Tests Execution Reports</h3> 
+         <div class="row"> 
+          <div class="col-lg-4 col-md-6"> 
+           <div class="card text-white card-danger"> 
+            <div class="card-body bg-info"> 
+             <div class="rotate"> 
+              <i class="fa fa-list fa-4x"></i> 
+             </div> 
+             <h6 class="text-uppercase">Total Scenarios</h6> 
+             <h1 class="display-1" id="TotalSceanrios">1</h1> 
+            </div> 
+           </div> 
+          </div> 
+          <div class="col-lg-4 col-md-6"> 
+           <div class="card text-white card-danger"> 
+            <div class="card-body bg-success"> 
+             <div class="rotate"> 
+              <i class="fa fa-list fa-4x"></i> 
+             </div> 
+             <h6 class="text-uppercase">Total Passed</h6> 
+             <h1 class="display-1" id="TotalPassed">1</h1> 
+            </div> 
+           </div> 
+          </div> 
+          <div class="col-lg-4 col-md-6"> 
+           <div class="card text-white card-info"> 
+            <div class="card-body bg-danger"> 
+             <div class="rotate"> 
+              <i class="fa fa-plus-circle fa-5x"></i> 
+             </div> 
+             <h6 class="text-uppercase">Total Failed</h6> 
+             <h1 class="display-1" id="TotalFailed">0</h1> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+         <hr /> 
+        </div> 
+       </div> 
+      </div> 
+      <div aria-labelledby="pills-logs-tab" class="tab-pane fade" id="pills-logs" role="tabcard"> 
+      </div> 
+      <div name="RequestsTab" aria-labelledby="pills-requests-tab" class="tab-pane fade" id="pills-requests" role="tabcard"> 
+       <button class="btn btn-outline-success btn-sm" id="topOfScreen" onclick="topFunction()">Go To Top </button> 
+       <div class="alert alert-dark text-uppercase iteration-0 bg-success "> 
+        <a data-toggle="collapse" href="#" data-target="#folder-collapse-a1" aria-expanded="false" aria-controls="collapse" id="folder-a1" class="collapsed text-white z-block"> Login to WebAppSecurity Page <i class="float-lg-right fa fa-chevron-down"></i> </a> 
+       </div>
+      </div> 
+      <div name="CategoryTab" aria-labelledby="pills-failed-tab" class="tab-pane fade" id="pills-failed" role="tabcard"> 
+       <button class="btn btn-outline-success btn-sm" id="topOfScreen" onclick="topFunction()">Go To Top </button> 
+      </div> 
+     </div> 
+    </div>   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script> 
+    <script src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script> 
+    <script>hljs.initHighlightingOnLoad();</script> 
+    <script>
+$(document).ready( function () {
+    $('#myTable-28264c78-6f75-4b52-8b8a-be5cde9c1eff').DataTable({
+        "retrieve": true,
+        "paging": false,
+        "info": false
+    });
+});
+
+
+</script> 
+    <script>
+$(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip({
+        trigger : 'hover'
+    })
+})
+
+
+</script> 
+    <script>
+    function isJSON(data) 
+{
+    var ret = true;
+    try {
+            JSON.parse(data);
+    }catch(e) {
+            ret = false;
+    }
+    return ret;
+}
+
+$(".prettyPrint").each(function () {        
+        var data = $(this).text();
+        // Verify whether data is JSON
+        if(isJSON(data))
+        {
+                obj = JSON.parse(data);
+                data = JSON.stringify(obj, null, 2);
+        }
+        $(this).text(data);
+});
+
+
+</script> 
+    <!-- Copy Response Body To Clipboard --> 
+    <script>
+    var clipboard = new ClipboardJS('.copyButton');
+    
+    clipboard.on('success', function(e) {        
+        e.clearSelection();
+        $(".copyButton").addClass("bg-success text-white")
+        e.trigger.textContent = '? Copied!';
+        window.setTimeout(function() {
+            $(".copyButton").removeClass("bg-success text-white")
+            e.trigger.textContent = 'Copy to Clipboard';
+        }, 2000);
+    });
+    clipboard.on('error', function(e) {
+        e.clearSelection();
+        $(".copyButton").addClass("bg-danger text-white")
+        e.trigger.textContent = '? Not Copied';
+        window.setTimeout(function() {
+            $(".copyButton").removeClass("bg-danger text-white")
+            e.trigger.textContent = 'Copy to Clipboard';
+        }, 2000);
+    });
+
+
+
+</script> 
+    <!-- Render the Description Markdown --> 
+    <script>
+    const remarkable = new Remarkable();
+    
+    const descriptions = document.querySelectorAll("#description");
+    descriptions.forEach(description => {
+        description.innerHTML = renderHtmlFromMarkdown(description.textContent);
+    });
+    function renderHtmlFromMarkdown(markdown) {
+        return remarkable.render(trim(markdown));
+    }
+    function trim(string) {
+        return string ? string.replace(/^ +| +$/gm, "") : string;
+    }
+
+
+</script> 
+    <script>
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("topOfScreen").style.display = "block";
+  } else {
+    document.getElementById("topOfScreen").style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+
+</script> 
+    <script type="text/javascript">
+    "use strict";
+
+window.onload = function () {
+
+  // hides all blocks of response
+  // var allItems = document.querySelectorAll('[class*=iteration-]');
+  // allItems.forEach(function(elem){
+  //   elem.style.display = 'none';
+  // });
+
+   
+  let totalIterations = 1;
+   
+
+  let menu = document.querySelector('#execution-menu .nav');
+
+  for(var i = 0; i < totalIterations; i++)
+  {
+    let li = document.createElement('li');
+    li.appendChild(document.createTextNode((i + 1)));
+    li.setAttribute('id', 'iteration-' + i);
+    li.classList.add("custom-tab");
+
+    li.addEventListener('click', function() {
+
+      let allItems = document.querySelectorAll('[class*=iteration-]');
+      allItems.forEach(function(elem) {
+        elem.style.display = 'none';
+      })
+
+      let allMenus = document.querySelectorAll('[id*=iteration-');
+      allMenus.forEach(function(elem){
+        elem.style.borderBottom = 'none';
+      })
+
+      this.style.borderBottom = 'solid 1px #032a33';
+
+      let items = document.querySelectorAll("." + this.id);
+      items.forEach(function(elem) {
+        elem.style.display = elem.style.display == 'block' ? 'none' : 'block';
+      })
+    });
+
+    menu.appendChild(li);
+  }
+
+    //shows first tab data
+  document.getElementById('iteration-0').click();
+}
+
+
+</script>
+   </div>
+  </div>
+ </body>
+</html>

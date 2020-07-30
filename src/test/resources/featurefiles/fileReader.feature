@@ -1,6 +1,6 @@
 Feature: Reading File
 
-  @web
+
   Scenario: Login to WebAppSecurity Page
     Given User on the webAppSecurity  login page
     When User entered <"username"> and <"password">
