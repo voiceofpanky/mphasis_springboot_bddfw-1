@@ -33,6 +33,8 @@ public class TearDown {
 
 	@Autowired
 	private PropertySourceResolver propertySourceResolver;
+	@Autowired
+	private TestCaseListener testCaseListener;
 	 
 	
 	private static List<ReportData> reportDataList = new ArrayList<>();
@@ -65,26 +67,16 @@ public class TearDown {
 	}
 
 	@After("@web")
-	
-	
-	
-		public void quitDriver(Scenario scenario) {
-		
-		 
-		 
-		
+	public void quitDriver(Scenario scenario) {		
 		System.out.println("----------TearDown enter-------------");
 		String exceptionMessage= null;
 		if (driver != null && scenario.isFailed()) {
 			saveScreenshotsForScenario(scenario);
 		}
-		// populateReportDataWeb(  scenario, exceptionMessage);
-		
+		testCaseListener.setScenario(scenario);
 		log.info("Closing the app");
 		this.driver.manage().deleteAllCookies();
-		this.driver.quit();
-		 
-
+		this.driver.quit();	
 		System.out.println("----------TearDown exit-------------");
 	}
  
@@ -94,9 +86,7 @@ public class TearDown {
 		ReportData reportdata = new ReportData();
 		reportdata.setScenarioStatus(scenario.getStatus().toString());
 		reportdata.setScenarioFileLocation(scenario.getUri().toString());
-		reportdata.setScenarioName(scenario.getName()); 
-		//System.out.println(exceptionClass);
-  
+		reportdata.setScenarioName(scenario.getName());   
 		category = Constants.getUIErrorMessage(exceptionClass);
 		reportdata.setCategory(category);
 		reportDataList.add(reportdata);

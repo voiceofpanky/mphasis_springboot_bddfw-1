@@ -1,6 +1,8 @@
 package com.mphasis.qe.utils;
  
 
+import org.springframework.stereotype.Component;
+
 import io.cucumber.java.Scenario;
 import io.cucumber.plugin.EventListener;
 import io.cucumber.plugin.event.EventPublisher;
@@ -11,16 +13,17 @@ import io.cucumber.plugin.event.TestCaseFinished;
 import io.cucumber.plugin.event.TestCaseStarted;
 
  
-
+@Component
 public class TestCaseListener implements EventListener {
 
 	Scenario  scenario;
 	 
-	
 	static String exceptionClass = null;
- TearDown  tear = new TearDown();
-	 
+	TearDown  tear = new TearDown();
 	
+	public void setScenario(Scenario  scenario) {
+		this.scenario = scenario;
+	}
 	@Override
 	public void setEventPublisher(final EventPublisher publisher) {
 		publisher.registerHandlerFor(TestCaseStarted.class, this::onTestCaseStarted);
@@ -44,15 +47,16 @@ public class TestCaseListener implements EventListener {
 
 			String exceptionMessage = error.getClass().getName();
 
-			System.out.println("error class" + error.getClass().getName());
+			System.out.println("error class: " + error.getClass().getName());
 
 			System.out.println("---------- TestCaseListener class end-----------");
 
 			exceptionClass = exceptionMessage;
+			System.out.println("EXP>>> " + exceptionClass);
 
 			System.out.println("---------- TestCaseListener class onTestCaseFinished end-----------");
 		
-			tear.populateReportDataWeb(Scenario scenario, exceptionClass);
+			tear.populateReportDataWeb(scenario, exceptionClass);
 			
 			
 		}
