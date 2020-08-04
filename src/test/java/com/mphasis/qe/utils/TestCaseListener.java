@@ -31,6 +31,8 @@ public class TestCaseListener implements EventListener {
 	}
 
 	private void onTestCaseFinished(final TestCaseFinished event) {
+		
+		System.out.println("onTestCaseFinished   start");
 		TestCase testCase = event.getTestCase();
 		System.out.println("Finished " + testCase.getName());
 
@@ -38,12 +40,10 @@ public class TestCaseListener implements EventListener {
 		if (result.getStatus() == Status.FAILED) {
 			final Throwable error = result.getError();
 			String exceptionMessage = error.getClass().getName();
-			tear.populateReportWeb(exceptionMessage);
-
+			tear.populateReportWeb(result, exceptionMessage);
 		}
 		 
-		tear.quitDriver();
-
+		 System.out.println("onTestCaseFinished   end");
 	}
 
 	 

@@ -25,10 +25,13 @@ import io.cucumber.junit.CucumberOptions;
 public class CucumberRunnerTest {
 	@AfterClass
 	public static void generateReport() throws Exception {
-		System.out.println("After Class");
+		System.out.println("After Class start");
 		TearDown tearDown = new TearDown(); 
 		ReportGenerator reportGenerator = new ReportGenerator();
 		reportGenerator.createReport(tearDown.getReportDataList());
-		 
+
+		tearDown.quitDriver();
+
+		System.out.println("After Class end");
 	}
 }

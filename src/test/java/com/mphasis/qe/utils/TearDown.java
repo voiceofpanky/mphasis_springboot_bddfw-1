@@ -16,6 +16,7 @@ import com.mphasis.qe.pojo.RequestResponseData;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
 import io.cucumber.plugin.event.Result;
+import io.cucumber.plugin.event.Status;
 import io.cucumber.plugin.event.TestCase;
 import io.cucumber.plugin.event.TestCaseFinished;
 import lombok.extern.slf4j.Slf4j;
@@ -41,7 +42,9 @@ public class TearDown {
 	String category = null;
 	String scenarioStatus = null;
 	ReportData reportdata;
-
+	 
+	
+	 
 	public TearDown() {
 
 		this.driver = Setup.webdriver;
@@ -57,7 +60,7 @@ public class TearDown {
 	}
 
 	public void populateReportDataAPI(Scenario scenario, RequestResponseData requestResponseData) {
-		ReportData reportdata = new ReportData();
+		reportdata = new ReportData();
 		reportdata.setScenarioStatus(scenario.getStatus().toString());
 		reportdata.setScenarioFileLocation(scenario.getUri().toString());
 		reportdata.setScenarioName(scenario.getName());
@@ -70,34 +73,40 @@ public class TearDown {
 
 	@After("@web")
 
-	public void quitDriver(Scenario scenario) {
+	public void webReport(Scenario scenario) {
 		if (driver != null && scenario.isFailed()) {
-
 			scenarioStatus = scenario.getStatus().toString();
-			populateReportDataWeb(scenario);
+			reportdata = new ReportData();
+			reportdata.setScenarioStatus(scenario.getStatus().toString());
+			reportdata.setScenarioFileLocation(scenario.getUri().toString());
+			reportdata.setScenarioName(scenario.getName());
 			saveScreenshotsForScenario(scenario);
+		 
 		}
 		log.info("Closing the app");
 	}
+ 
 
-	public void populateReportDataWeb(Scenario scenario) {
-		reportdata = new ReportData();
-		reportdata.setScenarioStatus(scenario.getStatus().toString());
-		reportdata.setScenarioFileLocation(scenario.getUri().toString());
-		reportdata.setScenarioName(scenario.getName());
-
-	}
-
-	public void populateReportWeb(String exceptionClass) {
+	public void populateReportWeb(Result result, String exceptionClass) {
+		
+		 System.out.println("populateReportWeb   start");
+		 	 
 		System.out.println("  Exception class:   " + exceptionClass);
-		System.out.println("  scenarioStatus   " + scenarioStatus);
+		//System.out.println("  scenarioStatus   " + scenarioStatus);
 
-		if (scenarioStatus.equalsIgnoreCase("FAILED")) {
+	 if (result.getStatus() == Status.FAILED)   {
 			category = Constants.getUIErrorMessage(Constants.getUIErrorMessage(exceptionClass));
 		}
-
+		else
+			category = null;
+ 
+	 
+	 
 		reportdata.setCategory(category);
 		reportDataList.add(reportdata);
+		
+		 System.out.println("populateReportWeb   end");
+		 
 	}
 
 	public void  quitDriver()

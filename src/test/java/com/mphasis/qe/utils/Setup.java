@@ -146,7 +146,7 @@ public class Setup {
 				webdriver = new InternetExplorerDriver(options);
 			}
 
-			webdriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+			webdriver.manage().timeouts().implicitlyWait(60, TimeUnit.MILLISECONDS);
 			webdriver.manage().deleteAllCookies();
 			webdriver.manage().window().maximize();
 		}
