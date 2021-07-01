@@ -36,6 +36,7 @@ public class Setup {
 
     AndroidDriver androidDriver;
     IOSDriver iosDriver;
+	boolean webdriverManagerFlag;
 
     @Autowired
     private PropertySourceResolver propertySourceResolver;
@@ -160,7 +161,6 @@ public class Setup {
 	}
 
 	// WebDriverManager implementation
-
 	public WebDriver chromeDriverSetup() {
 
 		Generic generic = new Generic();
