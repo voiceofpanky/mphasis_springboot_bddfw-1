@@ -1,12 +1,11 @@
 package com.mphasis.qe.utilHelper;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
+//import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
-
 import com.mphasis.qe.utils.TearDown;
-
 import lombok.extern.slf4j.Slf4j;
 
 /**
