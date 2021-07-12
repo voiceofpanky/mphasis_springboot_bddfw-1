@@ -32,7 +32,8 @@ public class ApiUtil {
 	private static RequestSpecification request;
 	private static Response response;
 	Filter reportFilter = new CustomReportFilter();
-	private static final SecureRandom random = new SecureRandom();
+	private static final SecureRandom random = new SecureRandom(); 
+	public static Map<String, Response> requestResponseMap;
 
 	public ApiUtil() {
 		RequestSpecBuilder builder = new RequestSpecBuilder();
@@ -96,6 +97,28 @@ public class ApiUtil {
 		}
 		return null;
 	}
+	
+	/**
+	 * 
+	 * @param url
+	 * @param headers
+	 * @param params
+	 * @param jsonBody
+	 * @return response
+	 */
+	public Response postReq(String url, Map<String, String> headers,Map<String, String> params, String jsonBody ) {
+		request.headers(headers);
+		request.body(jsonBody);
+		request.params(params);
+		try {
+			response = request.post(new URI(url));
+			requestResponseMap.put(jsonBody,response);
+			return response;
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return null;
+	} 
 
 	public Response putReq(String url, String jsonBody) {
 		request.body(jsonBody);
