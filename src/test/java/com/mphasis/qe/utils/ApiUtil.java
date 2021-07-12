@@ -18,6 +18,7 @@ import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.Filter;
 import io.restassured.http.ContentType;
+import io.restassured.http.Cookies;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.extern.slf4j.Slf4j;
@@ -119,7 +120,31 @@ public class ApiUtil {
 		}
 		return null;
 	} 
-
+	
+/**
+ * @param url
+ * @param headers
+ * @param params
+ * @param cookies
+ * @param jsonBody
+ * @return
+ */
+	public Response postReq(String url, Map<String, String> headers,Map<String, String> params, Cookies cookies,String jsonBody ) {
+		request.headers(headers);
+		request.body(jsonBody);
+		request.params(params);
+		request.cookies(cookies);
+		try {
+			response = request.post(new URI(url));
+			requestResponseMap.put(jsonBody,response);
+			return response;
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		return null;
+	} 
+	
+	
 	public Response putReq(String url, String jsonBody) {
 		request.body(jsonBody);
 		try {
