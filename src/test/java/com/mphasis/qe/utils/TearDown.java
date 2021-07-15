@@ -20,8 +20,6 @@ import com.mphasis.qe.filter.CustomReportFilter;
 import com.mphasis.qe.pojo.ReportData;
 import com.mphasis.qe.pojo.RequestResponseData;
 import com.mphasis.qe.pojo.WFAutomationTestData;
-import com.mphasis.qe.runner.CucumberRunnerTest;
-import com.mphasis.qe.utils.Setup;
 
 /****************************************************************************************
  * @author manoj chavan

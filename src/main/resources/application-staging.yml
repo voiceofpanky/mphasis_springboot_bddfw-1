@@ -40,6 +40,11 @@ perfecto:
   url: https://testingcloud.perfectomobile.com/nexperience/perfectomobile/wd/hub
   #url: http://localhost:4723/wd/hub
 
+browserstack:
+  username: kanhaiya.prasad1@mphasis.com
+  accessKey: JhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmZjE2YTM1ZS05ZDg3LTRkMjYtOTEyYS0xZm
+  hosturl: @hub-cloud.browserstack.com/wd/hub
+
 data:
   source: json
   path: src/test/resources/inputFiles/
