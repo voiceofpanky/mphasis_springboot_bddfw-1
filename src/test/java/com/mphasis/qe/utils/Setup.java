@@ -123,21 +123,21 @@ public class Setup {
 		} else {
 			if (browserName.equalsIgnoreCase("chrome")) {
 
-				if (webdriverManagerFlag = false) {
-					ChromeOptions options = new ChromeOptions();
-					options.addArguments("start-maximized"); // open Browser in maximized mode
-					options.addArguments("disable-infobars"); // disabling infobars
-					options.addArguments("--disable-extensions"); // disabling extensions
-					options.addArguments("--disable-gpu"); // applicable to windows os only
-					options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-					options.addArguments("--no-sandbox"); // Bypass OS security model
-					webdriver = new ChromeDriver(options);
-				} else {
-					webdriver = chromeDriverSetup();
+				//if (webdriverManagerFlag = false) {
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("start-maximized"); // open Browser in maximized mode
+				options.addArguments("disable-infobars"); // disabling infobars
+				options.addArguments("--disable-extensions"); // disabling extensions
+				options.addArguments("--disable-gpu"); // applicable to windows os only
+				options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+				options.addArguments("--no-sandbox"); // Bypass OS security model
+				webdriver = new ChromeDriver(options);
+				//	} else {
+				//		webdriver = chromeDriverSetup();
 
-				}
-
-			} else if (browserName.equalsIgnoreCase("firefox")) {
+			}
+		//}
+			 else if (browserName.equalsIgnoreCase("firefox")) {
 				FirefoxOptions options = new FirefoxOptions();
 				options.addArguments("start-maximized"); // open Browser in maximized mode
 				options.addArguments("--disable-extensions"); // disabling extensions
@@ -161,21 +161,21 @@ public class Setup {
 	}
 
 	// WebDriverManager implementation
-	public WebDriver chromeDriverSetup() {
-
-		Generic generic = new Generic();
-		String proxyDetailsWFG = "";
-		String splitChromeVersion = generic.getChromeVersion();
-		String driverVersion = generic.getDriverVersion(splitChromeVersion);
-		WebDriverManager.chromedriver().version(driverVersion).proxy(proxyDetailsWFG).setup();
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("start-maximized"); // open Browser in maximized mode
-		options.addArguments("disable-infobars"); // disabling infobars
-		options.addArguments("--disable-extensions"); // disabling extensions
-		options.addArguments("--disable-gpu"); // applicable to windows os only
-		options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-		options.addArguments("--no-sandbox"); // Bypass OS security model
-		return new ChromeDriver(options);
-
-	}
+//	public WebDriver chromeDriverSetup() {
+//
+//		Generic generic = new Generic();
+//		String proxyDetailsWFG = "";
+//		String splitChromeVersion = generic.getChromeVersion();
+//		String driverVersion = generic.getDriverVersion(splitChromeVersion);
+//		WebDriverManager.chromedriver().version(driverVersion).proxy(proxyDetailsWFG).setup();
+//		ChromeOptions options = new ChromeOptions();
+//		options.addArguments("start-maximized"); // open Browser in maximized mode
+//		options.addArguments("disable-infobars"); // disabling infobars
+//		options.addArguments("--disable-extensions"); // disabling extensions
+//		options.addArguments("--disable-gpu"); // applicable to windows os only
+//		options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+//		options.addArguments("--no-sandbox"); // Bypass OS security model
+//		return new ChromeDriver(options);
+//
+//	}
 }

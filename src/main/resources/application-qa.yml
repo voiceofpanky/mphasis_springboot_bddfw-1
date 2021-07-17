@@ -9,8 +9,8 @@ app:
     api: https://reqres.in/api/users/
 
 encrypted:
-  username: 8yM6E233uqwZ6u3Av21beD38pUA7oMK98rYUyphNv01CxO3MqVZVhPRzEiT1OaZwykOWPj9zbteiybeQRubZMA==
-  password: 8MYQO0eKjiY8dC9Vc1gFzKTohnZarZrwvehzyzTGXtgbuUr1uIfs3HW1gDBIh4bu
+  username: dBHL2hMfCD2IHfukiuk9ri+ChYxa4XUQz0aSHjQP9aqhg==
+  password: uPGTcQvN2AunE7bZHAxjZ0hfghgfdfY45I0CdIHjXOQUO/8i1zkM
 
 platform:
   name: web
@@ -19,7 +19,7 @@ browser:
   name: chrome
 
 selenium:
-  chrome.driver: library/chrome/83/chromedriver.exe
+  chrome.driver: library/chrome/91/chromedriver
   gecko.driver: library/geckodriver.exe
   ie.driver: library/IEDriverServer.exe
 
@@ -43,7 +43,7 @@ perfecto:
 browserstack:
   username: kanhaiya.prasad1@mphasis.com
   accessKey: JhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmZjE2YTM1ZS05ZDg3LTRkMjYtOTEyYS0xZm
-  hosturl: @hub-cloud.browserstack.com/wd/hub
+  hosturl: hub-cloud.browserstack.com/wd/hub
 
 data:
   source: json

@@ -24,16 +24,16 @@ Feature: Test a sample API Endpoint
     When I send a request to add the user to the list
     Then I should get a confirmation of the addition
     
-  @api1
-  Scenario: Confirm user with id=23 does not exist
-    Given I have a userid "23"
-    When I send a request to fetch user details
-    Then I should not be able to fetch user details - force fail
-    
-  @api
-  Scenario: Register user with email id "sampleemail@gmail.com"
-    Given I have a user with email id "sampleemail@gmail.com"
-    When I send a request to register the user 
-    Then I should not be able to register - force fail
-  
+#  @api1
+#  Scenario: Confirm user with id=23 does not exist
+#    Given I have a userid "23"
+#    When I send a request to fetch user details
+#    Then I should not be able to fetch user details - force fail
+#
+#  @api
+#  Scenario: Register user with email id "sampleemail@gmail.com"
+#    Given I have a user with email id "sampleemail@gmail.com"
+#    When I send a request to register the user
+#    Then I should not be able to register - force fail
+
 

@@ -2,6 +2,7 @@ package com.mphasis.qe.utils;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
+import io.restassured.response.Response;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -20,27 +21,29 @@ import com.mphasis.qe.filter.CustomReportFilter;
 import com.mphasis.qe.pojo.ReportData;
 import com.mphasis.qe.pojo.RequestResponseData;
 import com.mphasis.qe.pojo.WFAutomationTestData;
+import org.apache.logging.log4j.LogManager;
+import java.util.Map;
 
 /****************************************************************************************
  * @author manoj chavan
  ****************************************************************************************/
-@Slf4j
+//@Slf4j
 public class TearDown {
 
 	private WebDriver driver;
 	
 	Logger log;
 	
-	@Autowired
-	ApiUtil apiUtil;
-	@Autowired
-	private PropertySourceResolver propertySourceResolver;
-	@Autowired
-    private ScenarioSession scenarioSession;
-	@Autowired
-    private DBOperations dbOperations;
-	@Autowired
-    private WFAutomationTestData wfAutomationTestData;
+//	@Autowired
+//	ApiUtil apiUtil;
+//	@Autowired
+//	private PropertySourceResolver propertySourceResolver;
+//	@Autowired
+//    private ScenarioSession scenarioSession;
+//	@Autowired
+//    private DBOperations dbOperations;
+//	@Autowired
+//    private WFAutomationTestData wfAutomationTestData;
 	
 	private static List<ReportData> reportDataList = new ArrayList<>();
     
@@ -57,7 +60,7 @@ public class TearDown {
         this.driver.manage().deleteAllCookies();
         this.driver.quit();
     }
-    
+
     private void saveScreenshotsForScenario(final Scenario scenario) {
 
         final byte[] screenshot = ((TakesScreenshot) driver)
@@ -65,14 +68,22 @@ public class TearDown {
         scenario.embed(screenshot, "image/png", "ErrorScreenshot" + scenario.getName());
     }
     
+//    @After("@api")
+//    public void quitAPITest(Scenario scenario){
+//    	CustomReportFilter filter = (CustomReportFilter) apiUtil.getReportFilter();
+//    	scenario.write(filter.getRequestHooksData() + filter.getResponseHooksData() + "\n");
+//    	populateReportData(scenario, filter.getRequestResponseData());
+//
+//    }
     @After("@api")
     public void quitAPITest(Scenario scenario){
-    	CustomReportFilter filter = (CustomReportFilter) apiUtil.getReportFilter();
-    	scenario.write(filter.getRequestHooksData() + filter.getResponseHooksData() + "\n");
-    	populateReportData(scenario, filter.getRequestResponseData());
-    	
-    }
-    
+        if(scenario.isFailed()) {
+            Map.Entry<String, Response> map = ApiUtil.requestResponseMap.entrySet().iterator().next();
+            scenario.write("Request: " + map.getKey() + "\n" +
+                    "Response:" + map.getValue().asString() + "\n" +
+                    "Status Code: " + map.getValue().getStatusCode());
+        }
+}
     public List<ReportData> getReportDataList() {
     	return reportDataList;
     }
@@ -88,24 +99,24 @@ public class TearDown {
 		reportDataList.add(reportdata);
     }
 
-    @After("@api")
-    public void saveDataToTestDB(Scenario scenario) throws JSONException {
-      if (!scenario.isFailed() && propertySourceResolver.getDbReport().equalsIgnoreCase("true")) {
-    	  wfAutomationTestData.setTestName("Test Scenario Name 123");
-    	  wfAutomationTestData.setTestDuration("50");
-        dbOperations.insert_into_db(wfAutomationTestData);
-      }
-    }
+//    @After("@api")
+//    public void saveDataToTestDB(Scenario scenario) throws JSONException {
+//      if (!scenario.isFailed() && propertySourceResolver.getDbReport().equalsIgnoreCase("true")) {
+//    	  wfAutomationTestData.setTestName("Test Scenario Name 123");
+//    	  wfAutomationTestData.setTestDuration("50");
+//        dbOperations.insert_into_db(wfAutomationTestData);
+//      }
+//    }
 
-    @After
-    public void saveToCSVReport(Scenario scenario) throws IOException {
-      if (propertySourceResolver.getCsvReport().equalsIgnoreCase("true")) {
-        String outputFilePath =
-            System.getProperty("user.dir") + "/build/test-results-files/report.csv";
-        CSVReport csvReport = new CSVReport(outputFilePath);
-        //csvReport.printReport(scenario, scenarioSession, dbOperations);
-      }
-    }
+//    @After
+//    public void saveToCSVReport(Scenario scenario) throws IOException {
+//      if (propertySourceResolver.getCsvReport().equalsIgnoreCase("true")) {
+//        String outputFilePath =
+//            System.getProperty("user.dir") + "/build/test-results-files/report.csv";
+//        CSVReport csvReport = new CSVReport(outputFilePath);
+//        //csvReport.printReport(scenario, scenarioSession, dbOperations);
+//      }
+//    }
     
     static String getSystemProperty(String propertyName, String defaultValue) {
         return System.getenv(propertyName) == null

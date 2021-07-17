@@ -21,7 +21,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-public class SamplePOSTSteps{
+//public class SamplePOSTSteps{
+public class SamplePOSTSteps extends ApiUtil {
     private Response response;
     private String jsonBody;
 
@@ -86,5 +87,10 @@ public class SamplePOSTSteps{
     @Then("I should not be able to register - force fail")
     public void i_should_not_be_able_to_register_force_fail() {
     	Assert.assertEquals(response.getStatusCode(), 200);
+    }
+
+    @Then("I should get a confirmation of the addition - force fail")
+    public void iShouldGetAConfirmationOfTheAdditionForceFail() {
+        Assert.assertEquals(response.getStatusCode(), 201);
     }
 }

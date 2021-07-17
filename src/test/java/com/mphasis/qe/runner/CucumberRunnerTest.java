@@ -14,16 +14,16 @@ import com.mphasis.qe.utils.TearDown;
 /****************************************************************************************
  * @author manoj chavan
  ****************************************************************************************/
-@Slf4j
+//@Slf4j
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = {"src/test/resources/featurefiles"},
         glue = {"com.mphasis.qe.utils",
                "com.mphasis.qe.stepdefs"},
 
-        tags = {"not @Ignore"},
-        //tags = {"@api"},
-        strict = false,
+        //tags = {"not @Ignore"},
+        tags = {"@api"},
+        strict = true,
 
         monochrome = true,
         dryRun = false,
@@ -33,28 +33,28 @@ import com.mphasis.qe.utils.TearDown;
         })
 public class CucumberRunnerTest{
 
-        })
-public class CucumberRunnerTest{
-	
-	public static Map<Integer, String> categoryMap = new HashMap<Integer, String>();	
-	
-	@BeforeClass
-	public static void populateCategoryTypes(){
-		categoryMap.put(401, "Access Issue");
-		categoryMap.put(403, "Bad Request");
-		categoryMap.put(400, "Data Issue");
-		categoryMap.put(404, "Data Issue");
-		categoryMap.put(415, "Data Issue");
-		categoryMap.put(500, "Server Issue");
-		categoryMap.put(503, "Server Issue");
-		categoryMap.put(504, "Server Issue");		
-		
-	}
-	
-	 @AfterClass
-	 public static void generateReport() throws Exception {
-		 TearDown tearDown = new TearDown();
-		 ReportGenerator reportGenerator = new ReportGenerator();
-		 reportGenerator.createReport(tearDown.getReportDataList());
-	 }
-}
+        }
+//public class CucumberRunnerTest{
+//
+//	public static Map<Integer, String> categoryMap = new HashMap<Integer, String>();
+//
+//	@BeforeClass
+//	public static void populateCategoryTypes(){
+//		categoryMap.put(401, "Access Issue");
+//		categoryMap.put(403, "Bad Request");
+//		categoryMap.put(400, "Data Issue");
+//		categoryMap.put(404, "Data Issue");
+//		categoryMap.put(415, "Data Issue");
+//		categoryMap.put(500, "Server Issue");
+//		categoryMap.put(503, "Server Issue");
+//		categoryMap.put(504, "Server Issue");
+//
+//	}
+//
+//	 @AfterClass
+//	 public static void generateReport() throws Exception {
+//		 TearDown tearDown = new TearDown();
+//		 ReportGenerator reportGenerator = new ReportGenerator();
+//		 reportGenerator.createReport(tearDown.getReportDataList());
+//	 }
+//}
