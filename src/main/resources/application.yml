@@ -45,7 +45,7 @@ perfecto:
 browserstack:
   username: kanhaiya.prasad1@mphasis.com
   accessKey: JhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmZjE2YTM1ZS05ZDg3LTRkMjYtOTEyYS0xZm
-  hosturl: @hub-cloud.browserstack.com/wd/hub
+  hosturl: hub-cloud.browserstack.com/wd/hub
 
 data:
   source: json
@@ -64,9 +64,9 @@ db:
 spring:
   profiles:
     active: qa
-  data:
-    mongodb:
-      uri: mongodb+srv://lalitgarg05:LGMongo456&@cluster0.bo06j.mongodb.net/WellsFargo?retryWrites=true&w=majority
-      #host: localhost
-      #port: 27017
-      database: WellsFargo
+#  data:
+#    mongodb:
+#      uri: mongodb+srv://lalitgarg05:LGMongo456&@cluster0.bo06j.mongodb.net/WellsFargo?retryWrites=true&w=majority
+#      #host: localhost
+#      #port: 27017
+#      database: WellsFargo
