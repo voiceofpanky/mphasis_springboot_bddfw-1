@@ -82,13 +82,16 @@ public class Setup {
         File appDir = new File(classpathRoot, "apps/test.apk");
 
         if(browserName.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
+//            System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
+        	WebDriverManager.chromedriver().setup();
         }
         else if(browserName.equalsIgnoreCase("firefox")){
-            System.setProperty("webdriver.gecko.driver", propertySourceResolver.getGeckoDriverPath());
+//            System.setProperty("webdriver.gecko.driver", propertySourceResolver.getGeckoDriverPath());
+            WebDriverManager.firefoxdriver().setup();
         }
         else if(browserName.equalsIgnoreCase("ie")){
-            System.setProperty("webdriver.ie.driver", propertySourceResolver.getIeDriverPath());
+//            System.setProperty("webdriver.ie.driver", propertySourceResolver.getIeDriverPath());
+            WebDriverManager.iedriver().setup();
         }
 
         DesiredCapabilities capabilities = new DesiredCapabilities("","", Platform.ANY);
