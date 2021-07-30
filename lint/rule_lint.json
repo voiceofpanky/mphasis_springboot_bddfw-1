@@ -27,15 +27,15 @@
   "name-length": [
     "on",
     {
-      "Feature": 70,
-      "Scenario": 70,
-      "Step": 70
+      "Feature": 75,
+      "Scenario": 75,
+      "Step": 75
     }
   ],
   "max-scenarios-per-file": [
     "on",
     {
-      "maxScenarios": "3"
+      "maxScenarios": "5"
     }
   ]
 }
