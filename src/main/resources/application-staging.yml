@@ -30,9 +30,9 @@ android:
   platform.version: 10
 
 ios:
-  app.file: test.app
-  device.name: 00008030-00160C803640802E
-  platform.version: 13.4.1
+  app.file: TamilTest.app
+  device.name: iPhone 8
+  platform.version: 14.5
 
 perfecto:
   username: manoj_chavan@yahoo.com
