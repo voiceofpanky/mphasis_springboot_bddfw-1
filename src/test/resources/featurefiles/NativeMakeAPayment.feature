@@ -4,7 +4,7 @@ Feature: Validate Payment screen and Make a payment
     Given User logged into TestBank
     And User lands on Dashboard page
 
-  @native @nativeApp
+  @native @nativeApp @ios
   Scenario: User Navigation to Payments page
     When User clicks on "Payment"
     Then User lands on Payments page
