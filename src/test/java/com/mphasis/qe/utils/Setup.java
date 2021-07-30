@@ -6,6 +6,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -81,13 +82,16 @@ public class Setup {
         File appDir = new File(classpathRoot, "apps/TamilTest.app");
 
         if(browserName.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
+//            System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
+        	WebDriverManager.chromedriver().setup();
         }
         else if(browserName.equalsIgnoreCase("firefox")){
-            System.setProperty("webdriver.gecko.driver", propertySourceResolver.getGeckoDriverPath());
+//            System.setProperty("webdriver.gecko.driver", propertySourceResolver.getGeckoDriverPath());
+            WebDriverManager.firefoxdriver().setup();
         }
         else if(browserName.equalsIgnoreCase("ie")){
-            System.setProperty("webdriver.ie.driver", propertySourceResolver.getIeDriverPath());
+//            System.setProperty("webdriver.ie.driver", propertySourceResolver.getIeDriverPath());
+            WebDriverManager.iedriver().setup();
         }
 
         DesiredCapabilities capabilities = new DesiredCapabilities("","", Platform.ANY);

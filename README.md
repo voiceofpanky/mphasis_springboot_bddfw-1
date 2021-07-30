@@ -39,5 +39,3 @@
 ### Execution
 
 * ./gherkin_beautify.sh
-
-   
