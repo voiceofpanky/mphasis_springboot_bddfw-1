@@ -1,12 +1,12 @@
 Feature: Transfer of Fund from own account
 
-  @web @fundTransfer
+  @web 
   Scenario: Login to my bank account overview page
     Given I am on bank homepage
     When I login to my bank account successfully
     Then I am on account overview page
 
-  @web @fundTransfer
+  @web @parallel @fundTransfer
   Scenario Outline: Transfer Fund from my checking to savings account
     Given I am logged in to my bank account overview page
     And I click on "Transfer Funds"
