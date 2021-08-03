@@ -7,7 +7,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
-
+/****************************************************************************************
+ * @author Pankaj Sao
+ ****************************************************************************************/
 @Slf4j
 @Component
 public class BankFundTransfer extends BasePage {
