@@ -15,7 +15,8 @@ import org.junit.runner.RunWith;
                 "com.mphasis.qe.stepdefs"},
 
         //tags = {"not @Ignore"},
-        tags = {"@ios"},
+        tags = {"@web"},
+        
         strict = true,
 
         monochrome = true,

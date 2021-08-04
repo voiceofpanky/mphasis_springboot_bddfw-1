@@ -13,13 +13,14 @@ encrypted:
   password: uPGTcQvN2AunE7bZHAxjZ0hfghgfdfY45I0CdIHjXOQUO/8i1zkM
 
 platform:
-  name: ios
+  name: web
 
 browser:
   name: chrome
+  version: 92
 
 selenium:
-  chrome.driver: library/chrome/91/chromedriver
+  chrome.driver: library/chrome/919/chromedriver.exe
   gecko.driver: library/geckodriver.exe
   ie.driver: library/IEDriverServer.exe
 

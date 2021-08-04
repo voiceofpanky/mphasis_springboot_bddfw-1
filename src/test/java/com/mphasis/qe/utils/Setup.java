@@ -42,6 +42,7 @@ public class Setup {
 
     private static String platformName;
     private static String browserName;
+    private static String browserVersion;
     public static String username;
     public static String password;
     public static WebDriver webdriver;
@@ -73,6 +74,7 @@ public class Setup {
     public void setUp() throws Exception {
         platformName = propertySourceResolver.getPlatformName();
         browserName = propertySourceResolver.getBrowserName();
+        browserVersion = propertySourceResolver.getBrowserVersion();
         username = JasyptEncryptor.decrypt(propertySourceResolver.getUserId());
         password = JasyptEncryptor.decrypt(propertySourceResolver.getPassword());
         dataSource = propertySourceResolver.getDataSource();
@@ -83,7 +85,7 @@ public class Setup {
 
         if(browserName.equalsIgnoreCase("chrome")) {
 //            System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
-        	WebDriverManager.chromedriver().setup();
+        	WebDriverManager.chromedriver().version(browserVersion).setup();
         }
         else if(browserName.equalsIgnoreCase("firefox")){
 //            System.setProperty("webdriver.gecko.driver", propertySourceResolver.getGeckoDriverPath());

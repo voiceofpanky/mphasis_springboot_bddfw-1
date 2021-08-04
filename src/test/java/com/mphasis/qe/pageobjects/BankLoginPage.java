@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
  ****************************************************************************************/
 @Slf4j
 @Component
-public class BankFundTransfer extends BasePage {
+public class BankLoginPage extends BasePage {
 
     private final String PAGE_URL = "https://parabank.parasoft.com/parabank/index.htm";
 
@@ -46,7 +46,7 @@ public class BankFundTransfer extends BasePage {
     @FindBy(xpath ="//h1[contains(text(),'Accounts Overview')]")
     private WebElement AccountOverview;
     
-    public BankFundTransfer() {
+    public BankLoginPage() {
         PageFactory.initElements(driver, this);
     }
     public void gotoBankHomepage() {
