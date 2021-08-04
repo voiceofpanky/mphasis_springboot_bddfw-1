@@ -6,7 +6,6 @@ import io.cucumber.testng.CucumberOptions;
 /****************************************************************************************
  * @author Pankaj Sao
  ****************************************************************************************/
-
 @CucumberOptions(
 		features = {"src/test/resources/featurefiles"},
 		glue = {"com.mphasis.qe.utils",
