@@ -20,7 +20,7 @@ browser:
   version: 92
 
 selenium:
-  chrome.driver: library/chrome/919/chromedriver.exe
+  chrome.driver: library/chrome/91/chromedriver.exe
   gecko.driver: library/geckodriver.exe
   ie.driver: library/IEDriverServer.exe
 
