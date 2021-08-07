@@ -69,7 +69,7 @@
 			<version>5.6.0</version>
 		</dependency>
 
-		<dependency>
+		 <dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
 			<version>5.6.0</version>
@@ -167,6 +167,12 @@
 			<version>1.1.1</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			</dependency>
+		
 		<dependency>
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
@@ -215,8 +221,12 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
+                    <parallel>methods</parallel>
+                    <useUnlimitedThreads>true</useUnlimitedThreads>
                     <includes>
-                        <include>**/*Test*.java</include>
+                         <include>**/*Test*.java</include>
+                         <!-- <include>**/CucumberRunnerTestng</include>  -->
+                         <!-- <include>**/ParallelRunnerTest</include> -->
                     </includes>
                     <!-- <suiteXmlFiles>
                     	<suiteXmlFile>testng.xml</suiteXmlFile> 
