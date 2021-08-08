@@ -12,6 +12,7 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -85,16 +86,20 @@ public class Setup {
 
         if(browserName.equalsIgnoreCase("chrome")) {
 //            System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
-        	WebDriverManager.chromedriver().version(browserVersion).setup();
+        	WebDriverManager.chromedriver().driverVersion(browserVersion).setup();
         }
         else if(browserName.equalsIgnoreCase("firefox")){
 //            System.setProperty("webdriver.gecko.driver", propertySourceResolver.getGeckoDriverPath());
-            WebDriverManager.firefoxdriver().setup();
+            WebDriverManager.firefoxdriver().browserVersion(browserVersion).setup();
         }
         else if(browserName.equalsIgnoreCase("ie")){
 //            System.setProperty("webdriver.ie.driver", propertySourceResolver.getIeDriverPath());
             WebDriverManager.iedriver().setup();
         }
+        else if(browserName.equalsIgnoreCase("edge")){
+//            System.setProperty("webdriver.edge.driver", propertySourceResolver.getIeDriverPath());
+            WebDriverManager.edgedriver().browserVersion(browserVersion).setup();
+      }
 
         DesiredCapabilities capabilities = new DesiredCapabilities("","", Platform.ANY);
         this.APPIUM_WEB_DRIVER_SERVER_URL = propertySourceResolver.getPerfectoUrl();
@@ -157,6 +162,8 @@ public class Setup {
                 options.ignoreZoomSettings();
 
                 webdriver = new InternetExplorerDriver(options);
+            }  else if (browserName.equalsIgnoreCase("edge")) {
+                webdriver = new EdgeDriver();
             }
 
             webdriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);

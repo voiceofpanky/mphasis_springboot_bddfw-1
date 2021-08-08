@@ -24,6 +24,10 @@
 
 * Run CucumberRunner.java as JUnit Test
 
+## Using WebDriverManager:
+
+* Update local browser version in application-qa.yml file before using WebDriverManager
+
 ## Gerkin-Lint
 
 ### Pre-Requisites
