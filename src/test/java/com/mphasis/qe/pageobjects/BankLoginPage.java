@@ -4,17 +4,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import org.springframework.stereotype.Component;
-
-import lombok.extern.slf4j.Slf4j;
 /****************************************************************************************
  * @author Pankaj Sao
  ****************************************************************************************/
-@Slf4j
-@Component
-public class BankFundTransfer extends BasePage {
+public class BankLoginPage extends BasePage {
 
     private final String PAGE_URL = "https://parabank.parasoft.com/parabank/index.htm";
+    private BankLandingPage bankLandingPage;
 
     @FindBy(css = "input[name=username]")
     private WebElement username;
@@ -46,17 +42,19 @@ public class BankFundTransfer extends BasePage {
     @FindBy(xpath ="//h1[contains(text(),'Accounts Overview')]")
     private WebElement AccountOverview;
     
-    public BankFundTransfer() {
+    public BankLoginPage() {
         PageFactory.initElements(driver, this);
+        this.bankLandingPage= new BankLandingPage();
     }
     public void gotoBankHomepage() {
     	 driver.get(PAGE_URL);
     }
     
-    public void login(){
+    public BankLandingPage login(){
     	 this.username.sendKeys("admin");
     	 this.password.sendKeys("admin");
     	 this.login.click();
+    	 return bankLandingPage;
     }
 	public boolean verifyAcountOverview() {
 		boolean isDisplayed=false;

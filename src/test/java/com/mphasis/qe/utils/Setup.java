@@ -18,6 +18,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.testng.Reporter;
 
 import java.io.File;
 import java.net.URL;
@@ -80,14 +81,17 @@ public class Setup {
 
         File classpathRoot = new File(System.getProperty("user.dir"));
         File appDir = new File(classpathRoot, "apps/TamilTest.app");
+        
+        //uncomment below code to run using testng.xml for crossbrowser parallel run
+        //browserName = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");
 
         if(browserName.equalsIgnoreCase("chrome")) {
-//            System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
-        	WebDriverManager.chromedriver().setup();
+            System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
+//        	WebDriverManager.chromedriver().setup();
         }
         else if(browserName.equalsIgnoreCase("firefox")){
-//            System.setProperty("webdriver.gecko.driver", propertySourceResolver.getGeckoDriverPath());
-            WebDriverManager.firefoxdriver().setup();
+            System.setProperty("webdriver.gecko.driver", propertySourceResolver.getGeckoDriverPath());
+//            WebDriverManager.firefoxdriver().setup();
         }
         else if(browserName.equalsIgnoreCase("ie")){
 //            System.setProperty("webdriver.ie.driver", propertySourceResolver.getIeDriverPath());
