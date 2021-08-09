@@ -1,5 +1,6 @@
 package com.mphasis.qe.utils;
 
+import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
 import io.restassured.response.Response;
@@ -31,6 +32,7 @@ import java.util.Map;
 public class TearDown {
 
 	private WebDriver driver;
+    private AppiumDriver mobileDriver;
 	
 	Logger log;
 	
@@ -49,6 +51,7 @@ public class TearDown {
     
     public TearDown() {
         this.driver = Setup.webdriver;
+        this.mobileDriver = Setup.mobileDriver;
     }
 
     @After("@web")
@@ -123,4 +126,17 @@ public class TearDown {
             ? System.getProperty(propertyName, defaultValue)
             : System.getenv(propertyName);
       }
+
+    @After("@native")
+    public void tearDownNative(Scenario scenario) throws Exception {
+        if(scenario.isFailed()){
+            saveScreenshotsForScenario(scenario);
+        }
+         //log.info("Closing the app");
+        this.mobileDriver.quit();
+
+        AppiumServerUtil.stopAppiumServer();
+
+
+    }
 }

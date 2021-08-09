@@ -27,8 +27,7 @@ public class Native_LoginPage extends BasePage {
     }
 
     public void checkLogoDisplay() {
-        //driver.findElement(By.id("logo.png")).isDisplayed();
-        this.logoImg.isDisplayed();
+         this.logoImg.isDisplayed();
 
     }
 
