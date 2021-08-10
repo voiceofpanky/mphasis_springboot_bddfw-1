@@ -129,10 +129,7 @@ public class TearDown {
 
     @After("@native")
     public void tearDownNative(Scenario scenario) throws Exception {
-        if(scenario.isFailed()){
-            saveScreenshotsForScenario(scenario);
-        }
-         //log.info("Closing the app");
+        //log.info("Closing the app");
         this.mobileDriver.quit();
 
         AppiumServerUtil.stopAppiumServer();

@@ -26,7 +26,7 @@ public class MakePayementSteps {
 
     @Given("User logged into TestBank")
     public void userLoggedIntoTestBank() {
-        Assert.assertEquals(this.loginPage.checkLogoDisplay(),true);
+        this.loginPage.checkLogoDisplay();
         this.loginPage.enterUserName("test");
         this.loginPage.enterPassword("test");
         this.dashboardPage = this.loginPage.login();

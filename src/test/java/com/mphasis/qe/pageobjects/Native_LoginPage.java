@@ -31,8 +31,8 @@ public class Native_LoginPage extends BasePage {
         this.dashboardPage = new Native_DashboardPage();
     }
 
-    public boolean checkLogoDisplay() {
-         return this.logoImg.isDisplayed();
+    public void checkLogoDisplay() {
+          this.logoImg.isDisplayed();
     }
 
     public void enterUserName(String userName) {
