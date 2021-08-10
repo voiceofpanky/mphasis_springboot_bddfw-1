@@ -175,13 +175,37 @@ public class Setup {
         File classpathRoot = new File(System.getProperty("user.dir"));
         File appDir = new File(classpathRoot, "apps");
 
+        switch (propertySourceResolver.getAppiumExecType()){
+
+            default:
+            case "local":
+
+                    AppiumServerUtil.startAppiumServer();
+                    Thread.sleep(1000);
+                APPIUM_WEB_DRIVER_SERVER_URL= AppiumServerUtil.getAppiumServerAddress();
+                break;
+            case "perfecto" :
+                APPIUM_WEB_DRIVER_SERVER_URL = propertySourceResolver.getPerfectoUrl();
+                capabilities.setCapability("securityToken", propertySourceResolver.getPerfectoToken());
+                capabilities.setCapability("autoLaunch", true);   capabilities.setCapability("autoInstrument", true);  capabilities.setCapability("takesScreenshot", false);
+                break;
+            case "browserstack" :
+                APPIUM_WEB_DRIVER_SERVER_URL = "https://" +
+                        propertySourceResolver.getBrowserstackUsername() + ":" +
+                        propertySourceResolver.getBrowserstackToken() + "@"+propertySourceResolver.getBrowserstackURL();
+                capabilities.setCapability("autoLaunch", true);     // Whether to install and launch the app automatically.
+                capabilities.setCapability("autoInstrument", true); // To work with hybrid applications, install the iOS/Android application as instrumented.
+                capabilities.setCapability("takesScreenshot", false);
+                break;
+
+        }
+
         if (platformName.equalsIgnoreCase("android")) {
             File app = new File(appDir, propertySourceResolver.getAndroidApkFile());
             capabilities.setCapability("platformName", platformName);
             capabilities.setCapability("deviceName", propertySourceResolver.getAndroidDeviceName());
             capabilities.setCapability("platformVersion", propertySourceResolver.getAndroidPlatformVersion());
-            // capabilities.setCapability("securityToken", propertySourceResolver.getPerfectoToken());
-//            capabilities.setCapability("app", app.getAbsolutePath());
+            capabilities.setCapability("app", app.getAbsolutePath());
             androidDriver = new AndroidDriver(new URL(APPIUM_WEB_DRIVER_SERVER_URL), capabilities);
             androidDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
             mobileDriver = androidDriver;
@@ -191,10 +215,10 @@ public class Setup {
             capabilities.setCapability("deviceName", propertySourceResolver.getIosDeviceName());
             capabilities.setCapability("platformVersion", propertySourceResolver.getIosPlatformVersion());
             capabilities.setCapability("platformName", platformName);
-            //capabilities.setCapability("securityToken", propertySourceResolver.getPerfectoToken());
             capabilities.setCapability("app", app.getAbsolutePath());
             capabilities.setCapability("useNewWDA", true);
-            capabilities.setCapability("launchTimeout", 9000000);
+            capabilities.setCapability("launchTimeout", 20000);
+            capabilities.setCapability("newCommandTimeout", 3600);
             iosDriver = new IOSDriver(new URL(APPIUM_WEB_DRIVER_SERVER_URL), capabilities);
             iosDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
             mobileDriver = iosDriver;
