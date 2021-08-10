@@ -1,88 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name = "Parallel Test Suite" parallel = "tests" thread-count = "7">
-   <test name = "Parallel Chrome">
-         <parameter name="browser" value="chromeRemoteDriver"/>
-         <groups>
-      		<run>
-        		<include name="web" />
-      		</run>
-    	 </groups>
-      <classes>
-         <class name = "com.mphasis.qe.runner.ChromeRemoteTest" />
-      </classes>
-   </test>
-   
-   <test name = "Parallel Firefox">
-   <parameter name="browser" value="firefoxRemoteDriver"/>
-   <groups>
-      		<run>
-        		<include name="web" />
-      		</run>
-    	 </groups>
-      <classes>
-          <class name = "com.mphasis.qe.runner.FirefoxTest" />
-      </classes>
-   </test>
-   
-   <test name = "Parallel Edge">
-   <parameter name="browser" value="edgeRemoteDriver"/>
-   <groups>
-      		<run>
-        		<include name="web" />
-      		</run>
-    	 </groups>
-      <classes>
-         <class name = "com.mphasis.qe.runner.EdgeTest" />
-      </classes>
-   </test>
-   
-   <test name = "Parallel IE">
-   <parameter name="browser" value="ieRemoteDriver"/>
-   <groups>
-      		<run>
-        		<include name="web" />
-      		</run>
-    	 </groups>
-      <classes>
-         <class name = "com.mphasis.qe.runner.IETest" />
-      </classes>
-   </test>
-   
-   <test name = "Parallel Safari">
-   <parameter name="browser" value="safariRemoteDriver"/>
-   <groups>
-      		<run>
-        		<include name="web" />
-      		</run>
-    	 </groups>
-      <classes>
-          <class name = "com.mphasis.qe.runner.SafariTest" />
-      </classes>
-   </test>
-   
-   <test name = "Parallel appiumiOSRemoteDrver">
-   <parameter name="browser" value="appiumRemoteDrver"/>
-   <groups>
-      		<run>
-        		<include name="web" />
-        		<include name="iOS" />
-      		</run>
-    	 </groups>
-      <classes>
-          <class name = "com.mphasis.qe.runner.appiumiOSRemoteDrver" />
-      </classes>
-   </test>
-   
-   <test name = "Parallel appiumAndroidRemoteDrver">
-   <parameter name="browser" value="appiumRemoteDrver"/>
-   <groups>
-      		<run>
-        		<include name="web" />
-        		<include name="android" />
-      		</run>
-    	 </groups>
-      <classes>
-          <class name = "com.mphasis.qe.runner.appiumAndroidRemoteDrver" />
-      </classes>
-   </test>
+<suite name="Parallel Test Suite" parallel="classes" thread-count="2">
+	<test name="Parallel Chrome" parallel="tests" thread-count="1">
+		<classes>
+			<class name="com.mphasis.qe.runner.ParallelRunnerTest" />
+			<parameter name="browser" value="chrome" />
+		</classes>
+	</test>
+	<test name="Parallel Firefox" parallel="tests" thread-count="1">
+		<classes>
+			<class name="com.mphasis.qe.runner.ParallelRunnerTest" />
+			<parameter name="browser" value="firefox" />
+		</classes>
+	</test>
+<!-- 	<test name="Parallel Firefox" parallel="tests" thread-count="1">
+		<classes>
+			<class name="com.mphasis.qe.runner.ParallelRunnerTest" />
+			<parameter name="browser" value="ie" />
+		</classes>
+	</test>
+	<test name="Parallel Firefox" parallel="tests" thread-count="1">
+		<classes>
+			<class name="com.mphasis.qe.runner.ParallelRunnerTest" />
+			<parameter name="browser" value="edge" />
+		</classes>
+	</test>
+	<test name="Parallel Firefox" parallel="tests" thread-count="1">
+		<classes>
+			<class name="com.mphasis.qe.runner.ParallelRunnerTest" />
+			<parameter name="browser" value="safari" />
+		</classes>
+	</test>
+	<test name="Parallel Firefox" parallel="tests" thread-count="1">
+		<classes>
+			<class name="com.mphasis.qe.runner.ParallelRunnerTest" />
+			<parameter name="browser" value="android" />
+		</classes>
+	</test>
+	<test name="Parallel Firefox" parallel="tests" thread-count="1">
+		<classes>
+			<class name="com.mphasis.qe.runner.ParallelRunnerTest" />
+			<parameter name="browser" value="iOS" />
+		</classes>
+	</test> -->
 </suite>
