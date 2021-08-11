@@ -9,7 +9,8 @@ import org.openqa.selenium.support.ui.Select;
  ****************************************************************************************/
 public class BankLoginPage extends BasePage {
 
-    private final String PAGE_URL = "https://parabank.parasoft.com/parabank/index.htm";
+	
+    private final String PAGE_URL = this.bankUrl;
     private BankLandingPage bankLandingPage;
 
     @FindBy(css = "input[name=username]")
@@ -44,13 +45,14 @@ public class BankLoginPage extends BasePage {
     
     public BankLoginPage() {
         PageFactory.initElements(driver, this);
-        this.bankLandingPage= new BankLandingPage();
     }
     public void gotoBankHomepage() {
     	 driver.get(PAGE_URL);
+    	 wait.forLoading(5);
     }
     
     public BankLandingPage login(){
+    	 bankLandingPage=new BankLandingPage();
     	 this.username.sendKeys("admin");
     	 this.password.sendKeys("admin");
     	 this.login.click();
@@ -60,25 +62,5 @@ public class BankLoginPage extends BasePage {
 		boolean isDisplayed=false;
 		isDisplayed=AccountOverview.isDisplayed();
 		return isDisplayed;
-	}
-    
-	public void navigateToTransferFund() {
-		transferFunds.click();
-	}
-	
-	public void enterAmount(String amountToTransfer) {
-		amount.sendKeys(amountToTransfer);
-	}
-	public void selectAccounts(String fromAccountId,String toAccountId) {
-		new Select(fromAccount).selectByVisibleText(fromAccountId);
-		new Select(toAccount).selectByVisibleText(toAccountId);
-	}
-	public void hitTransfer() {
-		Transfer.click();
-	}
-	public boolean verifyTransferConfirmation() {
-		boolean isTransferConfirmation=false;
-		isTransferConfirmation=TransferComplete.isDisplayed();
-		return isTransferConfirmation;
 	}
 }

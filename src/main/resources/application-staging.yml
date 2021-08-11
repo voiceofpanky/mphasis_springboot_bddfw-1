@@ -17,6 +17,9 @@ platform:
 
 browser:
   name: safari
+  
+parallel:
+  crossbrowser: false
 
 selenium:
   chrome.driver: library/chrome/74/chromedriver.exe
