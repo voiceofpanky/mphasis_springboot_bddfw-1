@@ -25,6 +25,9 @@ public class PropertySourceResolver {
 
     @Value("${browser.name}")
     private String browserName;
+    
+    @Value("${browser.version}")
+    private String browserVersion;
 
     @Value("${selenium.chrome.driver}")
     private String chromeDriverPath;

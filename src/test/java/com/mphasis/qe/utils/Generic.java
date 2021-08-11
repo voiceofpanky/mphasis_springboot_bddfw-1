@@ -46,7 +46,7 @@ public class Generic {
 
 		String driverVersion = null;
 		ArrayList<String> alDriverVersions = new ArrayList<String>();
-		alDriverVersions = (ArrayList<String>) WebDriverManager.chromedriver().proxy(proxyDetailsWFG).getVersions();
+		alDriverVersions = (ArrayList<String>) WebDriverManager.chromedriver().proxy(proxyDetailsWFG).getDriverVersions();
 		for (String version : alDriverVersions) {
 
 			if (version.startsWith(splitChromeVersion)) {

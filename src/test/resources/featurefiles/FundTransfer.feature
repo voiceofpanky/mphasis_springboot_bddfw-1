@@ -1,6 +1,6 @@
 Feature: Transfer of Fund from own account
 
-  @web 
+  @web
   Scenario: Login to my bank account overview page
     Given I am on bank homepage
     When I login to my bank account successfully

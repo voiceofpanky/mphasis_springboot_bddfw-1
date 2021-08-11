@@ -12,6 +12,7 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -43,6 +44,7 @@ public class Setup {
 
     private static String platformName;
     private static String browserName;
+    private static String browserVersion;
     public static String username;
     public static String password;
     public static WebDriver webdriver;
@@ -76,6 +78,7 @@ public class Setup {
     public void setUp() throws Exception {
         platformName = propertySourceResolver.getPlatformName();
         browserName = propertySourceResolver.getBrowserName();
+        browserVersion = propertySourceResolver.getBrowserVersion();
         username = JasyptEncryptor.decrypt(propertySourceResolver.getUserId());
         password = JasyptEncryptor.decrypt(propertySourceResolver.getPassword());
         dataSource = propertySourceResolver.getDataSource();
@@ -92,17 +95,21 @@ public class Setup {
         log.info("browser invoked:"+browserName);
         }
         if(browserName.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
-//        	WebDriverManager.chromedriver().setup();
+//            System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
+        	WebDriverManager.chromedriver().driverVersion(browserVersion).setup();
         }
         else if(browserName.equalsIgnoreCase("firefox")){
-            System.setProperty("webdriver.gecko.driver", propertySourceResolver.getGeckoDriverPath());
-//            WebDriverManager.firefoxdriver().setup();
+//            System.setProperty("webdriver.gecko.driver", propertySourceResolver.getGeckoDriverPath());
+            WebDriverManager.firefoxdriver().browserVersion(browserVersion).setup();
         }
         else if(browserName.equalsIgnoreCase("ie")){
 //            System.setProperty("webdriver.ie.driver", propertySourceResolver.getIeDriverPath());
             WebDriverManager.iedriver().setup();
         }
+        else if(browserName.equalsIgnoreCase("edge")){
+//            System.setProperty("webdriver.edge.driver", propertySourceResolver.getIeDriverPath());
+            WebDriverManager.edgedriver().browserVersion(browserVersion).setup();
+      }
 
         DesiredCapabilities capabilities = new DesiredCapabilities("","", Platform.ANY);
         this.APPIUM_WEB_DRIVER_SERVER_URL = propertySourceResolver.getPerfectoUrl();
@@ -165,6 +172,8 @@ public class Setup {
                 options.ignoreZoomSettings();
 
                 webdriver = new InternetExplorerDriver(options);
+            }  else if (browserName.equalsIgnoreCase("edge")) {
+                webdriver = new EdgeDriver();
             }
 
             webdriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);

@@ -18,6 +18,7 @@ platform:
 
 browser:
   name: chrome
+  version: 92
   
 parallel:
   crossbrowser: false
