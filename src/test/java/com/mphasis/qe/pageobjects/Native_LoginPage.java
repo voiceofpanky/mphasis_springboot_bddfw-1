@@ -13,6 +13,10 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class Native_LoginPage extends BasePage {
+    private Native_DashboardPage dashboardPage;
+
+
+
     @iOSXCUITFindBy(accessibility = "logo.png")
     private WebElement logoImg;
     @iOSXCUITFindBy(accessibility = "usernameTextField")
@@ -24,12 +28,11 @@ public class Native_LoginPage extends BasePage {
 
     public Native_LoginPage() {
         PageFactory.initElements(new AppiumFieldDecorator(mobileDriver), this);
+        this.dashboardPage = new Native_DashboardPage();
     }
 
     public void checkLogoDisplay() {
-        //driver.findElement(By.id("logo.png")).isDisplayed();
-        this.logoImg.isDisplayed();
-
+          this.logoImg.isDisplayed();
     }
 
     public void enterUserName(String userName) {
@@ -42,8 +45,9 @@ public class Native_LoginPage extends BasePage {
         this.passwordTxt.sendKeys(password);
     }
 
-    public void login() {
+    public Native_DashboardPage login() {
         this.loginBtn.click();
+        return dashboardPage;
     }
 }
 

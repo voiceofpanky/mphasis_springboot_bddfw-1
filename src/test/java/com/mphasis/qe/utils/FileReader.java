@@ -1,13 +1,17 @@
 package com.mphasis.qe.utils;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mphasis.qe.PropertySourceResolver;
 import org.apache.logging.log4j.util.PropertySource;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+//import org.json.simple.JSONObject;
+//import org.json.simple.parser.JSONParser;
+//import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -60,15 +64,37 @@ public class FileReader {
     /**
      * This method will be used to json file
      */
+//    public List<String> jsonReader(String filePath) {
+//        List<String> loginInfo = new ArrayList<>();
+//
+//        JSONParser parser = new JSONParser();
+//        try {
+//            Object obj = parser.parse(new java.io.FileReader(filePath));
+//
+//            JSONObject jsonObject = (JSONObject) obj;
+//
+//            loginInfo.add((String) jsonObject.get("username"));
+//            loginInfo.add((String) jsonObject.get("password"));
+//        } catch (IOException | ParseException e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//        return loginInfo;
+//    }
+
+    /**
+     * This method will be used to json file parsing
+     */
     public List<String> jsonReader(String filePath) {
         List<String> loginInfo = new ArrayList<>();
-        JSONParser parser = new JSONParser();
         try {
-            Object obj = parser.parse(new java.io.FileReader(filePath));
-            JSONObject jsonObject = (JSONObject) obj;
-            loginInfo.add((String) jsonObject.get("username"));
-            loginInfo.add((String) jsonObject.get("password"));
-        } catch (IOException | ParseException e) {
+            JsonElement jelement = new JsonParser().parse(new java.io.FileReader(filePath));
+
+            JsonObject jobject = jelement.getAsJsonObject();
+
+            loginInfo.add((String) jobject.get("username").getAsString());
+            loginInfo.add((String) jobject.get("password").getAsString());
+        }catch (IOException  e) {
             e.printStackTrace();
             return null;
         }

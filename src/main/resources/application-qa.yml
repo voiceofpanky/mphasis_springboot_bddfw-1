@@ -24,6 +24,9 @@ selenium:
   gecko.driver: library/geckodriver.exe
   ie.driver: library/IEDriverServer.exe
 
+appium:
+  execution.type: local
+
 android:
   apk.file: test.apk
   #device.name=Android Emulator

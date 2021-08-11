@@ -7,6 +7,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 /****************************************************************************************
  * @author Tamilselvan Ramalingam
@@ -18,7 +19,6 @@ public class MakePayementSteps {
     private Native_DashboardPage dashboardPage;
 
     public MakePayementSteps() {
-        this.dashboardPage = new Native_DashboardPage();
         this.loginPage = new Native_LoginPage();
         this.paymentPage = new Native_PaymentPage();
     }
@@ -29,7 +29,7 @@ public class MakePayementSteps {
         this.loginPage.checkLogoDisplay();
         this.loginPage.enterUserName("test");
         this.loginPage.enterPassword("test");
-        this.loginPage.login();
+        this.dashboardPage = this.loginPage.login();
     }
 
     @And("User lands on Dashboard page")

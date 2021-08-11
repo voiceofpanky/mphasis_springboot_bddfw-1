@@ -85,4 +85,16 @@ public class PropertySourceResolver {
     
     @Value("${reportType.html}")
     private String htmlReport;
+
+    @Value("${appium.execution.type}")
+    private String appiumExecType;
+
+    @Value("${browserstack.hosturl}")
+    private String browserstackURL;
+
+    @Value("${browserstack.username}")
+    private String browserstackUsername;
+
+    @Value("${browserstack.accessKey}")
+    private String browserstackToken;
 }
