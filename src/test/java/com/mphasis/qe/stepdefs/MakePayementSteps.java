@@ -1,13 +1,12 @@
 package com.mphasis.qe.stepdefs;
 
-import com.mphasis.qe.pageobjects.Native_DashboardPage;
-import com.mphasis.qe.pageobjects.Native_LoginPage;
-import com.mphasis.qe.pageobjects.Native_PaymentPage;
+import com.mphasis.qe.pages.Native_DashboardPage;
+import com.mphasis.qe.pages.Native_LoginPage;
+import com.mphasis.qe.pages.Native_PaymentPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 
 /****************************************************************************************
  * @author Tamilselvan Ramalingam

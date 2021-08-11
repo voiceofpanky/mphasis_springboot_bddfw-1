@@ -2,8 +2,8 @@ package com.mphasis.qe.stepdefs;
 
 import org.testng.Assert;
 
-import com.mphasis.qe.pageobjects.BankLandingPage;
-import com.mphasis.qe.pageobjects.BankLoginPage;
+import com.mphasis.qe.pages.BankLandingPage;
+import com.mphasis.qe.pages.BankLoginPage;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
