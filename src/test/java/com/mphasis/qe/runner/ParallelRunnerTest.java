@@ -23,15 +23,11 @@ import io.cucumber.testng.PickleWrapper;
 				"json:target/cucumber-reports/cucumber.json",
 				"html:target/cucumber-reports/cucumber-html-report",
 		})
+@Parameters({"browser"})
+@Test
 public class ParallelRunnerTest extends AbstractTestNGCucumberTests {
-	@Parameters({"browser"})
-	@Test(groups="cucumber",description="Runs cucumber scenarios", dataProvider="scenarios")
-	public void runScenario(PickleWrapper pickleWrapper, FeatureWrapper featureWrapper) throws Throwable{
-		super.runScenario(pickleWrapper, featureWrapper);
-	}
-
 	@Override
-	@DataProvider(name="scenarios",parallel = true)
+	@DataProvider(parallel = true)
 	public Object[][] scenarios() {
 		return super.scenarios();
 	}

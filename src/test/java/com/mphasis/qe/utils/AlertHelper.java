@@ -1,4 +1,4 @@
-package com.mphasis.qe.utilHelper;
+package com.mphasis.qe.utils;
 
 //import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;

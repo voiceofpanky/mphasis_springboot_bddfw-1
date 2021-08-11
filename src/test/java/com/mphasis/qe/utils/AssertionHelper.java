@@ -1,4 +1,4 @@
-package com.mphasis.qe.utilHelper;
+package com.mphasis.qe.utils;
 import org.junit.Assert;
 
 import lombok.extern.slf4j.Slf4j;

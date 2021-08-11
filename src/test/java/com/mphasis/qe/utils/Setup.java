@@ -52,6 +52,8 @@ public class Setup {
     public static AppiumDriver mobileDriver;
     private static String APPIUM_WEB_DRIVER_SERVER_URL = "http://127.0.0.1:4723/wd/hub";
     boolean webdriverManagerFlag;
+    public static String bankUrl;
+    boolean isParallelCrossbrowser;
 
     public Setup() {
     }
@@ -78,13 +80,17 @@ public class Setup {
         password = JasyptEncryptor.decrypt(propertySourceResolver.getPassword());
         dataSource = propertySourceResolver.getDataSource();
         dataPath = propertySourceResolver.getDataPath();
+        bankUrl=propertySourceResolver.getAppBankUri();
+        isParallelCrossbrowser=propertySourceResolver.isParallelCrossbrowser();
 
         File classpathRoot = new File(System.getProperty("user.dir"));
         File appDir = new File(classpathRoot, "apps/TamilTest.app");
         
-        //uncomment below code to run using testng.xml for crossbrowser parallel run
-        //browserName = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");
-
+      //boolean check for parallel crossbrowser run using testng- browser parameter 
+        if(isParallelCrossbrowser) {
+        browserName = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");
+        log.info("browser invoked:"+browserName);
+        }
         if(browserName.equalsIgnoreCase("chrome")) {
             System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
 //        	WebDriverManager.chromedriver().setup();

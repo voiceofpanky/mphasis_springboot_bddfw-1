@@ -1,4 +1,4 @@
-package com.mphasis.qe.utilHelper;
+package com.mphasis.qe.utils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
