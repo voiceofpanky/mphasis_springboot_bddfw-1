@@ -89,22 +89,12 @@ public class Setup {
         //browserName = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");
 
         if(browserName.equalsIgnoreCase("chrome")) {
-<<<<<<< HEAD
 //            System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
         	WebDriverManager.chromedriver().driverVersion(browserVersion).setup();
-=======
-            System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
-//        	WebDriverManager.chromedriver().setup();
->>>>>>> branch 'develop' of https://github.com/dipanjan-it/mphasis_springboot_bddfw.git
         }
         else if(browserName.equalsIgnoreCase("firefox")){
-<<<<<<< HEAD
 //            System.setProperty("webdriver.gecko.driver", propertySourceResolver.getGeckoDriverPath());
             WebDriverManager.firefoxdriver().browserVersion(browserVersion).setup();
-=======
-            System.setProperty("webdriver.gecko.driver", propertySourceResolver.getGeckoDriverPath());
-//            WebDriverManager.firefoxdriver().setup();
->>>>>>> branch 'develop' of https://github.com/dipanjan-it/mphasis_springboot_bddfw.git
         }
         else if(browserName.equalsIgnoreCase("ie")){
 //            System.setProperty("webdriver.ie.driver", propertySourceResolver.getIeDriverPath());
