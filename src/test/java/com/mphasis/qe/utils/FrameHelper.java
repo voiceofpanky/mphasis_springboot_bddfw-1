@@ -1,4 +1,4 @@
-package com.mphasis.qe.utilHelper;
+package com.mphasis.qe.utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

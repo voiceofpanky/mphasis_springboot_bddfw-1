@@ -97,4 +97,10 @@ public class PropertySourceResolver {
 
     @Value("${browserstack.accessKey}")
     private String browserstackToken;
+    
+    @Value("${app.url.bankUri}")
+    private String appBankUri;
+
+    @Value("${parallel.crossbrowser}")
+    private boolean isParallelCrossbrowser;
 }

@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 public class BankLandingPage extends BasePage {
 
 	    @FindBy(xpath ="//a[contains(text(),'Transfer Funds')]")
-	    private WebElement transferFunds;
+	    public WebElement transferFunds;
 	    
 	    @FindBy(css ="input[name='input']")
 	    private WebElement amount;
@@ -19,14 +19,14 @@ public class BankLandingPage extends BasePage {
 	    @FindBy(css ="#fromAccountId")
 	    private WebElement fromAccount;
 	    
-	    @FindBy(css ="#fromAccountId")
+	    @FindBy(css ="#toAccountId")
 	    private WebElement toAccount;
 	    
 	    @FindBy(css = "input[type='submit']")
-	    private WebElement transfer;
+	    public WebElement transfer;
 	    
 	    @FindBy(xpath ="//h1[contains(text(),'Transfer Complete')]")
-	    private WebElement transferComplete;
+	    public WebElement transferComplete;
 	    
 	    @FindBy(xpath ="//h1[contains(text(),'Accounts Overview')]")
 	    private WebElement accountOverview;
@@ -37,26 +37,23 @@ public class BankLandingPage extends BasePage {
     
 	public boolean verifyAcountOverview() {
 		boolean isDisplayed=false;
+		wait.forElementToBeDisplayed(10, this.accountOverview, "Account Overview");
 		isDisplayed=accountOverview.isDisplayed();
 		return isDisplayed;
-	}
-    
-	public void navigateToTransferFund() {
-		transferFunds.click();
 	}
 	
 	public void enterAmount(String amountToTransfer) {
 		amount.sendKeys(amountToTransfer);
 	}
+	
 	public void selectAccounts(String fromAccountId,String toAccountId) {
 		new Select(fromAccount).selectByIndex(0); //default index values available in drop down
 		new Select(toAccount).selectByIndex(0); //default index values available in drop down
 	}
-	public void hitTransfer() {
-		transfer.click();
-	}
+
 	public boolean verifyTransferConfirmation() {
 		boolean isTransferConfirmation=false;
+		wait.forElementToBeDisplayed(10, this.transferComplete, "Transfer Complete");
 		isTransferConfirmation=transferComplete.isDisplayed();
 		return isTransferConfirmation;
 	}

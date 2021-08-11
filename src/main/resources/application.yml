@@ -19,6 +19,9 @@ platform:
 
 browser:
   name: chrome
+  
+parallel:
+  crossbrowser: false
 
 selenium:
   chrome.driver: library/chromedriver.exe

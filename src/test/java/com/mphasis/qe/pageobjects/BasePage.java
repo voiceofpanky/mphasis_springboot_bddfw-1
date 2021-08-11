@@ -17,11 +17,13 @@ public class BasePage{
     public AppiumDriver mobileDriver;
     public Wait wait;
     public String baseUrl;
+    public String bankUrl;
 
     public BasePage()  {
         this.driver = new Setup().webdriver;
         this.mobileDriver = new Setup().mobileDriver;
         this.baseUrl = new Setup().baseUrl;
         this.wait = new Wait(this.driver);
+        this.bankUrl=new Setup().bankUrl;
     }
 }
