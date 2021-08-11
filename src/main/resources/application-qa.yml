@@ -10,8 +10,8 @@ app:
     bankUri: https://parabank.parasoft.com/parabank/index.htm
 
 encrypted:
-  username: dBHL2hMfCD2IHfukiuk9ri+ChYxa4XUQz0aSHjQP9aqhg==
-  password: uPGTcQvN2AunE7bZHAxjZ0hfghgfdfY45I0CdIHjXOQUO/8i1zkM
+  username: 0FoxXRpKfkYQ1wRpxxSZYasR2CH0W0aYHSvmoLpahN3Ypxl8NeDHVWaxY3SnyGD0lZBhVRj626nrTKdw4ma0/g==
+  password: cRl3I6GUe0GvIglnbhPwbWmgF2WA03wOVLx7e/zAL83EJIRzF294SfBN8fjcXe9Z
 
 platform:
   name: web
