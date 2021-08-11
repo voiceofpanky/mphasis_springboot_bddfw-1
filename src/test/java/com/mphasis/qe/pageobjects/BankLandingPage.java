@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.Select;
  ****************************************************************************************/
 public class BankLandingPage extends BasePage {
 
-	 @FindBy(xpath ="//a[contains(text(),'Transfer Funds')]")
+	    @FindBy(xpath ="//a[contains(text(),'Transfer Funds')]")
 	    private WebElement transferFunds;
 	    
 	    @FindBy(css ="input[name='input']")
