@@ -61,7 +61,8 @@ public class TearDown {
         }
         //log.info("Closing the app");
         this.driver.manage().deleteAllCookies();
-        this.driver.quit();
+        this.driver.close();
+        //this.driver.quit();
     }
 
     private void saveScreenshotsForScenario(final Scenario scenario) {

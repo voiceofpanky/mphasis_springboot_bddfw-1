@@ -216,13 +216,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
-                    <parallel>methods</parallel>
-                    <useUnlimitedThreads>true</useUnlimitedThreads>
-                    <includes>
-                         <include>**/*Test*.java</include>
-                         <!-- <include>**/CucumberRunnerTestng</include>  -->
-                         <!-- <include>**/ParallelRunnerTest</include> -->
-                    </includes>
                     <!-- <suiteXmlFiles>
                     	<suiteXmlFile>testng.xml</suiteXmlFile> 
                     </suiteXmlFiles> -->

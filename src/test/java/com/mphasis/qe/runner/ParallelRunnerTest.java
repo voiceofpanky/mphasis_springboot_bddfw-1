@@ -26,10 +26,5 @@ import io.cucumber.testng.PickleWrapper;
 @Parameters({"browser"})
 @Test
 public class ParallelRunnerTest extends AbstractTestNGCucumberTests {
-	@Override
-	@DataProvider(parallel = true)
-	public Object[][] scenarios() {
-		return super.scenarios();
-	}
 }
 

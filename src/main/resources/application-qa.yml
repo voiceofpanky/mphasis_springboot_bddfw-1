@@ -21,12 +21,13 @@ browser:
   version: 92
   
 parallel:
-  crossbrowser: false
+  crossbrowser: true
 
 selenium:
   chrome.driver: library/chrome/91/chromedriver.exe
   gecko.driver: library/geckodriver.exe
   ie.driver: library/IEDriverServer.exe
+  edge.driver: library/edge.exe
 
 appium:
   execution.type: local
