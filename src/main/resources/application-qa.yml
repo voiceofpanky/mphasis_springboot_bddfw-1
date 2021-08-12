@@ -21,7 +21,7 @@ browser:
   version: 92
   
 parallel:
-  crossbrowser: true
+  crossbrowser: false
 
 selenium:
   chrome.driver: library/chrome/91/chromedriver.exe
