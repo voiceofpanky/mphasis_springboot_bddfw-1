@@ -1,6 +1,6 @@
 package com.mphasis.qe.stepdefs;
 
-import com.mphasis.qe.pageobjects.SearchResultPage;
+import com.mphasis.qe.pages.SearchResultPage;
 import io.cucumber.java.en.Then;
 import lombok.extern.slf4j.Slf4j;
 

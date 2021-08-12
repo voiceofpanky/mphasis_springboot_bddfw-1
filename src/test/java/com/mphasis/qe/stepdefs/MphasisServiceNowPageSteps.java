@@ -1,6 +1,6 @@
 package com.mphasis.qe.stepdefs;
 
-import com.mphasis.qe.pageobjects.mphasis.MphasisServiceNowPage;
+import com.mphasis.qe.pages.MphasisServiceNowPage;
 import com.mphasis.qe.utils.Setup;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
