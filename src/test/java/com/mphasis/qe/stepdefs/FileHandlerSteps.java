@@ -1,17 +1,12 @@
 package com.mphasis.qe.stepdefs;
 
-import com.mphasis.qe.PropertySourceResolver;
-import com.mphasis.qe.pageobjects.FileHandlerPage;
+import com.mphasis.qe.pages.FileHandlerPage;
 import com.mphasis.qe.utils.FileReader;
 import com.mphasis.qe.utils.Setup;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
