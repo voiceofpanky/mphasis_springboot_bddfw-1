@@ -20,6 +20,8 @@
 		<springVersion>2.3.0.RELEASE</springVersion>
 		<cucumberVersion>5.6.0</cucumberVersion>
 		<restAssuredVersion>4.2.0</restAssuredVersion>
+		<mavenSurefirePluginVersion>2.22.2</mavenSurefirePluginVersion>
+		<suiteFile>testng.xml</suiteFile>
 	</properties>
 
 	<repositories>
@@ -132,7 +134,12 @@
 			<version>4.1.0</version><!--$NO-MVN-MAN-VER$ -->
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+  			<groupId>org.testng</groupId>
+  			<artifactId>testng</artifactId>
+  			<version>6.10</version>
+  			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>io.appium</groupId>
 			<artifactId>java-client</artifactId>
@@ -197,7 +204,7 @@
 		<dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
-            <version>2.22.2</version>
+            <version>${mavenSurefirePluginVersion}</version>
         </dependency>
     </dependencies>
 
@@ -210,11 +217,20 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${mavenSurefirePluginVersion}</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
-                    <!-- <suiteXmlFiles>
-                    	<suiteXmlFile>testng.xml</suiteXmlFile> 
-                    </suiteXmlFiles> -->
+                  <executions>
+                        <execution>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                        <suiteXmlFiles>
+                            <suiteXmlFile>${suiteFile}</suiteXmlFile>
+                        </suiteXmlFiles>          
                 </configuration>
             </plugin>
             <plugin>

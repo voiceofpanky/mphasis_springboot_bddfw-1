@@ -43,3 +43,8 @@
 ### Execution
 
 * ./gherkin_beautify.sh
+
+### Parallel Execution on different web browsers
+* enable below property in your config yml file
+* Run testng.xml suiteFile or build pom.xml
+* parallel.crossbrowser :true
