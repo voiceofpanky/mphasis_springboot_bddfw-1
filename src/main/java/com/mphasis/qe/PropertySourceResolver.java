@@ -34,7 +34,10 @@ public class PropertySourceResolver {
 
     @Value("${selenium.gecko.driver}")
     private String geckoDriverPath;
-
+    
+    @Value("${selenium.edge.driver}")
+    private String edgeDriverPath;
+    
     @Value("${selenium.ie.driver}")
     private String ieDriverPath;
 

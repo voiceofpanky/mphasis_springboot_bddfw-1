@@ -27,6 +27,7 @@ selenium:
   chrome.driver: library/chromedriver.exe
   gecko.driver: library/geckodriver.exe
   ie.driver: library/IEDriverServer.exe
+  edge.driver: library/edge.exe
 
 android:
   apk.file: test.apk

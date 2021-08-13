@@ -56,8 +56,10 @@ public class Setup {
     boolean webdriverManagerFlag;
     public static String bankUrl;
     boolean isParallelCrossbrowser;
+    public DriverFactory driverFactory;
 
     public Setup() {
+    	this.driverFactory =new DriverFactory();
     }
 
     //TBD - From Hooks.java - fill scenarioSession object
@@ -95,20 +97,28 @@ public class Setup {
         log.info("browser invoked:"+browserName);
         }
         if(browserName.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
+            //System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
         	//WebDriverManager.chromedriver().driverVersion(browserVersion).setup();
+            webdriver=driverFactory.createInstance(browserName);
+            System.out.println("Thread ID : "+Thread.currentThread().getId());
         }
         else if(browserName.equalsIgnoreCase("firefox")){
-           System.setProperty("webdriver.gecko.driver", propertySourceResolver.getGeckoDriverPath());
-           // WebDriverManager.firefoxdriver().browserVersion(browserVersion).setup();
+            //System.setProperty("webdriver.gecko.driver", propertySourceResolver.getGeckoDriverPath());
+            //WebDriverManager.firefoxdriver().browserVersion(browserVersion).setup();
+            webdriver=driverFactory.createInstance(browserName);
+            System.out.println("Thread ID : "+Thread.currentThread().getId());
         }
         else if(browserName.equalsIgnoreCase("ie")){
-            System.setProperty("webdriver.ie.driver", propertySourceResolver.getIeDriverPath());
-         //   WebDriverManager.iedriver().setup();
+//            System.setProperty("webdriver.ie.driver", propertySourceResolver.getIeDriverPath());
+            WebDriverManager.iedriver().setup();
+            webdriver=driverFactory.createInstance(browserName);
+            System.out.println("Thread ID : "+Thread.currentThread().getId());
         }
         else if(browserName.equalsIgnoreCase("edge")){
-            System.setProperty("webdriver.edge.driver", propertySourceResolver.getIeDriverPath());
-            //WebDriverManager.edgedriver().browserVersion(browserVersion).setup();
+//            System.setProperty("webdriver.edge.driver", propertySourceResolver.getEdgeDriverPath());
+//            WebDriverManager.edgedriver().browserVersion(browserVersion).setup();
+            webdriver=driverFactory.createInstance(browserName);
+            System.out.println("Thread ID : "+Thread.currentThread().getId());
       }
 
         DesiredCapabilities capabilities = new DesiredCapabilities("","", Platform.ANY);
@@ -140,46 +150,47 @@ public class Setup {
             iosDriver = new IOSDriver(new URL(APPIUM_WEB_DRIVER_SERVER_URL), capabilities);
             iosDriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
             webdriver = iosDriver;
-        } else {
-            if (browserName.equalsIgnoreCase("chrome")) {
-
-                //if (webdriverManagerFlag = false) {
-                ChromeOptions options = new ChromeOptions();
-                options.addArguments("start-maximized"); // open Browser in maximized mode
-                options.addArguments("disable-infobars"); // disabling infobars
-                options.addArguments("--disable-extensions"); // disabling extensions
-                options.addArguments("--disable-gpu"); // applicable to windows os only
-                options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-                options.addArguments("--no-sandbox"); // Bypass OS security model
-                webdriver = new ChromeDriver(options);
-				//	} else {
-				//		webdriver = chromeDriverSetup();
-
-			}
-		//}
-			 else if (browserName.equalsIgnoreCase("firefox")) {
-				FirefoxOptions options = new FirefoxOptions();
-				options.addArguments("start-maximized"); // open Browser in maximized mode
-				options.addArguments("--disable-extensions"); // disabling extensions
-				options.addArguments("--disable-gpu"); // applicable to windows os only
-				options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-				options.addArguments("--no-sandbox"); // Bypass OS security model
-
-                webdriver = new FirefoxDriver(options);
-            } else if (browserName.equalsIgnoreCase("ie")) {
-                InternetExplorerOptions options = new InternetExplorerOptions();
-                // options.destructivelyEnsureCleanSession();
-                options.ignoreZoomSettings();
-
-                webdriver = new InternetExplorerDriver(options);
-            }  else if (browserName.equalsIgnoreCase("edge")) {
-                webdriver = new EdgeDriver();
-            }
-
-            webdriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-            webdriver.manage().deleteAllCookies();
-            webdriver.manage().window().maximize();
-        }
+        } 
+//		else {
+//            if (browserName.equalsIgnoreCase("chrome")) {
+//
+//                //if (webdriverManagerFlag = false) {
+//                ChromeOptions options = new ChromeOptions();
+//                options.addArguments("start-maximized"); // open Browser in maximized mode
+//                options.addArguments("disable-infobars"); // disabling infobars
+//                options.addArguments("--disable-extensions"); // disabling extensions
+//                options.addArguments("--disable-gpu"); // applicable to windows os only
+//                options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+//                options.addArguments("--no-sandbox"); // Bypass OS security model
+//                webdriver = new ChromeDriver(options);
+//				//	} else {
+//				//		webdriver = chromeDriverSetup();
+//
+//			}
+//		//}
+//			 else if (browserName.equalsIgnoreCase("firefox")) {
+//				FirefoxOptions options = new FirefoxOptions();
+//				options.addArguments("start-maximized"); // open Browser in maximized mode
+//				options.addArguments("--disable-extensions"); // disabling extensions
+//				options.addArguments("--disable-gpu"); // applicable to windows os only
+//				options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+//				options.addArguments("--no-sandbox"); // Bypass OS security model
+//
+//                webdriver = new FirefoxDriver(options);
+//            } else if (browserName.equalsIgnoreCase("ie")) {
+//                InternetExplorerOptions options = new InternetExplorerOptions();
+//                // options.destructivelyEnsureCleanSession();
+//                options.ignoreZoomSettings();
+//
+//                webdriver = new InternetExplorerDriver(options);
+//            }  else if (browserName.equalsIgnoreCase("edge")) {
+//                webdriver = new EdgeDriver();
+//            }
+//
+//            webdriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+//            webdriver.manage().deleteAllCookies();
+//            webdriver.manage().window().maximize();
+//        }
     }
 
 
