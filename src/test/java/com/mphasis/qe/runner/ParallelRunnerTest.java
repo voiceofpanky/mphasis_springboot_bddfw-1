@@ -21,7 +21,7 @@ import io.cucumber.testng.PickleWrapper;
 		dryRun = false,
 		plugin = {"pretty",
 				"json:target/cucumber-reports/cucumber.json",
-				"html:target/cucumber-reports/cucumber-html-report",
+				"html:target/cucumber-reports/cucumber-html-report"
 		})
 @Parameters({"browser"})
 @Test
