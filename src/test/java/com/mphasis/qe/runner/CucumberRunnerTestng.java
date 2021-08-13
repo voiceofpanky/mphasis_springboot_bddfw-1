@@ -10,14 +10,14 @@ import io.cucumber.testng.CucumberOptions;
 		features = {"src/test/resources/featurefiles"},
 		glue = {"com.mphasis.qe.utils",
 		"com.mphasis.qe.stepdefs"},
-		tags = {"@web and @fundTransfer"},
+		tags = {"@web and @register"},
 		strict = true,
 		monochrome = true,
 		dryRun = false,
 		plugin = {"pretty",
 				"json:target/cucumber-reports/cucumber.json",
 				"html:target/cucumber-reports/cucumber-html-report",
-				"rerun:target/rerun.txt",
+				"rerun:target/rerun.txt"
 		})
 public class CucumberRunnerTestng extends AbstractTestNGCucumberTests {
 }

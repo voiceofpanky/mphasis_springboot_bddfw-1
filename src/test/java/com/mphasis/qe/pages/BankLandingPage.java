@@ -31,6 +31,9 @@ public class BankLandingPage extends BasePage {
 	    @FindBy(xpath ="//h1[contains(text(),'Accounts Overview')]")
 	    private WebElement accountOverview;
     
+	    @FindBy(xpath ="//h1[contains(text(),'Welcome')]")
+	    public WebElement welcomeGreeting;
+	    
     public BankLandingPage() {
         PageFactory.initElements(driver, this);
     }
