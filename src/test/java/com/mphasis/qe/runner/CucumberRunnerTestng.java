@@ -16,7 +16,7 @@ import io.cucumber.testng.CucumberOptions;
 		dryRun = false,
 		plugin = {"pretty",
 				"json:target/cucumber-reports/cucumber.json",
-				"html:target/cucumber-reports/cucumber-html-report",
+				"html:target/cucumber-reports/cucumber-html-report"
 		})
 public class CucumberRunnerTestng extends AbstractTestNGCucumberTests {
 }
