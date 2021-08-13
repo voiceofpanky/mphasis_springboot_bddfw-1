@@ -1,6 +1,5 @@
 package com.mphasis.qe.utils;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -9,9 +8,7 @@ import org.apache.logging.log4j.util.PropertySource;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-//import org.json.simple.JSONObject;
-//import org.json.simple.parser.JSONParser;
-//import org.json.simple.parser.ParseException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -61,9 +58,7 @@ public class FileReader {
         return loginInfo;
     }
 
-    /**
-     * This method will be used to json file
-     */
+
 //    public List<String> jsonReader(String filePath) {
 //        List<String> loginInfo = new ArrayList<>();
 //
@@ -92,8 +87,8 @@ public class FileReader {
 
             JsonObject jobject = jelement.getAsJsonObject();
 
-            loginInfo.add((String) jobject.get("username").getAsString());
-            loginInfo.add((String) jobject.get("password").getAsString());
+            loginInfo.add(jobject.get("username").getAsString());
+            loginInfo.add(jobject.get("password").getAsString());
         }catch (IOException  e) {
             e.printStackTrace();
             return null;

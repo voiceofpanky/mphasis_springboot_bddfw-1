@@ -2,9 +2,11 @@ package com.mphasis.qe.runner;
 import com.github.mkolisnyk.cucumber.runner.ExtendedCucumber;
 import com.github.mkolisnyk.cucumber.runner.ExtendedCucumberOptions;
 import cucumber.api.CucumberOptions;
-import org.junit.runner.RunWith;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+//import org.testng.runner.RunWith;
+//import io.cucumber.testng.CucumberOptions;
 
-@RunWith(ExtendedCucumber.class)
+//@RunWith(ExtendedCucumber.class)
 @ExtendedCucumberOptions(jsonReport = "target/cucumber.json",
         retryCount = 3,
         detailedReport = true,
@@ -21,8 +23,9 @@ import org.junit.runner.RunWith;
         "usage:target/cucumber-usage.json", "junit:target/cucumber-results.xml" },
         features = {"src/test/resources/featurefiles"},
         glue = {"com.mphasis.qe.utils",
-                "com.mphasis.qe.stepdefs"}
+                "com.mphasis.qe.stepdefs"},
+                tags = {"@web"}
         )
-public class CucumberRunnerRetry {
+public class CucumberRunnerRetry extends AbstractTestNGCucumberTests {
 }
 

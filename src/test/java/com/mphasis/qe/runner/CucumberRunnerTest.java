@@ -10,7 +10,8 @@ import org.junit.runner.RunWith;
 //@Slf4j
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src/test/resources/featurefiles"},
+//        features = {"src/test/resources/featurefiles"},
+        features ="@target/rerun.txt",
         glue = {"com.mphasis.qe.utils",
                 "com.mphasis.qe.stepdefs"},
 
@@ -21,8 +22,8 @@ import org.junit.runner.RunWith;
         monochrome = true,
         dryRun = false,
         plugin = {"pretty",
-                "json:target/cucumber-reports/cucumber.json",
-                "html:target/cucumber-reports/cucumber-html-report"
+                "json:target1/cucumber-reports/cucumber.json",
+                "html:target1/cucumber-reports/cucumber-html-report"
         })
 public class CucumberRunnerTest{
 

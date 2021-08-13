@@ -93,6 +93,13 @@
 		</dependency>
 
 
+
+<!--		<dependency>-->
+<!--			<groupId>com.googlecode.json-simple</groupId>-->
+<!--			<artifactId>json-simple</artifactId>-->
+<!--			<version>1.1.1</version>-->
+<!--		</dependency>-->
+
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-spring</artifactId>
@@ -158,6 +165,12 @@
 			<version>3.0.1</version>
 		</dependency>
 
+<!--		<dependency>-->
+<!--			<groupId>com.github.ulisesbocchio</groupId>-->
+<!--			<artifactId>jasypt-spring-boot-starter</artifactId>-->
+<!--			<version>3.0.3</version>-->
+<!--		</dependency>-->
+
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
@@ -220,14 +233,14 @@
                 <version>${mavenSurefirePluginVersion}</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
-                  <executions>
-                        <execution>
-                            <phase>test</phase>
-                            <goals>
-                                <goal>test</goal>
-                            </goals>
-                        </execution>
-                    </executions>
+<!--                  <executions>-->
+<!--                        <execution>-->
+<!--                            <phase>test</phase>-->
+<!--                            <goals>-->
+<!--                                <goal>test</goal>-->
+<!--                            </goals>-->
+<!--                        </execution>-->
+<!--                    </executions>-->
                         <suiteXmlFiles>
                             <suiteXmlFile>${suiteFile}</suiteXmlFile>
                         </suiteXmlFiles>          
