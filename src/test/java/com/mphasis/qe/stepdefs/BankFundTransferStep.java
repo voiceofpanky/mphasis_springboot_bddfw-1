@@ -1,9 +1,14 @@
 package com.mphasis.qe.stepdefs;
 
+import java.util.Calendar;
+
+import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import com.mphasis.qe.pages.BankLandingPage;
 import com.mphasis.qe.pages.BankLoginPage;
+import com.mphasis.qe.pages.BankRegistrationPage;
+import com.mphasis.qe.pages.BasePage;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,13 +18,15 @@ import io.cucumber.java.en.When;
 /****************************************************************************************
  * @author Pankaj Sao
  ****************************************************************************************/
-public class BankFundTransferStep {
+public class BankFundTransferStep extends BasePage{
 	private BankLoginPage bankLoginPage;
 	private BankLandingPage bankLandingPage;
+	private BankRegistrationPage bankRegistrationPage;
 
 	 public BankFundTransferStep() {
 	        this.bankLoginPage = new BankLoginPage();
 	        this.bankLandingPage = new BankLandingPage();
+	        this.bankRegistrationPage=new BankRegistrationPage();
 	    }
 	@Given("I am on bank homepage")
 	public void iamAmOnBankHomepage() {
@@ -66,4 +73,38 @@ public class BankFundTransferStep {
 	public void iShouldSeeTransferConfirmationPage() {
 		Assert.assertEquals(true, bankLandingPage.verifyTransferConfirmation());
 	}
+	
+	@When("I navigate to bank online registration portal")
+	public void iNavigateToBankOnlineRegistrationPortal() {
+		bankRegistrationPage.linkRegister.click();
+	}
+	
+	@When("I enter required personal information")
+	public void iEnterRequiredPersonalInformation() {
+		bankRegistrationPage.textfirstName.sendKeys("Jhon");
+		bankRegistrationPage.textlastName.sendKeys("Kennedy");
+		bankRegistrationPage.textAddress.sendKeys("3440 Walnut Avenue");
+		bankRegistrationPage.textCity.sendKeys("Fremont");
+		bankRegistrationPage.textState.sendKeys("CA");
+		bankRegistrationPage.textZipCode.sendKeys("94538");
+		bankRegistrationPage.textPhone.sendKeys("4085679856");
+		bankRegistrationPage.textSsn.sendKeys("859657845");
+		bankRegistrationPage.textUsername.sendKeys("admin"+Calendar.getInstance().getTimeInMillis());
+		System.out.println("Username::"+"admin"+Calendar.getInstance().getTimeInMillis());
+		bankRegistrationPage.textPassword.sendKeys("admin");
+		bankRegistrationPage.textrepeatPassword.sendKeys("admin");
+		wait.forLoading(10);
+	}
+	
+	@When("I submit registration form")
+	public void iSubmitRegistrationForm() {
+		bankRegistrationPage.btnRegister.click();
+		wait.forElementToBeDisplayed(10, bankLandingPage.welcomeGreeting, "Welcome");
+	}
+	
+	@When("I see welcome page")
+	public void iSeeWelcomePage() {
+		Assert.assertEquals(true, bankLandingPage.welcomeGreeting.isDisplayed());
+	}
+	
 }

@@ -10,7 +10,7 @@ import io.cucumber.testng.CucumberOptions;
 		features = {"src/test/resources/featurefiles"},
 		glue = {"com.mphasis.qe.utils",
 		"com.mphasis.qe.stepdefs"},
-		tags = {"@web and @fundTransfer"},
+		tags = {"@web and @register"},
 		strict = true,
 		monochrome = true,
 		dryRun = false,
