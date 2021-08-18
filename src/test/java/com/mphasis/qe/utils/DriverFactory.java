@@ -26,7 +26,12 @@ public class DriverFactory extends RemoteWebDriver {
 	public synchronized RemoteWebDriver createInstance(String browser)throws Exception {
 		if (browser.equalsIgnoreCase("firefox")){        		
 			System.out.println(" Executing on FireFox");
-			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "\\library\\geckodriver.exe");
+			if(System.getProperty("os.name").contains("Windows")) {
+				System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "\\library\\geckodriver.exe");
+			}else{
+				System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/library/geckodriver");
+			}
+
 			//System.setProperty("webdriver.gecko.driver",propertySourceResolver.getGeckoDriverPath());
 			DesiredCapabilities cap = DesiredCapabilities.firefox();
 			cap.setCapability("marionette", true);
@@ -36,7 +41,11 @@ public class DriverFactory extends RemoteWebDriver {
 		} 
 
 		else if (browser.equalsIgnoreCase("chrome")){
-			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\library\\chrome\\91\\chromedriver.exe");
+			if(System.getProperty("os.name").contains("Windows")) {
+				System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\library\\chrome\\91\\chromedriver.exe");
+			}else{
+				System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/library/chrome/91/chromedriver");
+			}
 			//System.setProperty("webdriver.chrome.driver",propertySourceResolver.getChromeDriverPath());
 			System.out.println(" Executing on Chrome");
 			DesiredCapabilities cap = DesiredCapabilities.chrome();

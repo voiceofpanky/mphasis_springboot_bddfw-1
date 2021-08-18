@@ -1,3 +1,4 @@
+/*
 package com.mphasis.qe.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -7,3 +8,4 @@ import com.mphasis.qe.pojo.WFAutomationTestData;
 @Component
 public interface WFAutomationTestDataRepository extends MongoRepository<WFAutomationTestData, Integer>{
 }
+*/

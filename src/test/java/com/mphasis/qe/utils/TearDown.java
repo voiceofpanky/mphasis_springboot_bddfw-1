@@ -21,7 +21,7 @@ import com.mphasis.qe.PropertySourceResolver;
 import com.mphasis.qe.filter.CustomReportFilter;
 import com.mphasis.qe.pojo.ReportData;
 import com.mphasis.qe.pojo.RequestResponseData;
-import com.mphasis.qe.pojo.WFAutomationTestData;
+//import com.mphasis.qe.pojo.WFAutomationTestData;
 import org.apache.logging.log4j.LogManager;
 import java.util.Map;
 
@@ -69,7 +69,7 @@ public class TearDown {
 
         final byte[] screenshot = ((TakesScreenshot) driver)
                 .getScreenshotAs(OutputType.BYTES);
-        scenario.embed(screenshot, "image/png", "ErrorScreenshot" + scenario.getName());
+        scenario.attach(screenshot, "image/png", "ErrorScreenshot" + scenario.getName());
     }
     
 //    @After("@api")
@@ -83,7 +83,7 @@ public class TearDown {
     public void quitAPITest(Scenario scenario){
         if(scenario.isFailed()) {
             Map.Entry<String, Response> map = ApiUtil.requestResponseMap.entrySet().iterator().next();
-            scenario.write("Request: " + map.getKey() + "\n" +
+            scenario.log("Request: " + map.getKey() + "\n" +
                     "Response:" + map.getValue().asString() + "\n" +
                     "Status Code: " + map.getValue().getStatusCode());
         }

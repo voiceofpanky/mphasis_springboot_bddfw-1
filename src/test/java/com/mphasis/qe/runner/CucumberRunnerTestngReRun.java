@@ -11,7 +11,7 @@ import io.cucumber.testng.CucumberOptions;
 		features ="@target/rerun.txt",
 		glue = {"com.mphasis.qe.utils",
 		"com.mphasis.qe.stepdefs"},
-		tags = {"@web"},
+		tags = "@web",
 		strict = true,
 
 		monochrome = true,

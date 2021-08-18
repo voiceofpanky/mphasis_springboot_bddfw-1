@@ -18,7 +18,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<springVersion>2.3.0.RELEASE</springVersion>
-		<cucumberVersion>5.6.0</cucumberVersion>
+		<cucumberVersion>6.9.0</cucumberVersion>
 		<restAssuredVersion>4.2.0</restAssuredVersion>
 		<mavenSurefirePluginVersion>2.22.2</mavenSurefirePluginVersion>
 		<suiteFile>testng.xml</suiteFile>
@@ -91,15 +91,6 @@
 			<version>${cucumberVersion}</version>
 			<scope>test</scope>
 		</dependency>
-
-
-
-<!--		<dependency>-->
-<!--			<groupId>com.googlecode.json-simple</groupId>-->
-<!--			<artifactId>json-simple</artifactId>-->
-<!--			<version>1.1.1</version>-->
-<!--		</dependency>-->
-
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-spring</artifactId>
@@ -123,7 +114,13 @@
 			<artifactId>json-path</artifactId>
 			<version>${restAssuredVersion}</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
-
+		<!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all -->
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>3.0.7</version>
+			<type>pom</type>
+		</dependency>
 		<dependency>
 			<groupId>io.rest-assured</groupId>
 			<artifactId>xml-path</artifactId>
@@ -171,11 +168,7 @@
 <!--			<version>3.0.3</version>-->
 <!--		</dependency>-->
 
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>5.0.0</version>
-		</dependency>
+
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
@@ -189,15 +182,21 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>5.0.0</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-csv</artifactId>
 			<version>1.1</version>
 		</dependency>
-		<dependency>
+	<!--	<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 			<version>${springVersion}</version>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>io.github.bonigarcia</groupId>
 			<artifactId>webdrivermanager</artifactId>
