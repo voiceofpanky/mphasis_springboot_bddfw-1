@@ -1,6 +1,6 @@
 package com.mphasis.qe.utils;
 
-import com.mphasis.qe.utils.DBOperations;
+//import com.mphasis.qe.utils.DBOperations;
 
 import io.cucumber.java.Scenario;
 
@@ -28,7 +28,8 @@ public class CSVReport {
   }
 
   public void printReport(
-      Scenario scenario, ScenarioSession scenarioSession, DBOperations dbOperations)
+      //Scenario scenario, ScenarioSession scenarioSession, DBOperations dbOperations)
+      Scenario scenario, ScenarioSession scenarioSession)
       throws IOException {
     saveToCSV(
         scenario.getName(),

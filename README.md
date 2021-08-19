@@ -23,6 +23,7 @@
 ## Test Execution:
 
 * Run CucumberRunner.java as JUnit Test
+* Set -Dcucumber.publish.quiet=true in VM Configration to set the publish not displayed on Console.
 
 ## Using WebDriverManager:
 
