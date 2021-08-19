@@ -10,8 +10,7 @@ import org.junit.runner.RunWith;
 //@Slf4j
 @RunWith(Cucumber.class)
 @CucumberOptions(
-//        features = {"src/test/resources/featurefiles"},
-        features ="@target/rerun.txt",
+       features = {"src/test/resources/featurefiles"},
         glue = {"com.mphasis.qe.utils",
                 "com.mphasis.qe.stepdefs"},
 
