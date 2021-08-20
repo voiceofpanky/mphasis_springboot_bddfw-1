@@ -24,14 +24,13 @@ public class DriverFactory extends RemoteWebDriver {
 	
 	public RemoteWebDriver driver;
 	public synchronized RemoteWebDriver createInstance(String browser)throws Exception {
-		if (browser.equalsIgnoreCase("firefox")){        		
-			System.out.println(" Executing on FireFox");
+		if (browser.equalsIgnoreCase("firefox")){
 			if(System.getProperty("os.name").contains("Windows")) {
 				System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "\\library\\geckodriver.exe");
 			}else{
 				System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/library/geckodriver");
 			}
-
+			System.out.println(" Executing on FireFox");
 			//System.setProperty("webdriver.gecko.driver",propertySourceResolver.getGeckoDriverPath());
 			DesiredCapabilities cap = DesiredCapabilities.firefox();
 			cap.setCapability("marionette", true);
@@ -42,11 +41,10 @@ public class DriverFactory extends RemoteWebDriver {
 
 		else if (browser.equalsIgnoreCase("chrome")){
 			if(System.getProperty("os.name").contains("Windows")) {
-				System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\library\\chrome\\91\\chromedriver.exe");
+				System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\library\\chrome\\version\\chromedriver.exe");
 			}else{
-				System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/library/chrome/91/chromedriver");
+				System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/library/chrome/version/chromedriver");
 			}
-			//System.setProperty("webdriver.chrome.driver",propertySourceResolver.getChromeDriverPath());
 			System.out.println(" Executing on Chrome");
 			DesiredCapabilities cap = DesiredCapabilities.chrome();
 			cap.setCapability("marionette", true);
@@ -55,10 +53,15 @@ public class DriverFactory extends RemoteWebDriver {
 			logPrefs.enable(LogType.PERFORMANCE, Level.ALL);
 			cap.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 			cap.setPlatform(Platform.ANY);
-			driver = new ChromeDriver();							
+			driver = new ChromeDriver();
 		} 
 
-		else if (browser.equalsIgnoreCase("ie")){        		
+		else if (browser.equalsIgnoreCase("ie")){
+			if(System.getProperty("os.name").contains("Windows")) {
+				System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\library\\chrome\\version\\chromedriver.exe");
+			}else{
+				System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/library/chrome/version/chromedriver");
+			}
 			System.setProperty("webdriver.ie.driver", System.getProperty("user.dir")+ "\\library\\ie.exe");
 			//System.setProperty("webdriver.chrome.driver",propertySourceResolver.getIeDriverPath());
 			System.out.println(" Executing on Internet Explorer");
@@ -76,11 +79,11 @@ public class DriverFactory extends RemoteWebDriver {
 			driver = new InternetExplorerDriver(cap);
 		} 
 		else if (browser.equalsIgnoreCase("edge")){        		
-			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")+ "\\library\\edge.exe");
-			//System.setProperty("webdriver.chrome.driver",propertySourceResolver.getEdgeDriverPath());
-			System.out.println(" Executing on Edge browser");
-			DesiredCapabilities cap = DesiredCapabilities.edge();
-			driver = new EdgeDriver(cap);
+//			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")+ "\\library\\edge.exe");
+//			//System.setProperty("webdriver.chrome.driver",propertySourceResolver.getEdgeDriverPath());
+//			System.out.println(" Executing on Edge browser");
+//			DesiredCapabilities cap = DesiredCapabilities.edge();
+//			driver = new EdgeDriver(cap);
 		}
 		driver.manage().window().maximize();
 		return driver;

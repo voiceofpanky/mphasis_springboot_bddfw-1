@@ -21,7 +21,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-//public class SamplePOSTSteps{
 public class SamplePOSTSteps extends ApiUtil {
     private Response response;
     private String jsonBody;

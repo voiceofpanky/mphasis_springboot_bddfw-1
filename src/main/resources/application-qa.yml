@@ -8,13 +8,17 @@ app:
     base: https://mphasisin.service-now.com/
     api: https://reqres.in/api/users/
     bankUri: https://parabank.parasoft.com/parabank/index.htm
+    securityUri: http://zero.webappsecurity.com/login.html
+    getUser: https://reqres.in/api/unknown/
+    register: https://reqres.in/api/register
+
 
 encrypted:
-  username: 0FoxXRpKfkYQ1wRpxxSZYasR2CH0W0aYHSvmoLpahN3Ypxl8NeDHVWaxY3SnyGD0lZBhVRj626nrTKdw4ma0/g==
-  password: cRl3I6GUe0GvIglnbhPwbWmgF2WA03wOVLx7e/zAL83EJIRzF294SfBN8fjcXe9Z
+  username: ZmD3FX4pCzdjJ/HeWKSNF+EFRX25bC1erfBU4NFiqmYqAa0JxlEwb5KqLPsEMc/g
+  password: P4cvUTdwNUYk3C8DnBd0lE6RIi3Zt2Uo5SwXchRFeM+YXUfRUMP1AOJuwEKrJm52
 
 platform:
-  name: web
+  name: ios
 
 browser:
   name: chrome
@@ -24,7 +28,7 @@ parallel:
   crossbrowser: false
 
 selenium:
-  chrome.driver: library/chrome/91/chromedriver.exe
+  chrome.driver: library/chrome/version/chromedriver.exe
   gecko.driver: library/geckodriver.exe
   ie.driver: library/IEDriverServer.exe
   edge.driver: library/edge.exe

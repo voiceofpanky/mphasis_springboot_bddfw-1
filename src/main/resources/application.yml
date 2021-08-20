@@ -5,16 +5,20 @@ app:
   name: MyApp
   description: ${app.name} serves a key role in the overall IT landscape
   url:
-    base: https://mphasisin.service-now.com/
+    #base: https://mphasisin.service-now.com/
     api: https://reqres.in/api/users/
+    bankUri: https://parabank.parasoft.com/parabank/index.htm
+    securityUri: http://zero.webappsecurity.com/login.html
     getUser: https://reqres.in/api/unknown/
     register: https://reqres.in/api/register
+
 
 encrypted:
   username:
   password:
 
 platform:
+  #name: ios
   name: web
 
 browser:

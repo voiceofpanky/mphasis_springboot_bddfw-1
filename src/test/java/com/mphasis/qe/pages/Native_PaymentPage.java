@@ -15,20 +15,28 @@ import org.springframework.stereotype.Component;
 public class Native_PaymentPage extends BasePage {
     @iOSXCUITFindBy(accessibility = "phoneTextField")
     private WebElement phoneTxt;
+
     @iOSXCUITFindBy(accessibility = "nameTextField")
     private WebElement nameTxt;
+
     @iOSXCUITFindBy(accessibility = "amountTextField")
     private WebElement amountTxt;
+
     @iOSXCUITFindBy(accessibility = "countryButton")
     private WebElement countryBtn;
+
     @iOSXCUITFindBy(accessibility = "sendPaymentButton")
     private WebElement sendPayBtn;
+
     @iOSXCUITFindBy(accessibility = "cancel")
     private WebElement cancelBtn;
+
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTable/*/XCUIElementTypeStaticText[@name='India']")
     private WebElement tableViewIndia;
+
     @iOSXCUITFindBy(accessibility = "Yes")
     private WebElement confirmYesBtn;
+
     @iOSXCUITFindBy(accessibility = "No")
     private WebElement confirmNoBtn;
 

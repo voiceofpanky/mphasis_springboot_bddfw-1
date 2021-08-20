@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class FileHandlerPage extends BasePage {
 
-    private final String PAGE_URL = "http://zero.webappsecurity.com/login.html";
+    private final String PAGE_URL = this.securityUrl;
 
     @FindBy(id = "user_login")
     private WebElement login;

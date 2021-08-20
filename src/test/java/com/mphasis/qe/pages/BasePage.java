@@ -18,6 +18,7 @@ public class BasePage{
     public Wait wait;
     public String baseUrl;
     public String bankUrl;
+    public String securityUrl;
 
     public BasePage()  {
         this.driver = new Setup().webdriver;
@@ -25,5 +26,6 @@ public class BasePage{
         this.baseUrl = new Setup().baseUrl;
         this.wait = new Wait(this.driver);
         this.bankUrl=new Setup().bankUrl;
+        this.securityUrl = new Setup().securityUrl;
     }
 }

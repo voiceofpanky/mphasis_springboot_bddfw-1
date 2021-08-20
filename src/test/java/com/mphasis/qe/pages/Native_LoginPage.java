@@ -15,14 +15,15 @@ import org.springframework.stereotype.Component;
 public class Native_LoginPage extends BasePage {
     private Native_DashboardPage dashboardPage;
 
-
-
     @iOSXCUITFindBy(accessibility = "logo.png")
     private WebElement logoImg;
+
     @iOSXCUITFindBy(accessibility = "usernameTextField")
     private WebElement userNameTxt;
+
     @iOSXCUITFindBy(accessibility = "passwordTextField")
     private WebElement passwordTxt;
+
     @iOSXCUITFindBy(accessibility = "loginButton")
     private WebElement loginBtn;
 

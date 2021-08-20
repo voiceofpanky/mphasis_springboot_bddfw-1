@@ -1,5 +1,6 @@
 package com.mphasis.qe.pages;
 
+import com.mphasis.qe.utils.Setup;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -53,8 +54,8 @@ public class BankLoginPage extends BasePage {
     
     public BankLandingPage login(){
     	 bankLandingPage=new BankLandingPage();
-    	 this.username.sendKeys("admin");
-    	 this.password.sendKeys("admin");
+    	 this.username.sendKeys(Setup.username);
+    	 this.password.sendKeys(Setup.password);
     	 this.login.click();
     	 return bankLandingPage;
     }

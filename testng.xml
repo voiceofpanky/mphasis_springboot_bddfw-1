@@ -13,40 +13,34 @@
 			<parameter name="browser" value="chrome" />
 		</classes>
 	</test>
-<!-- 	<test name="Parallel Firefox">
-		<classes>
-			<class name="com.mphasis.qe.runner.ParallelRunnerTest" />
-			<parameter name="browser" value="firefox" />
-		</classes>
-	</test>
-	<test name="Parallel ie" >
-		<classes>
-			<class name="com.mphasis.qe.runner.ParallelRunnerTest" />
-			<parameter name="browser" value="ie" />
-		</classes>
-	</test>
-	<test name="Parallel edge" >
-		<classes>
-			<class name="com.mphasis.qe.runner.ParallelRunnerTest" />
-			<parameter name="browser" value="edge" />
-		</classes>
-	</test>
-	<test name="Parallel safari" >
-		<classes>
-			<class name="com.mphasis.qe.runner.ParallelRunnerTest" />
-			<parameter name="browser" value="safari" />
-		</classes>
-	</test>
-	<test name="Parallel android" >
-		<classes>
-			<class name="com.mphasis.qe.runner.ParallelRunnerTest" />
-			<parameter name="browser" value="android" />
-		</classes>
-	</test>
-	<test name="Parallel iOS" >
-		<classes>
-			<class name="com.mphasis.qe.runner.ParallelRunnerTest" />
-			<parameter name="browser" value="iOS" />
-		</classes>
-	</test> -->
+	<!-- 	<test name="Parallel Firefox">
+            <classes>
+                <class name="com.mphasis.qe.runner.ParallelRunnerTest" />
+                <parameter name="browser" value="firefox" />
+            </classes>
+        </test>
+        <test name="Parallel ie" >
+            <classes>
+                <class name="com.mphasis.qe.runner.ParallelRunnerTest" />
+                <parameter name="browser" value="ie" />
+            </classes>
+        </test>
+        <test name="Parallel safari" >
+            <classes>
+                <class name="com.mphasis.qe.runner.ParallelRunnerTest" />
+                <parameter name="browser" value="safari" />
+            </classes>
+        </test>
+        <test name="Parallel android" >
+            <classes>
+                <class name="com.mphasis.qe.runner.ParallelRunnerTest" />
+                <parameter name="browser" value="android" />
+            </classes>
+        </test>
+        <test name="Parallel iOS" >
+            <classes>
+                <class name="com.mphasis.qe.runner.ParallelRunnerTest" />
+                <parameter name="browser" value="iOS" />
+            </classes>
+        </test> -->
 </suite>
