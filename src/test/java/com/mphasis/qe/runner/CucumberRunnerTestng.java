@@ -1,5 +1,6 @@
 package com.mphasis.qe.runner;
 
+
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
@@ -9,8 +10,10 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
 		features = {"src/test/resources/featurefiles"},
 		glue = {"com.mphasis.qe.utils",
-		"com.mphasis.qe.stepdefs"},
-		tags = {"@web and @register"},
+				"com.mphasis.qe.stepdefs"},
+		//tags = "@web and @parallel",
+		tags = "@ios",
+		publish = false,
 		strict = true,
 		monochrome = true,
 		dryRun = false,

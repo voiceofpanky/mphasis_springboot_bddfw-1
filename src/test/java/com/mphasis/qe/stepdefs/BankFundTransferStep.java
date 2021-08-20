@@ -1,8 +1,6 @@
 package com.mphasis.qe.stepdefs;
 
 import java.util.Calendar;
-
-import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import com.mphasis.qe.pages.BankLandingPage;

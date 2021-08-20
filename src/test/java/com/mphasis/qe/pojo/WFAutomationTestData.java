@@ -1,3 +1,4 @@
+/*
 package com.mphasis.qe.pojo;
 
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,3 +18,4 @@ public class WFAutomationTestData {
 	private String testName;
 	private String testDuration;	
 }
+*/

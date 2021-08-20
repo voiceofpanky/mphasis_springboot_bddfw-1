@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-//public class SampleGETSteps{
+
 public class SampleGETSteps extends ApiUtil {
     private Response response;
 

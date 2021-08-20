@@ -22,7 +22,6 @@ public class MakePayementSteps {
         this.paymentPage = new Native_PaymentPage();
     }
 
-
     @Given("User logged into TestBank")
     public void userLoggedIntoTestBank() {
         this.loginPage.checkLogoDisplay();
@@ -34,14 +33,12 @@ public class MakePayementSteps {
     @And("User lands on Dashboard page")
     public void userAmOnDashboardPage() {
         this.dashboardPage.checkBalanceDisplay();
-
     }
 
     @When("User clicks on {string}")
     public void userClicksOn(String link) {
         this.dashboardPage.navigateTo(link);
     }
-
 
     @Then("User lands on Payments page")
     public void userLandsOnPaymentsPage() {
@@ -70,6 +67,5 @@ public class MakePayementSteps {
         this.paymentPage.sendAction("Yes");
         userAmOnDashboardPage();
     }
-
 
 }

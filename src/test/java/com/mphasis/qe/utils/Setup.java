@@ -32,7 +32,6 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class Setup {
 
-
     public static AndroidDriver androidDriver;
     public static IOSDriver iosDriver;
 
@@ -40,7 +39,6 @@ public class Setup {
     private PropertySourceResolver propertySourceResolver;
     @Autowired
     private ScenarioSession scenarioSession;
-
 
     private static String platformName;
     private static String browserName;
@@ -55,6 +53,7 @@ public class Setup {
     private static String APPIUM_WEB_DRIVER_SERVER_URL = "http://127.0.0.1:4723/wd/hub";
     boolean webdriverManagerFlag;
     public static String bankUrl;
+    public static String securityUrl;
     boolean isParallelCrossbrowser;
     public DriverFactory driverFactory;
 
@@ -86,6 +85,7 @@ public class Setup {
         dataSource = propertySourceResolver.getDataSource();
         dataPath = propertySourceResolver.getDataPath();
         bankUrl=propertySourceResolver.getAppBankUri();
+        securityUrl = propertySourceResolver.getWebAppSecurityUri();
         isParallelCrossbrowser=propertySourceResolver.isParallelCrossbrowser();
 
         File classpathRoot = new File(System.getProperty("user.dir"));

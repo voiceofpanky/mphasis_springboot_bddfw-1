@@ -13,7 +13,7 @@ public class PropertySourceResolver {
 
     @Value("${app.url.api}")
     private String appApiUrl;
-    
+
     @Value("${app.url.register}")
     private String appRegisterUrl;
     
@@ -106,4 +106,7 @@ public class PropertySourceResolver {
 
     @Value("${parallel.crossbrowser}")
     private boolean isParallelCrossbrowser;
+
+    @Value("${app.url.securityUri}")
+    private String webAppSecurityUri;
 }

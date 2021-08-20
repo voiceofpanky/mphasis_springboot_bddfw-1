@@ -1,3 +1,4 @@
+/*
 package com.mphasis.qe.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,3 +21,4 @@ public class DBOperations {
 	}
 
 }
+*/

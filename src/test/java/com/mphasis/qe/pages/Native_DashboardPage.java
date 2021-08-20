@@ -15,12 +15,16 @@ import org.springframework.stereotype.Component;
 public class Native_DashboardPage extends BasePage {
     @iOSXCUITFindBy(accessibility = "Your balance is: ")
     private WebElement balanceLabel;
+
     @iOSXCUITFindBy(accessibility = "Make Payment")
     private WebElement paymentBtn;
+
     @iOSXCUITFindBy(iOSNsPredicate = "label == 'Mortgage Request' AND name == 'Mortgage Request' AND  type == 'XCUIElementTypeButton'")
     private WebElement mortgageBtn;
+
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Expense Report']")
     private WebElement expenseRptBtn;
+
     @iOSXCUITFindBy(accessibility = "Logout")
     private WebElement logoutBtn;
 

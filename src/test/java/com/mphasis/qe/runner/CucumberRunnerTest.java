@@ -1,7 +1,7 @@
 package com.mphasis.qe.runner;
 
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 
 /****************************************************************************************
@@ -10,12 +10,12 @@ import org.junit.runner.RunWith;
 //@Slf4j
 @RunWith(Cucumber.class)
 @CucumberOptions(
-       features = {"src/test/resources/featurefiles"},
+        features = {"src/test/resources/featurefiles"},
         glue = {"com.mphasis.qe.utils",
                 "com.mphasis.qe.stepdefs"},
 
         //tags = {"not @Ignore"},
-        tags = {"@web"},
+        tags = "@web",
         strict = true,
 
         monochrome = true,
@@ -26,7 +26,7 @@ import org.junit.runner.RunWith;
         })
 public class CucumberRunnerTest{
 
-        }
+}
 //public class CucumberRunnerTest{
 //
 //	public static Map<Integer, String> categoryMap = new HashMap<Integer, String>();
