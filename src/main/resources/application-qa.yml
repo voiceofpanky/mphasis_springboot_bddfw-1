@@ -18,7 +18,7 @@ encrypted:
   password: P4cvUTdwNUYk3C8DnBd0lE6RIi3Zt2Uo5SwXchRFeM+YXUfRUMP1AOJuwEKrJm52
 
 platform:
-  name: web
+  name: ios
 
 browser:
   name: chrome

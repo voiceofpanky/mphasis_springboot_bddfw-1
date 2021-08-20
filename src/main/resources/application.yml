@@ -18,8 +18,8 @@ encrypted:
   password:
 
 platform:
-  name: ios
-  #name: web
+  #name: ios
+  name: web
 
 browser:
   name: chrome

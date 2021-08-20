@@ -1,6 +1,8 @@
 package com.mphasis.qe.stepdefs;
 
 import java.util.Calendar;
+
+import com.mphasis.qe.utils.Setup;
 import org.testng.Assert;
 
 import com.mphasis.qe.pages.BankLandingPage;
@@ -11,7 +13,6 @@ import com.mphasis.qe.pages.BasePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
 
 /****************************************************************************************
  * @author Pankaj Sao
@@ -87,10 +88,10 @@ public class BankFundTransferStep extends BasePage{
 		bankRegistrationPage.textZipCode.sendKeys("94538");
 		bankRegistrationPage.textPhone.sendKeys("4085679856");
 		bankRegistrationPage.textSsn.sendKeys("859657845");
-		bankRegistrationPage.textUsername.sendKeys("admin"+Calendar.getInstance().getTimeInMillis());
-		System.out.println("Username::"+"admin"+Calendar.getInstance().getTimeInMillis());
-		bankRegistrationPage.textPassword.sendKeys("admin");
-		bankRegistrationPage.textrepeatPassword.sendKeys("admin");
+		bankRegistrationPage.textUsername.sendKeys(Setup.username+Calendar.getInstance().getTimeInMillis());
+		//System.out.println("Username::"+ Setup.username+Calendar.getInstance().getTimeInMillis());
+		bankRegistrationPage.textPassword.sendKeys(Setup.password);
+		bankRegistrationPage.textrepeatPassword.sendKeys(Setup.password);
 		wait.forLoading(10);
 	}
 	
