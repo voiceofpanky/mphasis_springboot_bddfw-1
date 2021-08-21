@@ -7,11 +7,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import lombok.extern.slf4j.Slf4j;
 
 /****************************************************************************************
  * @author Tamilselvan Ramalingam
  ****************************************************************************************/
-
+@Slf4j
 public class MakePayementSteps {
     private Native_LoginPage loginPage;
     private Native_PaymentPage paymentPage;
@@ -49,6 +50,7 @@ public class MakePayementSteps {
         this.paymentPage.sendText("PhoneNumber", phoneNumber);
         this.paymentPage.sendText("Name", name);
         this.paymentPage.sendText("Amount", amount);
+        log.info("Completed the User Payee Information");
     }
 
     @And("User selects {string}")
@@ -66,6 +68,7 @@ public class MakePayementSteps {
     public void userAbleToSendThePayment() {
         this.paymentPage.sendAction("Yes");
         userAmOnDashboardPage();
+        log.info("Payment sent Successfully");
     }
 
 }

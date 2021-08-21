@@ -3,6 +3,7 @@ package com.mphasis.qe.stepdefs;
 import java.util.Calendar;
 
 import com.mphasis.qe.utils.Setup;
+import lombok.extern.slf4j.Slf4j;
 import org.testng.Assert;
 
 import com.mphasis.qe.pages.BankLandingPage;
@@ -17,6 +18,7 @@ import io.cucumber.java.en.When;
 /****************************************************************************************
  * @author Pankaj Sao
  ****************************************************************************************/
+@Slf4j
 public class BankFundTransferStep extends BasePage{
 	private BankLoginPage bankLoginPage;
 	private BankLandingPage bankLandingPage;
