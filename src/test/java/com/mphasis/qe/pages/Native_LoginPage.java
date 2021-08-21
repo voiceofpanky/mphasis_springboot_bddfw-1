@@ -37,17 +37,25 @@ public class Native_LoginPage extends BasePage {
     }
 
     public void enterUserName(String userName) {
+        log.info("Entering the enterUserName step");
         this.userNameTxt.click();
         this.userNameTxt.sendKeys(userName);
+        log.info("Exiting the enterUserName step");
     }
 
     public void enterPassword(String password) {
+        log.info("Entering the enterPassword step");
         this.passwordTxt.click();
         this.passwordTxt.sendKeys(password);
+        log.info("Exiting the enterPassword step");
     }
 
     public Native_DashboardPage login() {
+
+        log.info("Entering the login step");
         this.loginBtn.click();
+
+        log.info("Exiting the login step");
         return dashboardPage;
     }
 }

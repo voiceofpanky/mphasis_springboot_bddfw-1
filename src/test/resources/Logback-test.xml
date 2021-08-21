@@ -24,7 +24,7 @@
         <appender-ref ref="RollingFile-Appender" />
     </appender>
 
-    <logger name="com.mphasis.qe"  level="ERROR" additivity="false">
+    <logger name="com.mphasis.qe"  level="INFO" additivity="false">
         <appender-ref ref="Console-Appender" />
         <appender-ref ref="Async-Appender" />
     </logger>

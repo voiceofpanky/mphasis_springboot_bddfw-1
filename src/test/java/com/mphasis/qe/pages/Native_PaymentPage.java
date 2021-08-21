@@ -51,6 +51,8 @@ public class Native_PaymentPage extends BasePage {
     }
 
     public void sendAction(String actionButton) {
+
+        log.info("Entering the sendAction step"+ actionButton);
         switch (actionButton) {
             case "Payment":
                 this.sendPayBtn.click();
@@ -69,6 +71,8 @@ public class Native_PaymentPage extends BasePage {
     }
 
     public void sendText(String element, String value) {
+
+        log.info("Entering the sendText step"+ element +"With value"+value);
         switch (element) {
             case "Amount":
                 this.amountTxt.click();
