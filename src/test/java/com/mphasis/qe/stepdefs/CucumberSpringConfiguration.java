@@ -8,7 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 @CucumberContextConfiguration
 @SpringBootTest
-public class SpringTestConfiguration {
+public class CucumberSpringConfiguration {
 
 
 }

@@ -1,3 +1,4 @@
+/*
 package com.mphasis.qe;
 
 import org.junit.jupiter.api.Test;
@@ -12,3 +13,4 @@ class BddFrameworkApplicationTests {
 	}
 
 }
+*/

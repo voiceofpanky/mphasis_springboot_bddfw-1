@@ -29,6 +29,13 @@
 
 * Update local browser version in application-qa.yml file before using WebDriverManager
 
+## Using Lombok Logback logging
+### Setup
+* logback-test.xml we need to change the log level .Defaulted to ERROR, we can set to info debug as applicable based on the need
+### logging
+* ensure Class level annoation @SLF4j being added and lombok.logback is imported
+* log.**_info_ / _debug_ / _error_ **("your message") wherever applicable on that file
+
 ## Gerkin-Lint
 
 ### Pre-Requisites

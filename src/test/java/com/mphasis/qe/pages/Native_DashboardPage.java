@@ -37,11 +37,13 @@ public class Native_DashboardPage extends BasePage {
     }
 
     public void checkBalanceDisplay() {
+
+        log.info("Entering the checkBalanceDisplay step");
         this.balanceLabel.isDisplayed();
     }
 
     public void navigateTo(String navigateLink) {
-
+        log.info("Entering the navigateTo step"+ navigateLink);
         switch (navigateLink) {
             case "Payment":
                 this.paymentBtn.click();

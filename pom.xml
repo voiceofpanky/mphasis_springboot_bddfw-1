@@ -1,294 +1,301 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.3.0.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
-	</parent>
-	<groupId>com.mphasis.qe</groupId>
-	<artifactId>bdd-framework</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>bdd-framework</name>
-	<description>BDD Framework</description>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.0.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.mphasis.qe</groupId>
+    <artifactId>bdd-framework</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>bdd-framework</name>
+    <description>BDD Framework</description>
 
-	<properties>
-		<java.version>1.8</java.version>
-		<springVersion>2.3.0.RELEASE</springVersion>
-		<cucumberVersion>6.9.0</cucumberVersion>
-		<restAssuredVersion>4.2.0</restAssuredVersion>
-		<mavenSurefirePluginVersion>2.22.2</mavenSurefirePluginVersion>
-		<suiteFile>testng.xml</suiteFile>
-	</properties>
+    <properties>
+        <java.version>1.8</java.version>
+        <springVersion>2.3.0.RELEASE</springVersion>
+        <cucumberVersion>6.9.0</cucumberVersion>
+        <restAssuredVersion>4.2.0</restAssuredVersion>
+        <mavenSurefirePluginVersion>2.22.2</mavenSurefirePluginVersion>
+        <suiteFile>testng.xml</suiteFile>
+    </properties>
 
-	<repositories>
-		<repository>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<id>bintray-epam-reportportal</id>
-			<name>bintray</name>
-			<url>http://dl.bintray.com/epam/reportportal</url>
-		</repository>
-	</repositories>
-	<profiles>
-		<profile>
-			<id>qa</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<spring.profiles.active>qa</spring.profiles.active>
-			</properties>
-		</profile>
-		<profile>
-			<id>staging</id>
-			<properties>
-				<spring.profiles.active>staging</spring.profiles.active>
-			</properties>
-		</profile>
-	</profiles>
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>bintray-epam-reportportal</id>
+            <name>bintray</name>
+            <url>http://dl.bintray.com/epam/reportportal</url>
+        </repository>
+    </repositories>
+    <profiles>
+        <profile>
+            <id>qa</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.profiles.active>qa</spring.profiles.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>staging</id>
+            <properties>
+                <spring.profiles.active>staging</spring.profiles.active>
+            </properties>
+        </profile>
+    </profiles>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-			<version>${springVersion}</version>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${springVersion}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<version>${springVersion}</version>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${springVersion}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+            <version>${springVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumberVersion}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>3.141.59</version>
-		</dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumberVersion}</version>
+            <scope>test</scope>
+        </dependency>
 
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-java</artifactId>
-			<version>${cucumberVersion}</version>
-		</dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumberVersion}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-spring</artifactId>
+            <version>${cucumberVersion}</version>
+        </dependency>
 
-		 <dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-junit</artifactId>
-			<version>${cucumberVersion}</version>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>${restAssuredVersion}</version><!--$NO-MVN-MAN-VER$ -->
+        </dependency>
 
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-testng</artifactId>
-			<version>${cucumberVersion}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-spring</artifactId>
-			<version>${cucumberVersion}</version>
-		</dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${restAssuredVersion}</version><!--$NO-MVN-MAN-VER$ -->
+        </dependency>
 
-		<dependency>
-			<groupId>io.rest-assured</groupId>
-			<artifactId>json-schema-validator</artifactId>
-			<version>${restAssuredVersion}</version><!--$NO-MVN-MAN-VER$ -->
-		</dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-path</artifactId>
+            <version>${restAssuredVersion}</version><!--$NO-MVN-MAN-VER$ -->
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all -->
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>3.0.7</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>xml-path</artifactId>
+            <version>${restAssuredVersion}</version><!--$NO-MVN-MAN-VER$ -->
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>4.1.0</version><!--$NO-MVN-MAN-VER$ -->
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.10</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>7.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-configuration2</artifactId>
+            <version>2.7</version>
+        </dependency>
 
-		<dependency>
-			<groupId>io.rest-assured</groupId>
-			<artifactId>rest-assured</artifactId>
-			<version>${restAssuredVersion}</version><!--$NO-MVN-MAN-VER$ -->
-		</dependency>
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>3.0.1</version>
+        </dependency>
 
-		<dependency>
-			<groupId>io.rest-assured</groupId>
-			<artifactId>json-path</artifactId>
-			<version>${restAssuredVersion}</version><!--$NO-MVN-MAN-VER$ -->
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all -->
-		<dependency>
-			<groupId>org.codehaus.groovy</groupId>
-			<artifactId>groovy-all</artifactId>
-			<version>3.0.7</version>
-			<type>pom</type>
-		</dependency>
-		<dependency>
-			<groupId>io.rest-assured</groupId>
-			<artifactId>xml-path</artifactId>
-			<version>${restAssuredVersion}</version><!--$NO-MVN-MAN-VER$ -->
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.20</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.awaitility</groupId>
-			<artifactId>awaitility</artifactId>
-			<version>4.1.0</version><!--$NO-MVN-MAN-VER$ -->
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-  			<groupId>org.testng</groupId>
-  			<artifactId>testng</artifactId>
-  			<version>6.10</version>
-  			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.appium</groupId>
-			<artifactId>java-client</artifactId>
-			<version>7.5.1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-configuration2</artifactId>
-			<version>2.7</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.github.ulisesbocchio</groupId>
-			<artifactId>jasypt-spring-boot-starter</artifactId>
-			<version>3.0.1</version>
-		</dependency>
-
-<!--		<dependency>-->
-<!--			<groupId>com.github.ulisesbocchio</groupId>-->
-<!--			<artifactId>jasypt-spring-boot-starter</artifactId>-->
-<!--			<version>3.0.3</version>-->
-<!--		</dependency>-->
+        <!--		<dependency>-->
+        <!--			<groupId>com.github.ulisesbocchio</groupId>-->
+        <!--			<artifactId>jasypt-spring-boot-starter</artifactId>-->
+        <!--			<version>3.0.3</version>-->
+        <!--		</dependency>-->
 
 
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.8.7</version>
-		</dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.7</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.jsoup</groupId>
-			<artifactId>jsoup</artifactId>
-			<version>1.7.2</version>
-		</dependency>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.7.2</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>5.0.0</version>
-		</dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.0.0</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-csv</artifactId>
-			<version>1.1</version>
-		</dependency>
-	<!--	<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
-			<version>${springVersion}</version>
-		</dependency> -->
-		<dependency>
-			<groupId>io.github.bonigarcia</groupId>
-			<artifactId>webdrivermanager</artifactId>
-			<version>4.4.3</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.mkolisnyk</groupId>
-			<artifactId>cucumber-runner</artifactId>
-			<version>1.3.3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-maven-plugin</artifactId>
-			<version>${springVersion}</version>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <!--	<dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-mongodb</artifactId>
+                <version>${springVersion}</version>
+            </dependency> -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>4.4.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.mkolisnyk</groupId>
+            <artifactId>cucumber-runner</artifactId>
+            <version>1.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>${springVersion}</version>
 
-		</dependency>
-		<dependency>
+        </dependency>
+        <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
             <version>${mavenSurefirePluginVersion}</version>
         </dependency>
     </dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${mavenSurefirePluginVersion}</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
-<!--                  <executions>-->
-<!--                        <execution>-->
-<!--                            <phase>test</phase>-->
-<!--                            <goals>-->
-<!--                                <goal>test</goal>-->
-<!--                            </goals>-->
-<!--                        </execution>-->
-<!--                    </executions>-->
-                        <suiteXmlFiles>
-                            <suiteXmlFile>${suiteFile}</suiteXmlFile>
-                        </suiteXmlFiles>          
+                    <!--                  <executions>-->
+                    <!--                        <execution>-->
+                    <!--                            <phase>test</phase>-->
+                    <!--                            <goals>-->
+                    <!--                                <goal>test</goal>-->
+                    <!--                            </goals>-->
+                    <!--                        </execution>-->
+                    <!--                    </executions>-->
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suiteFile}</suiteXmlFile>
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
             <plugin>
-				<groupId>net.masterthought</groupId>
-				<artifactId>maven-cucumber-reporting</artifactId>
-				<version>5.3.0</version>
-				<executions>
-					<execution>
-						<id>execution</id>
-						<phase>package</phase>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<projectName>MyProjectName</projectName>  <!-- Replace with project name -->
-							<outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
-							<inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>
-							<buildNumber>1</buildNumber>
-							<jsonFiles>
-								<jsonFile>**/*.json</jsonFile>
-							</jsonFiles>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<!--<plugin> <groupId>com.assertthat.plugins</groupId> <artifactId>assertthat-bdd-maven-plugin</artifactId> 
-				<version>1.4</version> <configuration> <projectId> 10000 </projectId> &lt;!&ndash;Optional 
-				can be supplied as environment variable ASSERTTHAT_ACCESS_KEY &ndash;&gt; 
-				<accessKey> 76e1ed393c26c674ca9996a579e105f5788ae0383c0876dfbf49ecdd49b10abc 
-				</accessKey> &lt;!&ndash;Optional can be supplied as environment variable 
-				ASSERTTHAT_SECRET_KEY &ndash;&gt; <secretKey> 970543c6ea91ad42ef23f4f9fde49bd126325e47f5837f39b2aee0ed2abc2354 
-				</secretKey> &lt;!&ndash; Used for jira server integration only. If using 
-				cloud remove this option&ndash;&gt; &lt;!&ndash; <jiraServerUrl>https://dipanjanc.atlassian.net</jiraServerUrl> 
-				&ndash;&gt; </configuration> <executions> <execution> <configuration> &lt;!&ndash;Optional 
-				- default ./features&ndash;&gt; <outputFolder>src/test/resources/featurefiles</outputFolder> 
-				&lt;!&ndash;Optional - all features downloaded by default - should be a valid 
-				JQL&ndash;&gt; &lt;!&ndash; <jql>project = XX AND key in ('XXX-1')</jql> 
-				&ndash;&gt; &lt;!&ndash;Optional - default automated (can be one of: manual/automated/both)&ndash;&gt; 
-				<mode>automated</mode> </configuration> <id>features</id> <goals> <goal>features</goal> 
-				</goals> <phase>test-compile</phase> </execution> <execution> <id>report</id> 
-				<goals> <goal>report</goal> </goals> <phase>prepare-package</phase> <configuration> 
-				&lt;!&ndash;Optional - default ./report&ndash;&gt; <jsonReportFolder>target/cucumber-reports/</jsonReportFolder> 
-				&lt;!&ndash;Optional - default - **/*.json &ndash;&gt; <jsonReportIncludePattern>**/cucumber.json</jsonReportIncludePattern> 
-				&lt;!&ndash;Optional - default cucumber (can be one of: cucumber/karate)&ndash;&gt; 
-				<type>cucumber</type> </configuration> </execution> </executions> </plugin> -->
-		</plugins>
-	</build>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>5.3.0</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>MyProjectName</projectName>  <!-- Replace with project name -->
+                            <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
+                            <inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>
+                            <buildNumber>1</buildNumber>
+                            <jsonFiles>
+                                <jsonFile>**/*.json</jsonFile>
+                            </jsonFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--<plugin> <groupId>com.assertthat.plugins</groupId> <artifactId>assertthat-bdd-maven-plugin</artifactId>
+                <version>1.4</version> <configuration> <projectId> 10000 </projectId> &lt;!&ndash;Optional
+                can be supplied as environment variable ASSERTTHAT_ACCESS_KEY &ndash;&gt;
+                <accessKey> 76e1ed393c26c674ca9996a579e105f5788ae0383c0876dfbf49ecdd49b10abc
+                </accessKey> &lt;!&ndash;Optional can be supplied as environment variable
+                ASSERTTHAT_SECRET_KEY &ndash;&gt; <secretKey> 970543c6ea91ad42ef23f4f9fde49bd126325e47f5837f39b2aee0ed2abc2354
+                </secretKey> &lt;!&ndash; Used for jira server integration only. If using
+                cloud remove this option&ndash;&gt; &lt;!&ndash; <jiraServerUrl>https://dipanjanc.atlassian.net</jiraServerUrl>
+                &ndash;&gt; </configuration> <executions> <execution> <configuration> &lt;!&ndash;Optional
+                - default ./features&ndash;&gt; <outputFolder>src/test/resources/featurefiles</outputFolder>
+                &lt;!&ndash;Optional - all features downloaded by default - should be a valid
+                JQL&ndash;&gt; &lt;!&ndash; <jql>project = XX AND key in ('XXX-1')</jql>
+                &ndash;&gt; &lt;!&ndash;Optional - default automated (can be one of: manual/automated/both)&ndash;&gt;
+                <mode>automated</mode> </configuration> <id>features</id> <goals> <goal>features</goal>
+                </goals> <phase>test-compile</phase> </execution> <execution> <id>report</id>
+                <goals> <goal>report</goal> </goals> <phase>prepare-package</phase> <configuration>
+                &lt;!&ndash;Optional - default ./report&ndash;&gt; <jsonReportFolder>target/cucumber-reports/</jsonReportFolder>
+                &lt;!&ndash;Optional - default - **/*.json &ndash;&gt; <jsonReportIncludePattern>**/cucumber.json</jsonReportIncludePattern>
+                &lt;!&ndash;Optional - default cucumber (can be one of: cucumber/karate)&ndash;&gt;
+                <type>cucumber</type> </configuration> </execution> </executions> </plugin> -->
+        </plugins>
+    </build>
 
 </project>

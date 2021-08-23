@@ -3,19 +3,27 @@ package com.mphasis.qe.stepdefs;
 import com.mphasis.qe.pages.Native_DashboardPage;
 import com.mphasis.qe.pages.Native_LoginPage;
 import com.mphasis.qe.pages.Native_PaymentPage;
+import com.mphasis.qe.pojo.TestData;
+import com.mphasis.qe.utils.JasyptEncryptor;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /****************************************************************************************
  * @author Tamilselvan Ramalingam
  ****************************************************************************************/
-
+@Slf4j
 public class MakePayementSteps {
     private Native_LoginPage loginPage;
     private Native_PaymentPage paymentPage;
     private Native_DashboardPage dashboardPage;
+
+
+    @Autowired
+    private TestData testData;
 
     public MakePayementSteps() {
         this.loginPage = new Native_LoginPage();
@@ -24,10 +32,12 @@ public class MakePayementSteps {
 
     @Given("User logged into TestBank")
     public void userLoggedIntoTestBank() {
+        log.info("Entering the User Login scenario");
         this.loginPage.checkLogoDisplay();
-        this.loginPage.enterUserName("test");
-        this.loginPage.enterPassword("test");
+        this.loginPage.enterUserName(JasyptEncryptor.decrypt(testData.getUserName()));
+        this.loginPage.enterPassword(JasyptEncryptor.decrypt(testData.getPassword()));
         this.dashboardPage = this.loginPage.login();
+        log.info("Exiting the User Login scenario");
     }
 
     @And("User lands on Dashboard page")
@@ -49,6 +59,7 @@ public class MakePayementSteps {
         this.paymentPage.sendText("PhoneNumber", phoneNumber);
         this.paymentPage.sendText("Name", name);
         this.paymentPage.sendText("Amount", amount);
+        log.info("Completed the User Payee Information");
     }
 
     @And("User selects {string}")
@@ -66,6 +77,7 @@ public class MakePayementSteps {
     public void userAbleToSendThePayment() {
         this.paymentPage.sendAction("Yes");
         userAmOnDashboardPage();
+        log.info("Payment sent Successfully");
     }
 
 }

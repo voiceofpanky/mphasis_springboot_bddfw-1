@@ -53,6 +53,7 @@ public class SamplePOSTSteps extends ApiUtil {
     @When("I send a request to add the user to the list")
     public void iSendARequestToAddTheUserToTheList() {
         response = apiUtil.postReq(propertySourceResolver.getAppApiUrl(), jsonBody);
+        log.info("Response --> "+ response.asString());
     }
 
     @Then("I should get a confirmation of the addition")
@@ -81,6 +82,7 @@ public class SamplePOSTSteps extends ApiUtil {
     @When("I send a request to register the user")
     public void i_send_a_request_to_register_the_user() {
         response = apiUtil.postReq(propertySourceResolver.getAppRegisterUrl(), requestBody);
+
     }
 
     @Then("I should not be able to register - force fail")
