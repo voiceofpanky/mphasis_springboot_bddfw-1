@@ -35,10 +35,6 @@ public class TearDown {
 
 	private WebDriver driver;
     private AppiumDriver mobileDriver;
-    public WebDriver chromeDriver;
-	public WebDriver firefoxDriver;
-	public WebDriver edgeDriver;
-	public WebDriver ieDriver;
 	boolean isParallelCrossbrowser;
 	
 	Logger log;
