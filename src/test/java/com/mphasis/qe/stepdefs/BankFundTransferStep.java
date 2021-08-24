@@ -91,7 +91,6 @@ public class BankFundTransferStep extends BasePage{
 		bankRegistrationPage.textPhone.sendKeys("4085679856");
 		bankRegistrationPage.textSsn.sendKeys("859657845");
 		bankRegistrationPage.textUsername.sendKeys(Setup.username+Calendar.getInstance().getTimeInMillis());
-		//System.out.println("Username::"+ Setup.username+Calendar.getInstance().getTimeInMillis());
 		bankRegistrationPage.textPassword.sendKeys(Setup.password);
 		bankRegistrationPage.textrepeatPassword.sendKeys(Setup.password);
 		wait.forLoading(10);
