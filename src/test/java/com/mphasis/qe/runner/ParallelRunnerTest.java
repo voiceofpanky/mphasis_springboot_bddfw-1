@@ -15,7 +15,7 @@ import io.cucumber.testng.CucumberOptions;
 		tags = "@web and @parallel",
 		strict = true,
 		monochrome = true,
-		publish = true,
+		publish = false,
 		dryRun = false,
 		plugin = {"pretty",
 				"json:target/cucumber-reports/cucumber.json",

@@ -1,6 +1,6 @@
 Feature: Transfer of Fund from own account
 
-  @web @register @parallel
+  @web @register
   Scenario: Bank account online registration
     Given I am on bank homepage
     And I navigate to bank online registration portal
