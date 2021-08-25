@@ -14,6 +14,8 @@ import org.json.JSONException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.SessionId;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -33,13 +35,14 @@ public class TearDown {
 
 	private WebDriver driver;
     private AppiumDriver mobileDriver;
+	boolean isParallelCrossbrowser;
 	
 	Logger log;
 	
 //	@Autowired
 //	ApiUtil apiUtil;
-//	@Autowired
-//	private PropertySourceResolver propertySourceResolver;
+	@Autowired
+	private PropertySourceResolver propertySourceResolver;
 //	@Autowired
 //    private ScenarioSession scenarioSession;
 //	@Autowired
@@ -59,10 +62,17 @@ public class TearDown {
         if(scenario.isFailed()){
            saveScreenshotsForScenario(scenario);
         }
-        //log.info("Closing the app");
-        this.driver.manage().deleteAllCookies();
-        this.driver.close();
-        //this.driver.quit();
+        isParallelCrossbrowser=propertySourceResolver.isParallelCrossbrowser();
+        if(isParallelCrossbrowser) {
+        	if(driver!=null) {
+        		this.driver.manage().deleteAllCookies();
+        	}
+        }
+        else {
+        	this.driver.manage().deleteAllCookies();
+        	this.driver.close();
+        	this.driver.quit();
+        }
     }
 
     private void saveScreenshotsForScenario(final Scenario scenario) {
