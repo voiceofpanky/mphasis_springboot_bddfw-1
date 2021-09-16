@@ -1,4 +1,19 @@
-HELP.md
+# Eclipse
+.classpath
+.project
+.settings/
+ 
+# Intellij
+.idea/
+*.iml
+*.iws
+ 
+# Mac
+.DS_Store
+ 
+# Maven
+log/
+target/HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**

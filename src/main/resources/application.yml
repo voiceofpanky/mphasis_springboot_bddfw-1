@@ -5,23 +5,33 @@ app:
   name: MyApp
   description: ${app.name} serves a key role in the overall IT landscape
   url:
-    base: https://mphasisin.service-now.com/
+    #base: https://mphasisin.service-now.com/
     api: https://reqres.in/api/users/
+    bankUri: https://parabank.parasoft.com/parabank/index.htm
+    securityUri: http://zero.webappsecurity.com/login.html
+    getUser: https://reqres.in/api/unknown/
+    register: https://reqres.in/api/register
+
 
 encrypted:
   username:
   password:
 
 platform:
+  #name: ios
   name: web
 
 browser:
   name: chrome
+  
+parallel:
+  crossbrowser: false
 
 selenium:
   chrome.driver: library/chromedriver.exe
   gecko.driver: library/geckodriver.exe
   ie.driver: library/IEDriverServer.exe
+  edge.driver: library/edge.exe
 
 android:
   apk.file: test.apk
@@ -40,9 +50,19 @@ perfecto:
   url: https://testingcloud.perfectomobile.com/nexperience/perfectomobile/wd/hub
   #url: http://localhost:4723/wd/hub
 
+browserstack:
+  username: kanhaiya.prasad1@mphasis.com
+  accessKey: JhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmZjE2YTM1ZS05ZDg3LTRkMjYtOTEyYS0xZm
+  hosturl: hub-cloud.browserstack.com/wd/hub
+
 data:
   source: json
   path: src/test/resources/inputFiles/
+  
+reportType:
+  csv: true
+  db: true
+  html: true
 
 db:
   connection:
@@ -52,3 +72,9 @@ db:
 spring:
   profiles:
     active: qa
+#  data:
+#    mongodb:
+#      uri: mongodb+srv://lalitgarg05:LGMongo456&@cluster0.bo06j.mongodb.net/WellsFargo?retryWrites=true&w=majority
+#      #host: localhost
+#      #port: 27017
+#      database: WellsFargo

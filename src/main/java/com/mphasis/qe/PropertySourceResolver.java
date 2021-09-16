@@ -14,18 +14,30 @@ public class PropertySourceResolver {
     @Value("${app.url.api}")
     private String appApiUrl;
 
+    @Value("${app.url.register}")
+    private String appRegisterUrl;
+    
+    @Value("${app.url.getUser}")
+    private String getUserUrl;
+
     @Value("${platform.name}")
     private String platformName;
 
     @Value("${browser.name}")
     private String browserName;
+    
+    @Value("${browser.version}")
+    private String browserVersion;
 
     @Value("${selenium.chrome.driver}")
     private String chromeDriverPath;
 
     @Value("${selenium.gecko.driver}")
     private String geckoDriverPath;
-
+    
+    @Value("${selenium.edge.driver}")
+    private String edgeDriverPath;
+    
     @Value("${selenium.ie.driver}")
     private String ieDriverPath;
 
@@ -67,84 +79,34 @@ public class PropertySourceResolver {
 
     @Value("${data.path}")
     private String dataPath;
+    
+    @Value("${reportType.csv}")
+    private String csvReport;
+    
+    @Value("${reportType.db}")
+    private String dbReport;
+    
+    @Value("${reportType.html}")
+    private String htmlReport;
 
-    public String getAppBaseUrl() {
-        return appBaseUrl;
-    }
-  
-    public String getAppApiUrl() {
-        return appApiUrl;
-    }
+    @Value("${appium.execution.type}")
+    private String appiumExecType;
 
-    public String getPlatformName() {
-        return platformName;
-    }
+    @Value("${browserstack.hosturl}")
+    private String browserstackURL;
 
-    public String getBrowserName() {
-        return browserName;
-    }
+    @Value("${browserstack.username}")
+    private String browserstackUsername;
 
-    public String getChromeDriverPath() {
-        return chromeDriverPath;
-    }
+    @Value("${browserstack.accessKey}")
+    private String browserstackToken;
+    
+    @Value("${app.url.bankUri}")
+    private String appBankUri;
 
-    public String getGeckoDriverPath() {
-        return geckoDriverPath;
-    }
+    @Value("${parallel.crossbrowser}")
+    private boolean isParallelCrossbrowser;
 
-    public String getIeDriverPath() {
-        return ieDriverPath;
-    }
-
-    public String getAndroidApkFile() {
-        return androidApkFile;
-    }
-
-    public String getAndroidDeviceName() {
-        return androidDeviceName;
-    }
-
-    public String getAndroidPlatformVersion() {
-        return androidPlatformVersion;
-    }
-
-    public String getIosAppFile() {
-        return iosAppFile;
-    }
-
-    public String getIosDeviceName() {
-        return iosDeviceName;
-    }
-
-    public String getIosPlatformVersion() {
-        return iosPlatformVersion;
-    }
-
-    public String getPerfectoUsername() {
-        return perfectoUsername;
-    }
-
-    public String getPerfectoToken() {
-        return perfectoToken;
-    }
-
-    public String getPerfectoUrl() {
-        return perfectoUrl;
-    }
-
-    public String getUserId(){
-        return userId;
-    }
-
-    public String getPassword(){
-        return password;
-    }
-
-    public String getDataSource() {
-        return dataSource;
-    }
-
-    public String getDataPath() {
-        return dataPath;
-    }
+    @Value("${app.url.securityUri}")
+    private String webAppSecurityUri;
 }

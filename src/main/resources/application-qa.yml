@@ -7,21 +7,34 @@ app:
   url:
     base: https://mphasisin.service-now.com/
     api: https://reqres.in/api/users/
+    bankUri: https://parabank.parasoft.com/parabank/index.htm
+    securityUri: http://zero.webappsecurity.com/login.html
+    getUser: https://reqres.in/api/unknown/
+    register: https://reqres.in/api/register
+
 
 encrypted:
-  username: 8yM6E233uqwZ6u3Av21beD38pUA7oMK98rYUyphNv01CxO3MqVZVhPRzEiT1OaZwykOWPj9zbteiybeQRubZMA==
-  password: 8MYQO0eKjiY8dC9Vc1gFzKTohnZarZrwvehzyzTGXtgbuUr1uIfs3HW1gDBIh4bu
+  username: ZmD3FX4pCzdjJ/HeWKSNF+EFRX25bC1erfBU4NFiqmYqAa0JxlEwb5KqLPsEMc/g
+  password: P4cvUTdwNUYk3C8DnBd0lE6RIi3Zt2Uo5SwXchRFeM+YXUfRUMP1AOJuwEKrJm52
 
 platform:
   name: web
 
 browser:
   name: chrome
+  version: 92
+  
+parallel:
+  crossbrowser: false
 
 selenium:
-  chrome.driver: library/chrome/83/chromedriver.exe
+  chrome.driver: library/chrome/version/chromedriver.exe
   gecko.driver: library/geckodriver.exe
   ie.driver: library/IEDriverServer.exe
+  edge.driver: library/edge.exe
+
+appium:
+  execution.type: local
 
 android:
   apk.file: test.apk
@@ -30,15 +43,20 @@ android:
   platform.version: 10
 
 ios:
-  app.file: test.app
-  device.name: 00008030-00160C803640802E
-  platform.version: 13.4.1
+  app.file: TamilTest.app
+  device.name: iPhone 8
+  platform.version: 14.5
 
 perfecto:
   username: manoj_chavan@yahoo.com
   token: eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmZjE2YTM1ZS05ZDg3LTRkMjYtOTEyYS0xZmY0MzgwM2RjNjEifQ.eyJqdGkiOiI0ZDk5M2ZlOS1iZDYxLTQzZGYtOTg5MS0yNjk0NzllNWM4ZTEiLCJleHAiOjAsIm5iZiI6MCwiaWF0IjoxNTkwNTIzMzgxLCJpc3MiOiJodHRwczovL2F1dGgtMi5hd3MtcHJvZC5wZXJmZWN0b21vYmlsZS5jb20vYXV0aC9yZWFsbXMvdGVzdGluZ2Nsb3VkLXBlcmZlY3RvbW9iaWxlLWNvbSIsImF1ZCI6Imh0dHBzOi8vYXV0aC0yLmF3cy1wcm9kLnBlcmZlY3RvbW9iaWxlLmNvbS9hdXRoL3JlYWxtcy90ZXN0aW5nY2xvdWQtcGVyZmVjdG9tb2JpbGUtY29tIiwic3ViIjoiZWYyNGRjZjAtOThhMS00Mjg3LWIzYTctMjMxMTgwZjA3Y2VkIiwidHlwIjoiT2ZmbGluZSIsImF6cCI6Im9mZmxpbmUtdG9rZW4tZ2VuZXJhdG9yIiwibm9uY2UiOiIxMzUzNWM0Yy1iYTAwLTRkNmUtOGJiNC0wYmU2MjViOTk2NjUiLCJhdXRoX3RpbWUiOjAsInNlc3Npb25fc3RhdGUiOiJhNDk0YzNjNy1hZWJiLTRiNTktYTQ1ZS1iNjFmODVhMmZkZjUiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIG9mZmxpbmVfYWNjZXNzIHByb2ZpbGUgZW1haWwifQ.EwcvAI6NXkkpB0AFAK3ITiRTvos9SZIPj5dK4prJh-Q
   url: https://testingcloud.perfectomobile.com/nexperience/perfectomobile/wd/hub
   #url: http://localhost:4723/wd/hub
+
+browserstack:
+  username: kanhaiya.prasad1@mphasis.com
+  accessKey: JhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmZjE2YTM1ZS05ZDg3LTRkMjYtOTEyYS0xZm
+  hosturl: hub-cloud.browserstack.com/wd/hub
 
 data:
   source: json
@@ -48,4 +66,5 @@ db:
   connection:
   username:
   password:
+
 

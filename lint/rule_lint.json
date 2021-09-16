@@ -1,0 +1,41 @@
+{
+  "no-files-without-scenarios": "on",
+  "no-dupe-scenario-names": "on",
+  "no-restricted-tags": [
+    "off",
+    {
+      "tags": [
+        "@wip",
+        "@todo"
+      ]
+    }
+  ],
+  "no-empty-background": "on",
+  "no-empty-file": "on",
+  "no-unnamed-features": "on",
+  "no-unnamed-scenarios": "on",
+  "no-scenario-outlines-without-examples": "on",
+  "scenario-size": [
+    "on",
+    {
+      "steps-length": {
+        "Background": 15,
+        "Scenario": 15
+      }
+    }
+  ],
+  "name-length": [
+    "on",
+    {
+      "Feature": 75,
+      "Scenario": 75,
+      "Step": 75
+    }
+  ],
+  "max-scenarios-per-file": [
+    "on",
+    {
+      "maxScenarios": "5"
+    }
+  ]
+}
