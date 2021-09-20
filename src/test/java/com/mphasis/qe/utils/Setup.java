@@ -142,7 +142,7 @@ public class Setup {
             webdriver=driverFactory.createInstance(browserName,browserVersion,osName,osVersion,browserStackUsername,browserStackAccessKey);
             System.out.println("Thread ID : "+Thread.currentThread().getId());
         }
-        else if(browserName.equalsIgnoreCase("EdgeRemote")) {
+        else if(browserName.equalsIgnoreCase("edgeRemote")) {
             //System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
         	//WebDriverManager.chromedriver().driverVersion(browserVersion).setup();
             webdriver=driverFactory.createInstance(browserName,browserVersion,osName,osVersion,browserStackUsername,browserStackAccessKey);
