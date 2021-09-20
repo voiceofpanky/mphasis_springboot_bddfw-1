@@ -1,5 +1,8 @@
 package com.mphasis.qe.utils;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,7 +17,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mphasis.qe.PropertySourceResolver;
-
+import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
 /****************************************************************************************
  * @author Pankaj Sao : DriverFactory class to return remoteDriver instance of browser
@@ -23,6 +26,8 @@ import lombok.extern.slf4j.Slf4j;
 public class DriverFactory extends RemoteWebDriver {
 	@Autowired
     private PropertySourceResolver propertySourceResolver;
+	public static String browserStackHostUrl;
+	
 	
 	public RemoteWebDriver driver;
 	public synchronized RemoteWebDriver createInstance(String browser)throws Exception {
@@ -85,6 +90,39 @@ public class DriverFactory extends RemoteWebDriver {
 			driver = new EdgeDriver(cap);
 		}
 		driver.manage().window().maximize();
+		return driver;
+	}
+	
+	public synchronized RemoteWebDriver createInstance(String browserName, String browserVersion, String osName,String osVersion,
+			String browserStackUsername, String browserStackAccessKey) {
+		browserStackHostUrl="https://"+browserStackUsername+":"+browserStackAccessKey+"@hub-cloud.browserstack.com/wd/hub";
+		DesiredCapabilities caps = new DesiredCapabilities();
+		caps.setCapability("os", osName);
+		caps.setCapability("os_version", osVersion);
+		caps.setCapability("browser_version", browserVersion);
+		caps.setCapability("os", osVersion);
+		if (browserName.equalsIgnoreCase("chromeRemote")){
+			WebDriverManager.chromedriver().setup();
+		}
+		else if (browserName.equalsIgnoreCase("firefoxRemote")){
+			WebDriverManager.chromedriver().setup();
+		}
+		else if (browserName.equalsIgnoreCase("edgeRemote")){
+			WebDriverManager.chromedriver().setup();
+		}
+		else if (browserName.equalsIgnoreCase("ieRemote")){
+			WebDriverManager.chromedriver().setup();
+		}
+		try {
+			driver=new RemoteWebDriver(new URL(browserStackHostUrl),caps);
+			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			
+		}
+		catch(MalformedURLException e) {
+			e.printStackTrace();
+		}
+		
+		
 		return driver;
 	}
 

@@ -26,6 +26,12 @@ public class PropertySourceResolver {
     @Value("${browser.name}")
     private String browserName;
     
+    @Value("${os.version}")
+    private String osVersion;
+    
+    @Value("${os.name}")
+    private String osName;
+    
     @Value("${browser.version}")
     private String browserVersion;
 

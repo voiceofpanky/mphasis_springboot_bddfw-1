@@ -16,6 +16,10 @@ encrypted:
 platform:
   name: iOS
 
+os:
+  name: Windows
+  version: 10
+  
 browser:
   name: safari
   

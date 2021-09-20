@@ -43,6 +43,11 @@ public class Setup {
     private static String platformName;
     private static String browserName;
     private static String browserVersion;
+    private static String osName;
+    private static String osVersion;
+    private static String browserStackUsername;
+    private static String browserStackAccessKey;
+    private static String browserStackHostUrl;
     public static String username;
     public static String password;
     public static WebDriver webdriver;
@@ -80,6 +85,11 @@ public class Setup {
         platformName = propertySourceResolver.getPlatformName();
         browserName = propertySourceResolver.getBrowserName();
         browserVersion = propertySourceResolver.getBrowserVersion();
+        osName =propertySourceResolver.getOsName();
+        osVersion = propertySourceResolver.getOsVersion();
+        browserStackUsername=propertySourceResolver.getBrowserstackUsername();
+        browserStackAccessKey =propertySourceResolver.getBrowserstackToken();
+        browserStackHostUrl=propertySourceResolver.getBrowserstackURL();
         username = JasyptEncryptor.decrypt(propertySourceResolver.getUserId());
         password = JasyptEncryptor.decrypt(propertySourceResolver.getPassword());
         dataSource = propertySourceResolver.getDataSource();
@@ -120,6 +130,30 @@ public class Setup {
             webdriver=driverFactory.createInstance(browserName);
             System.out.println("Thread ID : "+Thread.currentThread().getId());
       }
+        else if(browserName.equalsIgnoreCase("chromeRemote")) {
+            //System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
+        	//WebDriverManager.chromedriver().driverVersion(browserVersion).setup();
+            webdriver=driverFactory.createInstance(browserName,browserVersion,osName,osVersion,browserStackUsername,browserStackAccessKey);
+            System.out.println("Thread ID : "+Thread.currentThread().getId());
+        }
+        else if(browserName.equalsIgnoreCase("firefoxRemote")) {
+            //System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
+        	//WebDriverManager.chromedriver().driverVersion(browserVersion).setup();
+            webdriver=driverFactory.createInstance(browserName,browserVersion,osName,osVersion,browserStackUsername,browserStackAccessKey);
+            System.out.println("Thread ID : "+Thread.currentThread().getId());
+        }
+        else if(browserName.equalsIgnoreCase("EdgeRemote")) {
+            //System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
+        	//WebDriverManager.chromedriver().driverVersion(browserVersion).setup();
+            webdriver=driverFactory.createInstance(browserName,browserVersion,osName,osVersion,browserStackUsername,browserStackAccessKey);
+            System.out.println("Thread ID : "+Thread.currentThread().getId());
+        }
+        else if(browserName.equalsIgnoreCase("ieRemote")) {
+            //System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
+        	//WebDriverManager.chromedriver().driverVersion(browserVersion).setup();
+            webdriver=driverFactory.createInstance(browserName,browserVersion,osName,osVersion,browserStackUsername,browserStackAccessKey);
+            System.out.println("Thread ID : "+Thread.currentThread().getId());
+        }
 
         DesiredCapabilities capabilities = new DesiredCapabilities("","", Platform.ANY);
         this.APPIUM_WEB_DRIVER_SERVER_URL = propertySourceResolver.getPerfectoUrl();

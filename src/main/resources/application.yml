@@ -21,6 +21,10 @@ platform:
   #name: ios
   name: web
 
+os:
+  name: Windows
+  version: 10
+  
 browser:
   name: chrome
   
