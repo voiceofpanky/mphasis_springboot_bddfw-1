@@ -105,13 +105,13 @@ public class DriverFactory extends RemoteWebDriver {
 			WebDriverManager.chromedriver().setup();
 		}
 		else if (browserName.equalsIgnoreCase("firefoxRemote")){
-			WebDriverManager.chromedriver().setup();
+			WebDriverManager.firefoxdriver().setup();
 		}
 		else if (browserName.equalsIgnoreCase("edgeRemote")){
-			WebDriverManager.chromedriver().setup();
+			WebDriverManager.edgedriver().setup();
 		}
 		else if (browserName.equalsIgnoreCase("ieRemote")){
-			WebDriverManager.chromedriver().setup();
+			WebDriverManager.iedriver().setup();
 		}
 		try {
 			driver=new RemoteWebDriver(new URL(browserStackHostUrl),caps);
