@@ -131,26 +131,18 @@ public class Setup {
             System.out.println("Thread ID : "+Thread.currentThread().getId());
       }
         else if(browserName.equalsIgnoreCase("chromeRemote")) {
-            //System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
-        	//WebDriverManager.chromedriver().driverVersion(browserVersion).setup();
             webdriver=driverFactory.createInstance(browserName,browserVersion,osName,osVersion,browserStackUsername,browserStackAccessKey);
             System.out.println("Thread ID : "+Thread.currentThread().getId());
         }
         else if(browserName.equalsIgnoreCase("firefoxRemote")) {
-            //System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
-        	//WebDriverManager.chromedriver().driverVersion(browserVersion).setup();
             webdriver=driverFactory.createInstance(browserName,browserVersion,osName,osVersion,browserStackUsername,browserStackAccessKey);
             System.out.println("Thread ID : "+Thread.currentThread().getId());
         }
         else if(browserName.equalsIgnoreCase("edgeRemote")) {
-            //System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
-        	//WebDriverManager.chromedriver().driverVersion(browserVersion).setup();
             webdriver=driverFactory.createInstance(browserName,browserVersion,osName,osVersion,browserStackUsername,browserStackAccessKey);
             System.out.println("Thread ID : "+Thread.currentThread().getId());
         }
         else if(browserName.equalsIgnoreCase("ieRemote")) {
-            //System.setProperty("webdriver.chrome.driver", propertySourceResolver.getChromeDriverPath());
-        	//WebDriverManager.chromedriver().driverVersion(browserVersion).setup();
             webdriver=driverFactory.createInstance(browserName,browserVersion,osName,osVersion,browserStackUsername,browserStackAccessKey);
             System.out.println("Thread ID : "+Thread.currentThread().getId());
         }
